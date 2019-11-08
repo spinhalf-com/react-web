@@ -1,0 +1,69 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+html,
+body {
+    min-height: 100%;
+    min-height: 100vh;
+}
+
+body {
+    font: 16px 'Roboto', Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background: #f6f6f6;
+}
+
+.app {
+    max-width: 60rem;
+    width: 100%;
+    background: lightgray;
+    padding: 1rem;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+.app > header,
+.app > main,
+.app > footer {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 1rem;
+    text-align: center;
+    transition: 200ms;
+}
+.app > header:hover,
+.app > main:hover,
+.app > footer:hover {
+    box-shadow: 0 0 2rem gray;
+}
+.app > header {
+    display: block;
+    color: white;
+    background: gray;
+    text-transform: uppercase;
+}
+.app > main {
+    flex: 1 1 auto;
+    color: #333;
+    background: white;
+    width: 100%
+}
+.app > footer {
+    background: #333;
+    color: white;
+}

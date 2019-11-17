@@ -27,8 +27,8 @@ class CryptoList extends Component {
 
     fetchData() {
         axios.get(this.state.balances_list)
-            .then(res => {
-                this.parseResponse(res)
+            .then(response => {
+                this.parseResponse(JSON.parse(response))
             })
             .catch(err => {
                 this.setState({
@@ -39,29 +39,37 @@ class CryptoList extends Component {
     }
 
     parseResponse(response) {
-
         this.setState({
             accountBalances: response.data.accounts,
             costBalances: response.data.codes,
             loading: false,
             error: null
         });
+
+        let rows = [];
+
+        this.state.accountBalances.map((name, value) => (
+            rows.push(<tr><td>{name}</td><td>{value}</td></tr>)
+        ));
+
+        console.log(rows);
     }
 
     createCryptoList = () => {
         let table = [];
 
         for (let i = 0; i < this.state.accountBalances.length; i++) {
-            let rows = [];
-            rows.push(
-                <td key={`a`+i}>
+            let row = [];
+            row.push(
+                <td key={`a`+i}>2
                     {this.state.accountBalances[i][0]}
                 </td>,
                 <td key={`b`+i}>
                     {this.state.accountBalances[i][1]}
                 </td>,
             );
-            table.push(<tr key={i} id={this.state.accountBalances[i]+`id`}>{rows}</tr>)
+            console.log('row',row);
+            table.push(<tr key={i} id={this.state.accountBalances[i]+`id`}>{row}</tr>)
         }
         return table;
     };
@@ -73,7 +81,8 @@ class CryptoList extends Component {
                     <table style={{width:'100%',padding:'5px'}}>
                         <tbody>
 
-                        {this.createCryptoList()}
+
+                        {/*{this.createCryptoList()}*/}
                         <tr>
                             <td style={{textAlign:'left',color:'darkslategrey'}}>Bitcoin</td>
                             <td style={{textAlign:'right',color:'darkslategrey'}}>&pound;4,743.07</td>

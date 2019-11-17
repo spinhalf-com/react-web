@@ -5,7 +5,7 @@ class Main extends Component
 {
     render() {
         return (
-            <main style={{width:'1200px'}}><Centre/></main>
+            <div style={{width:'1200px'}}><Centre/></div>
         )
     }
 }

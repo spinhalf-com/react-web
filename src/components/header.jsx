@@ -17,7 +17,8 @@ class Header extends Component
                             Welcome John Riordan
                             <a href="http://www.spinhalf.com"><font color='blue'>Goto Spinhalf</font></a>
                             <a className='current' href="https://jfr.zapple.co/logout"
-                               onClick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                               // onClick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            >Log Out</a>
                         </span>
                     </div>
                     <div className="jclock"></div>
@@ -33,7 +34,8 @@ class Header extends Component
                             </li>
                             <li>
                                 <a className='current' href="https://jfr.zapple.co/logout"
-                                   onClick="event.preventDefault(); document.getElementById('logout-form').submit();">Log
+                                   // onClick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                >Log
                                     Out</a>
                                 <ul>
                                     <form id="logout-form" action="https://jfr.zapple.co/logout" method="POST"

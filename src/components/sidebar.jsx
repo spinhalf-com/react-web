@@ -1,40 +1,50 @@
 import React, { Component } from 'react';
+// import Functions from '../functions';
+import CryptoList from './accounts/crypto_list'
 
 class Sidebar extends Component
 {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            pricesArray: [],
+            loading: true,
+            error: null,
+            crypto_price_url: 'https://min-api.cryptocompare.com/data/price?tsyms=GBP&fsym=',
+            crypto_list: 'https://jfr.zapple.co/balances_json',
+            crypto_price_url2: 'https://cryptomate.co.uk/api/all/GBP'
+        };
+    }
+
+    componentDidMount() {
+        this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     render() {
         return (
-            <sidebar>
+            <div>
                 <div className="left_content">
                     <div className="sidebar_search">
-                        <form>
-                            <input type="text" name="" className="search_input" value="search..."
-                                   onClick="this.value=''"/>
-                            <input type="image" className="search_submit"
-                                   src="https://jfr.zapple.co/images/search.png"/>
-                        </form>
+                        {/*<form>*/}
+                            {/*<input type="text" name="" className="search_input" value="search..."/>*/}
+                            {/*<input type="image" className="search_submit"*/}
+                                   {/*src="https://jfr.zapple.co/images/search.png"/>*/}
+                        {/*</form>*/}
                     </div>
 
                     <div className="sidebarmenu">
 
-                        <a className='menuitem submenuheader' href=''>Crypto Currencies </a>
-                        <div className='submenu'>
-                            <ul style={{background:'#E6EAE9'}}>
-                                <table style={{width:'100%',padding:'5px'}}>
-                                    <tr>
-                                        <td style={{textAlign:'left',color:'darkslategrey'}}>Bitcoin</td>
-                                        <td style={{textAlign:'right',color:'darkslategrey'}}>&pound;4,743.07</td>
-                                    </tr>
+                        <a className='menuitem submenuheader' href="/#">Crypto Currencies </a>
 
-                                    <tr>
-                                        <th style={{textAlign:'left',color:'darkslategrey'}}>TOTAL</th>
-                                        <th style={{textAlign:'right',color:'darkslategrey'}}>&pound;5,681.08</th>
-                                    </tr>
-                                </table>
-                            </ul>
-                        </div>
+                        <CryptoList/>
 
-                        <a className='menuitem submenuheader' href=''>Balances <font
+
+                        <a className='menuitem submenuheader' href="/#">Balances <font
                             color='blue'> (Reconciled)</font></a>
                         <div className='submenu'>
                             <ul style={{background:'#E6EAE9', padding:'5px'}}>
@@ -56,16 +66,16 @@ class Sidebar extends Component
                             </ul>
                         </div>
 
-                        <a className='menuitem submenuheader' href='' headerindex>Balances <font
+                        <a className='menuitem submenuheader'href="/#">Balances <font
                             color='blue'> (Unreconciled)</font>
 
                             <span className='accordsuffix'>
-		                        <img className='statusicon' src='../assets/images/plus.gif'/>
+		                        <img className='statusicon' src='../assets/images/plus.gif' alt={'link'}/>
 	                        </span>
                         </a>
                         <div className='submenu'>
                             <ul style={{background:'#E6EAE9'}}>
-                                <ul style={{background:'#E6EAE9',padding:'5px;'}}>
+                                <ul style={{background:'#E6EAE9',padding:'5px'}}>
                                     <li>
                                         <div style={{border:'solid',borderColor:'#E6EAE9',borderWidth:'1px'}}>
                                             <div float='left' width='100px'>Barclays Current:</div>
@@ -86,7 +96,7 @@ class Sidebar extends Component
                         </div>
                     </div>
                 </div>
-            </sidebar>
+            </div>
         )
     }
 }

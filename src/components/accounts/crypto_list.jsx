@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import Functions from '../functions';
 import axios from 'axios';
+import CryptoValue from './crypto_value';
 
 class CryptoList extends Component {
     constructor(props) {
@@ -10,10 +11,17 @@ class CryptoList extends Component {
             accountBalances: [],
             costBalances: [],
             error: null,
-            crypto_price_url: 'https://min-api.cryptocompare.com/data/price?tsyms=GBP&fsym=',
-            balances_list: 'https://jfr.zapple.co/balances_json',
-            crypto_price_url2: 'https://cryptomate.co.uk/api/all/GBP'
+            short_crypto_codes: [],
+            totalBalance: 0,
+
+            // balances_list: 'https://jfr.zapple.co/balances_json',
+            balances_list: 'http://jrcash.loc/balances_json',
+            coin_market_cap_key: 'b31f4a71-013e-4957-80ce-88826f2ea7a6',
+            coin_market_cap_header: 'X-CMC_PRO_API_KEY',
+            coin_market_cap_url:'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
         };
+
+        this.runningTotal = this.runningTotal.bind(this);
     }
 
     componentDidMount() {
@@ -28,7 +36,12 @@ class CryptoList extends Component {
     fetchData() {
         axios.get(this.state.balances_list)
             .then(response => {
-                this.parseResponse(JSON.parse(response))
+
+                this.setState({
+                    accountBalances: response.data.cryptos_balances,
+                    loading: false,
+                    error: null
+                });
             })
             .catch(err => {
                 this.setState({
@@ -38,60 +51,59 @@ class CryptoList extends Component {
             });
     }
 
-    parseResponse(response) {
-        this.setState({
-            accountBalances: response.data.accounts,
-            costBalances: response.data.codes,
-            loading: false,
-            error: null
-        });
+    getCryptoPrice(symbol) {
 
-        let rows = [];
+        let url = this.state.crypto_price_url + symbol;
 
-        this.state.accountBalances.map((name, value) => (
-            rows.push(<tr><td>{name}</td><td>{value}</td></tr>)
-        ));
+        axios.get(url)
+            .then(response => {
 
-        console.log(rows);
+                this.setState({
+                    accountBalances: response.data.cryptos_balances,
+                    price_loading: false,
+                    error: null
+                });
+            })
+            .catch(err => {
+                this.setState({
+                    price_loading: false,
+                    error: err
+                });
+            });
     }
 
-    createCryptoList = () => {
-        let table = [];
+    runningTotal = (total) => {
+        // console.log(total);
+        let newTotal = total +  this.state.totalBalance;
+        this.setState({totalBalance: newTotal});
+    };
 
-        for (let i = 0; i < this.state.accountBalances.length; i++) {
-            let row = [];
-            row.push(
-                <td key={`a`+i}>2
-                    {this.state.accountBalances[i][0]}
-                </td>,
-                <td key={`b`+i}>
-                    {this.state.accountBalances[i][1]}
-                </td>,
-            );
-            console.log('row',row);
-            table.push(<tr key={i} id={this.state.accountBalances[i]+`id`}>{row}</tr>)
-        }
-        return table;
+    createCryptoList = () => {
+        let rows = [];
+
+        this.state.accountBalances.map((array) => (
+            rows.push(<tr key={array[0]}>
+                <td id={`n`+array[0]} style={{textAlign:'left',color:'darkslategrey',fontSize:"0.8em"}}>{array[2]}</td>
+                <td id={`v`+array[0]} style={{textAlign:'right',color:'darkslategrey',fontSize:"0.8em"}}>
+                    <CryptoValue
+                        ticker={array[0]}
+                        balance={array[1]}
+                        returnCalculatedBalance={this.runningTotal}
+                    />
+                </td>
+            </tr>)
+        ));
+        // console.log(this.state.totalBalance);
+        return rows;
     };
 
     render() {
         return (
             <div className='submenu'>
                 <ul style={{background:'#E6EAE9'}}>
-                    <table style={{width:'100%',padding:'5px'}}>
-                        <tbody>
-
-
-                        {/*{this.createCryptoList()}*/}
-                        <tr>
-                            <td style={{textAlign:'left',color:'darkslategrey'}}>Bitcoin</td>
-                            <td style={{textAlign:'right',color:'darkslategrey'}}>&pound;4,743.07</td>
-                        </tr>
-
-                        <tr>
-                            <th style={{textAlign:'left',color:'darkslategrey'}}>TOTAL</th>
-                            <th style={{textAlign:'right',color:'darkslategrey'}}>&pound;5,681.08</th>
-                        </tr>
+                    <table key={`ct`} style={{width:'100%',padding:'5px'}}>
+                        <tbody key={`cb`}>
+                            {this.createCryptoList()}
                         </tbody>
                     </table>
                 </ul>

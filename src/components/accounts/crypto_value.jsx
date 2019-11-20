@@ -44,7 +44,7 @@ class CryptoValue extends Component {
 
         value = parseFloat(this.props.balance) * parseFloat(this.state.cryptoValue);
         let decVal = value.toFixed(2);
-        // this.props.returnCalculatedBalance(decVal);
+        this.props.getChildValue(decVal);
         return this.parseToCurrency(decVal);
     };
 

@@ -73,7 +73,7 @@ class CryptoList extends Component {
     }
 
     runningTotal = (total) => {
-        // console.log(total);
+        console.log(total);
         let newTotal = total +  this.state.totalBalance;
         this.setState({totalBalance: newTotal});
     };
@@ -88,12 +88,12 @@ class CryptoList extends Component {
                     <CryptoValue
                         ticker={array[0]}
                         balance={array[1]}
-                        returnCalculatedBalance={this.runningTotal}
+                        getChildValue={() => this.runningTotal}
                     />
                 </td>
             </tr>)
         ));
-        // console.log(this.state.totalBalance);
+        console.log(this.state.totalBalance);
         return rows;
     };
 

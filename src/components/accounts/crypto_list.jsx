@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Functions from '../functions';
 import axios from 'axios';
 import CryptoValue from './crypto_value';
 
@@ -9,18 +8,10 @@ class CryptoList extends Component {
 
         this.state = {
             accountBalances: [],
-            costBalances: [],
             error: null,
-            short_crypto_codes: [],
             totalBalance: 0,
-
-            // balances_list: 'https://jfr.zapple.co/balances_json',
-            balances_list: 'http://jrcash.loc/balances_json',
-            coin_market_cap_key: 'b31f4a71-013e-4957-80ce-88826f2ea7a6',
-            coin_market_cap_header: 'X-CMC_PRO_API_KEY',
-            coin_market_cap_url:'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+            balances_list: 'https://jfr.zapple.co/balances_json'
         };
-
         this.runningTotal = this.runningTotal.bind(this);
     }
 
@@ -72,9 +63,9 @@ class CryptoList extends Component {
             });
     }
 
-    runningTotal = (total) => {
+    runningTotal(total) {
         console.log(total);
-        let newTotal = total +  this.state.totalBalance;
+        let newTotal = parseFloat(total) +  parseFloat(this.state.totalBalance);
         this.setState({totalBalance: newTotal});
     };
 
@@ -93,7 +84,12 @@ class CryptoList extends Component {
                 </td>
             </tr>)
         ));
-        console.log(this.state.totalBalance);
+        rows.push(
+            <tr key='total'>
+                <td style={{textAlign:'left',color:'darkslategrey',fontSize:"1em"}}>Total</td>
+                <td style={{textAlign:'right',color:'darkslategrey',fontSize:"1em"}}>£{this.state.totalBalance}</td>
+            </tr>
+        )
         return rows;
     };
 

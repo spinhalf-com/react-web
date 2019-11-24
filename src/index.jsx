@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Header from './components/header';
-import Footer from './components/footer';
-import Main from './components/enter/main';
+
+import MainContainer from './components/main-container';
 import './css/main.css';
 import './css/jfrzapple.css';
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {renderChild: true};
-        // this.handleChildUnmount = this.handleChildUnmount.bind(this);
-    }
-
     render() {
         return (
-            <div className="app" id="main_container">
-                <Header title="Header" />
-                <Main />
-                <Footer title="Footer"/>
+            <div>
+                <MainContainer/>
             </div>
         );
     }

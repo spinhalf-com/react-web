@@ -74,8 +74,8 @@ class CryptoList extends Component {
 
         this.state.accountBalances.map((array) => (
             rows.push(<tr key={array[0]}>
-                <td id={`n`+array[0]} style={{textAlign:'left',color:'darkslategrey',fontSize:"0.8em"}}>{array[2]}</td>
-                <td id={`v`+array[0]} style={{textAlign:'right',color:'darkslategrey',fontSize:"0.8em"}}>
+                <td id={`n`+array[0]} style={{textAlign:'left',color:'darkslategrey'}}>{array[2]}</td>
+                <td id={`v`+array[0]} style={{textAlign:'right',color:'darkslategrey'}}>
                     <CryptoValue
                         ticker={array[0]}
                         balance={array[1]}

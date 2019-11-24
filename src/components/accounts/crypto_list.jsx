@@ -63,7 +63,7 @@ class CryptoList extends Component {
             });
     }
 
-    runningTotal(total) {
+    runningTotal = (total) => {
         console.log(total);
         let newTotal = parseFloat(total) +  parseFloat(this.state.totalBalance);
         this.setState({totalBalance: newTotal});
@@ -79,7 +79,7 @@ class CryptoList extends Component {
                     <CryptoValue
                         ticker={array[0]}
                         balance={array[1]}
-                        getChildValue={() => this.runningTotal}
+                        getChildValue={(value) => this.runningTotal}
                     />
                 </td>
             </tr>)

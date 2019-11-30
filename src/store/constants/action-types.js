@@ -1,1 +1,0 @@
-export const ADD_CRYPTO_VALUE = "ADD_CRYPTO_VALUE";

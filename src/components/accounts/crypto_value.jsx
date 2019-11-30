@@ -15,9 +15,14 @@ class CryptoValue extends Component {
 
     componentDidMount() {
         this.fetchData();
+        this.props.getChildValue(this.state.calculatedValue);
     }
 
     componentDidUpdate() {
+        this.props.getChildValue(this.state.calculatedValue);
+    }
+
+    componentWillUpdate() {
         this.props.getChildValue(this.state.calculatedValue);
     }
 

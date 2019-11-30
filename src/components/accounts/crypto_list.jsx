@@ -10,7 +10,7 @@ class CryptoList extends Component {
             accountBalances: [],
             error: null,
             totalBalance: 0,
-            balances_list: 'https://jfr.zapple.co/balances_json'
+            balances_list: 'https://jfr.zapple.co/bals'
         };
         this.runningTotal = this.runningTotal.bind(this);
     }
@@ -29,7 +29,7 @@ class CryptoList extends Component {
             .then(response => {
 
                 this.setState({
-                    accountBalances: response.data.cryptos_balances,
+                    accountBalances: response.data.cryptos,
                     loading: false,
                     error: null
                 });
@@ -63,7 +63,7 @@ class CryptoList extends Component {
             });
     }
 
-    runningTotal = (total) => {
+    runningTotal(total){
         console.log(total);
         let newTotal = parseFloat(total) +  parseFloat(this.state.totalBalance);
         this.setState({totalBalance: newTotal});
@@ -86,8 +86,8 @@ class CryptoList extends Component {
         ));
         rows.push(
             <tr key='total'>
-                <td style={{textAlign:'left',color:'darkslategrey',fontSize:"1em"}}>Total</td>
-                <td style={{textAlign:'right',color:'darkslategrey',fontSize:"1em"}}>£{this.state.totalBalance}</td>
+                <td style={{textAlign:'left',color:'darkslategrey',fontSize:"1.2em", fontWeight:"bold"}}>Total</td>
+                <td style={{textAlign:'right',color:'darkslategrey',fontSize:"1.2em", fontWeight:"bold"}}>£{this.state.totalBalance}</td>
             </tr>
         )
         return rows;

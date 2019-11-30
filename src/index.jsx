@@ -1,26 +1,22 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-// import { Provider } from "react-redux";
-// import store from "./redux/store";
+import { Provider } from "react-redux";
+import configureStore from "./store";
 
 import MainContainer from './components/main-container';
 import './css/main.css';
 import './css/jfrzapple.css';
+const store = configureStore({});
 
 class App extends Component {
 
     render() {
         return (
-            <MainContainer/>
+            <Provider store={store}>
+                <MainContainer/>
+            </Provider>
         );
     }
-    // render() {
-    //     return (
-    //         <Provider store={store}>
-    //             <MainContainer/>
-    //         </Provider>
-    //     );
-    // }
 }
 
 ReactDOM.render(

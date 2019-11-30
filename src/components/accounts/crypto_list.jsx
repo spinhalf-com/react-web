@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CryptoValue from './crypto_value';
+import { connect } from "react-redux";
+import { cryptos } from "../../actions/cryptos";
 
 class CryptoList extends Component {
     constructor(props) {
@@ -16,7 +18,8 @@ class CryptoList extends Component {
     }
 
     componentDidMount() {
-        this.fetchData();
+        //this.fetchData();
+        this.props.getCryptos();
         this._isMounted = true;
     }
 
@@ -27,7 +30,6 @@ class CryptoList extends Component {
     fetchData() {
         axios.get(this.state.balances_list)
             .then(response => {
-
                 this.setState({
                     accountBalances: response.data.cryptos,
                     loading: false,
@@ -71,23 +73,28 @@ class CryptoList extends Component {
 
     createCryptoList = () => {
         let rows = [];
-
-        this.state.accountBalances.map((array) => (
-            rows.push(<tr key={array[0]}>
-                <td id={`n`+array[0]} style={{textAlign:'left',color:'darkslategrey'}}>{array[2]}</td>
-                <td id={`v`+array[0]} style={{textAlign:'right',color:'darkslategrey'}}>
-                    <CryptoValue
-                        ticker={array[0]}
-                        balance={array[1]}
+        let sum = 0.0;
+        this.props.data.map(item => {
+            let price = parseFloat(item[1]) * parseFloat(item[3])
+            sum += price
+            
+            rows.push(<tr key={item[0]}>
+                <td id={`n`+item[0]} style={{textAlign:'left',color:'darkslategrey'}}>{item[2]}</td>
+                <td id={`v`+item[0]} style={{textAlign:'right',color:'darkslategrey'}}>
+                    {/* <CryptoValue
+                        ticker={item[0]}
+                        balance={item[1]}
                         getChildValue={(value) => this.runningTotal}
-                    />
+                    /> */}
+                    £{price.toFixed(2)}
                 </td>
             </tr>)
-        ));
+        });
+        sum = sum.toFixed(2)
         rows.push(
             <tr key='total'>
                 <td style={{textAlign:'left',color:'darkslategrey',fontSize:"1.2em", fontWeight:"bold"}}>Total</td>
-                <td style={{textAlign:'right',color:'darkslategrey',fontSize:"1.2em", fontWeight:"bold"}}>£{this.state.totalBalance}</td>
+                <td style={{textAlign:'right',color:'darkslategrey',fontSize:"1.2em", fontWeight:"bold"}}>£{sum}</td>
             </tr>
         )
         return rows;
@@ -107,5 +114,21 @@ class CryptoList extends Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+        data: state.cryptos
+    };
+}
 
-export default CryptoList;
+function mapDispatchToProps(dispatch) {
+    return {
+        getCryptos: () => {
+            dispatch(cryptos.getCryptos());
+        }
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CryptoList);

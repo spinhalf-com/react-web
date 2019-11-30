@@ -8,12 +8,13 @@ export const cryptos = {
 function getCryptos() {
     return dispatch => {
         dispatch(request());
-        axios.get(`https://jfr.zapple.co/bals`,{},
+        axios.get(`https://jfr.zapple.co/balances_json`,{},
         { headers: { } })
             .then(
                 result => {
+                    console.log(result);
 
-                    result.data.cryptos.map(async item => {
+                    result.data.cryptos_balances.map(async item => {
                         item[3] = 0
                         let resp = await axios.get(`https://min-api.cryptocompare.com/data/price?tsyms=GBP&fsym=` + item[0])
                         item[3] = resp.data.GBP

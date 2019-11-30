@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import CryptoValue from './crypto_value';
+// import CryptoValue from './crypto_value';
 import { connect } from "react-redux";
 import { cryptos } from "../../actions/cryptos";
 
@@ -12,7 +12,7 @@ class CryptoList extends Component {
             accountBalances: [],
             error: null,
             totalBalance: 0,
-            balances_list: 'https://jfr.zapple.co/bals'
+            balances_list: 'https://jfr.zapple.co/balances_json'
         };
         this.runningTotal = this.runningTotal.bind(this);
     }

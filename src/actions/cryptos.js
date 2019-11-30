@@ -9,10 +9,11 @@ function getCryptos() {
     return dispatch => {
         dispatch(request());
         axios.get(`https://jfr.zapple.co/balances_json`,{},
-        { headers: { } })
+        {
+            headers: { }
+        })
             .then(
                 result => {
-                    console.log(result);
 
                     result.data.cryptos_balances.map(async item => {
                         item[3] = 0
@@ -30,8 +31,19 @@ function getCryptos() {
             );
     };
 
-    function request() { return { type: cryptosConstants.GET_CRYPTOS_REQUEST } }
-    function success(data) { return { type: cryptosConstants.GET_CRYPTOS_SUCCESS, data } }
-    function updateItem(data) { return { type: cryptosConstants.GET_CRYPTOS_UPDATE_ITEM, data } }
-    function failure(error) { return {  type: cryptosConstants.GET_CRYPTOS_FALIURE, error } }
+    function request() {
+        return { type: cryptosConstants.GET_CRYPTOS_REQUEST }
+    }
+
+    function success(data) {
+        return { type: cryptosConstants.GET_CRYPTOS_SUCCESS, data }
+
+    }
+    function updateItem(data) {
+        return { type: cryptosConstants.GET_CRYPTOS_UPDATE_ITEM, data }
+    }
+
+    function failure(error) {
+        return {  type: cryptosConstants.GET_CRYPTOS_FALIURE, error }
+    }
 }

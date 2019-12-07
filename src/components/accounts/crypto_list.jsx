@@ -14,11 +14,9 @@ class CryptoList extends Component {
             totalBalance: 0,
             balances_list: 'https://jfr.zapple.co/balances_json'
         };
-        this.runningTotal = this.runningTotal.bind(this);
     }
 
     componentDidMount() {
-        //this.fetchData();
         this.props.getCryptos();
         this._isMounted = true;
     }
@@ -26,50 +24,6 @@ class CryptoList extends Component {
     componentWillUnmount() {
         this._isMounted = false;
     }
-
-    fetchData() {
-        axios.get(this.state.balances_list)
-            .then(response => {
-                this.setState({
-                    accountBalances: response.data.cryptos,
-                    loading: false,
-                    error: null
-                });
-            })
-            .catch(err => {
-                this.setState({
-                    loading: false,
-                    error: err
-                });
-            });
-    }
-
-    getCryptoPrice(symbol) {
-
-        let url = this.state.crypto_price_url + symbol;
-
-        axios.get(url)
-            .then(response => {
-
-                this.setState({
-                    accountBalances: response.data.cryptos_balances,
-                    price_loading: false,
-                    error: null
-                });
-            })
-            .catch(err => {
-                this.setState({
-                    price_loading: false,
-                    error: err
-                });
-            });
-    }
-
-    runningTotal(total){
-        console.log(total);
-        let newTotal = parseFloat(total) +  parseFloat(this.state.totalBalance);
-        this.setState({totalBalance: newTotal});
-    };
 
     createCryptoList = () => {
         let rows = [];
@@ -81,11 +35,6 @@ class CryptoList extends Component {
             rows.push(<tr key={item[0]}>
                 <td id={`n`+item[0]} style={{textAlign:'left',color:'darkslategrey'}}>{item[2]}</td>
                 <td id={`v`+item[0]} style={{textAlign:'right',color:'darkslategrey'}}>
-                    {/* <CryptoValue
-                        ticker={item[0]}
-                        balance={item[1]}
-                        getChildValue={(value) => this.runningTotal}
-                    /> */}
                     £{price.toFixed(2)}
                 </td>
             </tr>)

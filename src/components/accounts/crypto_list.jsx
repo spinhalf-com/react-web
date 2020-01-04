@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-// import CryptoValue from './crypto_value';
 import { connect } from "react-redux";
 import { cryptos } from "../../actions/cryptos";
 

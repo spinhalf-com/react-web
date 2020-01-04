@@ -15,7 +15,7 @@ export default function location(state = initialState, action) {
                 {
                     item = action.data
                 }
-            })
+            });
             return newState;
         case cryptosConstants.GET_LOCATIONS_FALIURE:
             return action.error;

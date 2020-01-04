@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CryptoList from './accounts/crypto_list';
-// import SideBarMenuTop from '../assets/images/sidebar_menu_top.gif';
+import SideBarMenuTop from '../assets/images/sidebar_menu_top.gif';
+console.log(SideBarMenuTop);
 
 class Sidebar extends Component
 {
@@ -26,13 +27,13 @@ class Sidebar extends Component
 
             <div className="sidebarmenu">
 
-                <a className='menuitem' href="/#"
-                   // style={{
-                   //     // backgroundImage: `url(${SideBarMenuTop})`,
-                   //     backgroundPosition: 'center',
-                   //     backgroundSize: 'cover',
-                   //     backgroundRepeat: 'no-repeat'
-                   // }}
+                <a className='menuitem submenuheader' href="/#"
+                   style={{
+                       backgroundImage: `url(${SideBarMenuTop})`,
+                       backgroundPosition: 'center',
+                       backgroundSize: 'cover',
+                       backgroundRepeat: 'no-repeat'
+                   }}
                 > Crypto Currencies </a>
 
                 <CryptoList/>

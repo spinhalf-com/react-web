@@ -12,7 +12,7 @@ class Parent extends Component {
             error: null,
             totalBalance: 0,
             balances_list: 'https://jfr.zapple.co/balances_json',
-            data: "Default parent state"
+            data: []
         };
         this.childHandler = this.childHandler.bind(this)
     }
@@ -74,19 +74,34 @@ class Parent extends Component {
      we bubble up our `return` from Child
     */
     childHandler(dataFromChild) {
+        console.log('df:',dataFromChild)
 
-        this.setState({
-            data: dataFromChild
-        },() => console.log('Updated Parent State:', this.state.accountBalances));
+        // let dataArray = this.state.data;
+        // dataArray.push({
+        //     ticker: dataFromChild.ticker,
+        //     value: dataFromChild.calculatedValue
+        // });
+        //
+        // console.log(dataArray);
+        //
+        let totalBalance = parseFloat(this.state.totalBalance);
+        //
+        totalBalance += parseFloat(dataFromChild.calculatedValue);
+        //
+        this.setState({totalBalance: totalBalance});
+        //
+        // this.setState({
+        //     data: dataFromChild
+        // });
+        //
+        let bal = 0;
+        this.state.data.map((obj) => (
+            // console.log(obj.value)
+            bal += parseFloat(obj.value)
+        ));
+
+        // this.setState({totalBalance: bal});
     }
-
-    // render() {
-    //     /*
-    //      Set our childHandler function as a value to a prop that
-    //      gets passed down to our Child component
-    //     */
-    //     return <Child parentAction={this.childHandler} />
-    // }
 
     render() {
         return (
@@ -102,19 +117,84 @@ class Parent extends Component {
             </div>
         )
     }
-
 }
 
 export default Parent;
 
 // Child Class
 class Child extends Component {
-    /*
-      Our onClick event will return the function that gets set to our action prop
-      that then gets passed into the Parent's childHandler function.
-    */
+
+    constructor(props) {
+        super(props);
+
+        this.handleCallToParent = this.handleCallToParent.bind(this);
+
+        this.state = {
+            ticker: props.ticker,
+            calculatedValue: 0,
+            crypto_price_url: 'https://min-api.cryptocompare.com/data/price?tsyms=GBP&fsym=',
+            displayValue: "",
+            balanceFromProps: this.props.balance,
+            cryptoValue: null
+        };
+    }
+
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    // componentDidUpdate() {
+    //     console.log(this.state.calculatedValue);
+    //     // let ret = () => {
+    //         //this.props.getChildValue(this.state.calculatedValue)
+    //     // }
+    // }
+
+    fetchData() {
+        let url = this.state.crypto_price_url + this.props.ticker;
+
+        axios.get(url)
+            .then(response => {
+                let price = response.data.GBP;
+                this.calculateValue(price);
+            })
+            .catch(err => {
+                this.setState({
+                    error: err
+                });
+            });
+    }
+
+    handleCallToParent() {
+        this.props.parentAction();
+    }
+
+    calculateValue(price) {
+        let value = 0;
+        value = parseFloat(this.props.balance) * parseFloat(price);
+        let decVal = value.toFixed(2);
+        this.setState({
+            cryptoValue: price,
+            calculatedValue: decVal
+        });
+        this.props.parentAction({
+            ticker: this.props.ticker,
+            cryptoValue: price,
+            calculatedValue: decVal
+        });
+    }
+
+    parseToCurrency() {
+        return `£` + this.state.calculatedValue;
+    }
+
     render() {
-        return <a onClick={() => this.props.parentAction('Set Parent state set from child: ' + Math.floor(Math.random() * 999))}>Update Parent</a>;
+        return (
+            <div className='balance_value' onMouseOver={this.handleCallToParent}>
+                {this.parseToCurrency()}
+            </div>
+        )
+        //return <a onClick={() => this.props.parentAction('Set Parent state set from child: ' + Math.floor(Math.random() * 999))}>Update Parent</a>;
     }
 }
 

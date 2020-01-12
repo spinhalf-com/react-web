@@ -8,6 +8,7 @@ class CryptoValue extends Component {
         super(props);
 
         this.calculateValue = this.calculateValue.bind(this);
+        this.handleCallToParent = this.handleCallToParent.bind(this);
 
         this.state = {
             calculatedValue: 0,
@@ -44,6 +45,11 @@ class CryptoValue extends Component {
             });
     }
 
+    handleCallToParent() {
+
+        this.props.getChildValue();
+    }
+
     calculateValue(price) {
         let value = 0;
         value = parseFloat(this.props.balance) * parseFloat(price);
@@ -52,8 +58,6 @@ class CryptoValue extends Component {
             cryptoValue: price,
             calculatedValue: decVal
         });
-        this.props.getChildValue(this.state.calculatedValue);
-
     }
 
     parseToCurrency() {
@@ -65,7 +69,7 @@ class CryptoValue extends Component {
         let state = this.state;
 
         return (
-            <div className='balance_value' onMouseOver={this.calculateValue}>
+            <div className='balance_value' onMouseOver={this.handleCallToParent}>
                 {this.parseToCurrency()}
             </div>
         )

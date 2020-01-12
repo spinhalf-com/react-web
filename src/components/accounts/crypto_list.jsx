@@ -41,27 +41,27 @@ class CryptoList extends Component {
                 });
             });
     }
-
-    getCryptoPrice(symbol) {
-
-        let url = this.state.crypto_price_url + symbol;
-
-        axios.get(url)
-            .then(response => {
-
-                this.setState({
-                    accountBalances: response.data.cryptos_balances,
-                    price_loading: false,
-                    error: null
-                });
-            })
-            .catch(err => {
-                this.setState({
-                    price_loading: false,
-                    error: err
-                });
-            });
-    }
+    //
+    // getCryptoPrice(symbol) {
+    //
+    //     let url = this.state.crypto_price_url + symbol;
+    //
+    //     axios.get(url)
+    //         .then(response => {
+    //
+    //             this.setState({
+    //                 accountBalances: response.data.cryptos_balances,
+    //                 price_loading: false,
+    //                 error: null
+    //             });
+    //         })
+    //         .catch(err => {
+    //             this.setState({
+    //                 price_loading: false,
+    //                 error: err
+    //             });
+    //         });
+    // }
 
     runningTotal(total){
         console.log(total);

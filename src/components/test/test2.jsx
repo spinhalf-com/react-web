@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import CryptoValue from "../accounts/crypto_list";
 
 // Our Parent Class
 class Parent extends Component {
@@ -7,19 +8,13 @@ class Parent extends Component {
         super(props)
 
         this.state = {
-            // accountBalances: [],
-            // error: null,
+            accountBalances: [],
+            error: null,
             totalBalance: 0,
             balances_list: 'https://jfr.zapple.co/balances_json',
             data: "Default parent state"
         };
-
-        /*
-         Bind our childHandler function to this context
-         that will get called from our Child component
-        */
         this.childHandler = this.childHandler.bind(this)
-        //this.runningTotal = this.runningTotal.bind(this)
     }
 
     componentDidMount() {
@@ -27,7 +22,7 @@ class Parent extends Component {
         this._isMounted = true;
     }
 
-    componentWillUnmount() {    
+    componentWillUnmount() {
         this._isMounted = false;
     }
 
@@ -49,26 +44,65 @@ class Parent extends Component {
             });
     }
 
+    createCryptoList = () => {
+        let rows = [];
+
+        this.state.accountBalances.map((array) => (
+            rows.push(<tr key={array[0]}>
+                <td id={`n`+array[0]} style={{textAlign:'left',color:'darkslategrey'}}>{array[2]}</td>
+                <td id={`v`+array[0]} style={{textAlign:'right',color:'darkslategrey'}}>
+                    <Child
+                        ticker={array[0]}
+                        balance={array[1]}
+                        parentAction={this.childHandler}
+                    />
+                </td>
+            </tr>)
+        ));
+        rows.push(
+            <tr key='total'>
+                <td style={{textAlign:'left',color:'darkslategrey',fontSize:"1em"}}>Total</td>
+                <td style={{textAlign:'right',color:'darkslategrey',fontSize:"1em"}}>£{this.state.totalBalance}</td>
+            </tr>
+        )
+        return rows;
+    };
+
 
     /*
      Function that gets called when
      we bubble up our `return` from Child
     */
     childHandler(dataFromChild) {
-        // log our state before and after we updated it
-        console.log('%cPrevious Parent State: ' + JSON.stringify(this.state), "color:orange");
+
         this.setState({
             data: dataFromChild
-        },() => console.log('Updated Parent State:', this.state));
+        },() => console.log('Updated Parent State:', this.state.accountBalances));
     }
 
+    // render() {
+    //     /*
+    //      Set our childHandler function as a value to a prop that
+    //      gets passed down to our Child component
+    //     */
+    //     return <Child parentAction={this.childHandler} />
+    // }
+
     render() {
-        /*
-         Set our childHandler function as a value to a prop that
-         gets passed down to our Child component
-        */
-        return <Child parentAction={this.childHandler} />
+        return (
+            <div className='submenu'>
+                Crypto List
+                <ul style={{background:'#E6EAE9'}}><li>
+                    <table key={`ct`} style={{width:'100%',padding:'5px'}}>
+                        <tbody key={`cb`}>
+                            {this.createCryptoList()}
+                        </tbody>
+                    </table>
+                </li></ul>
+            </div>
+        )
     }
+
 }
 
 export default Parent;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CryptoList from './accounts/crypto_list';
 import SideBarMenuTop from '../assets/images/sidebar_menu_top.gif';
-console.log(SideBarMenuTop);
+// console.log(SideBarMenuTop);
 
 class Sidebar extends Component
 {

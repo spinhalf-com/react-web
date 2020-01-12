@@ -63,11 +63,14 @@ class CryptoList extends Component {
             });
     }
 
-    runningTotal = (total) => {
+    runningTotal(total){
         console.log(total);
-        let newTotal = parseFloat(total) +  parseFloat(this.state.totalBalance);
-        this.setState({totalBalance: newTotal});
+        // let newTotal = parseFloat(total) +  parseFloat(this.state.totalBalance);
+        // this.setState({
+        //     totalBalance: newTotal
+        // });
     };
+
 
     createCryptoList = () => {
         let rows = [];

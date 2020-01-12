@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { connect } from "react-redux";
-
+import { connect } from "react-redux";
+import store from '../../store/index';
 
 class CryptoValue extends Component {
     constructor(props) {
         super(props);
 
+        this.calculateValue = this.calculateValue.bind(this);
+
         this.state = {
             calculatedValue: 0,
-            crypto_price_url: 'https://min-api.cryptocompare.com/data/price?tsyms=GBP&fsym='
+            crypto_price_url: 'https://min-api.cryptocompare.com/data/price?tsyms=GBP&fsym=',
+            displayValue: "",
+            balanceFromProps: this.props.balance,
+            cryptoValue: null
         };
     }
 
@@ -17,9 +22,12 @@ class CryptoValue extends Component {
         this.fetchData();
     }
 
-    componentDidUpdate() {
-        this.props.getChildValue(this.state.calculatedValue);
-    }
+    // componentDidUpdate() {
+    //     console.log(this.state.calculatedValue);
+    //     // let ret = () => {
+    //         //this.props.getChildValue(this.state.calculatedValue)
+    //     // }
+    // }
 
     fetchData() {
         let url = this.state.crypto_price_url + this.props.ticker;
@@ -44,6 +52,8 @@ class CryptoValue extends Component {
             cryptoValue: price,
             calculatedValue: decVal
         });
+        this.props.getChildValue(this.state.calculatedValue);
+
     }
 
     parseToCurrency() {
@@ -51,8 +61,11 @@ class CryptoValue extends Component {
     }
 
     render() {
+
+        let state = this.state;
+
         return (
-            <div className='balance_value'>
+            <div className='balance_value' onMouseOver={this.calculateValue}>
                 {this.parseToCurrency()}
             </div>
         )

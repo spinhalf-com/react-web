@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import CryptoValue from './crypto_value';
-import '../../css/sidebar.css';
+import CryptoValue from './crypto_value-arc';
 
 class CryptoList extends Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             accountBalances: [],
             error: null,
             totalBalance: 0,
-            balances_list: 'https://jfr.zapple.co/balances_json',
-            data: [],
-            calcArray: {}
+            balances_list: 'https://jfr.zapple.co/balances_json'
         };
-        this.childHandler = this.childHandler.bind(this)
+        this.runningTotal = this.runningTotal.bind(this);
     }
 
     componentDidMount() {
@@ -44,55 +41,74 @@ class CryptoList extends Component {
                 });
             });
     }
+    //
+    // getCryptoPrice(symbol) {
+    //
+    //     let url = this.state.crypto_price_url + symbol;
+    //
+    //     axios.get(url)
+    //         .then(response => {
+    //
+    //             this.setState({
+    //                 accountBalances: response.data.cryptos_balances,
+    //                 price_loading: false,
+    //                 error: null
+    //             });
+    //         })
+    //         .catch(err => {
+    //             this.setState({
+    //                 price_loading: false,
+    //                 error: err
+    //             });
+    //         });
+    // }
+
+    runningTotal(total){
+        console.log(total);
+        // let newTotal = parseFloat(total) +  parseFloat(this.state.totalBalance);
+        // this.setState({
+        //     totalBalance: newTotal
+        // });
+    };
+
 
     createCryptoList = () => {
         let rows = [];
 
         this.state.accountBalances.map((array) => (
             rows.push(<tr key={array[0]}>
-                <td id={`n`+array[0]} className={'crypto_item_desc'}>{array[2]}</td>
-                <td id={`v`+array[0]} className={'crypto_item'}>
+                <td id={`n`+array[0]} style={{textAlign:'left',color:'darkslategrey'}}>{array[2]}</td>
+                <td id={`v`+array[0]} style={{textAlign:'right',color:'darkslategrey'}}>
                     <CryptoValue
                         ticker={array[0]}
                         balance={array[1]}
-                        parentAction={this.childHandler}
+                        getChildValue={(value) => this.runningTotal}
                     />
                 </td>
             </tr>)
         ));
         rows.push(
             <tr key='total'>
-                <td className={'crypto_total_desc'} >Total</td>
-                <td className={'crypto_total'} >£{this.state.totalBalance}</td>
+                <td style={{textAlign:'left',color:'darkslategrey',fontSize:"1em"}}>Total</td>
+                <td style={{textAlign:'right',color:'darkslategrey',fontSize:"1em"}}>£{this.state.totalBalance}</td>
             </tr>
         )
         return rows;
     };
 
-    childHandler(dataFromChild) {
-        let calcArray = this.state.calcArray;
-        calcArray[dataFromChild.ticker] = dataFromChild.calculatedValue;
-
-        let totalBalance = 0;
-        for (var i in this.state.calcArray) {                       //we build a unique-keyed object to prevent XHR duplication
-            totalBalance += parseFloat(this.state.calcArray[i]);
-        }
-        this.setState({calcArray: calcArray});
-        this.setState({totalBalance: totalBalance.toFixed(2)});
-    }
-
     render() {
         return (
             <div className='submenu'>
-                <ul style={{background:'#E6EAE9'}}><li>
+                <ul style={{background:'#E6EAE9'}}>
                     <table key={`ct`} style={{width:'100%',padding:'5px'}}>
                         <tbody key={`cb`}>
                             {this.createCryptoList()}
                         </tbody>
                     </table>
-                </li></ul>
+                </ul>
             </div>
         )
     }
 }
+
 export default CryptoList;

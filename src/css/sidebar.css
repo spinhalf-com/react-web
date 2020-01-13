@@ -1,0 +1,25 @@
+.crypto_total_desc {
+    text-align: left;
+    color: darkslategrey;
+    font-size: 1em;
+    font-weight: bold
+}
+
+.crypto_total {
+    text-align: right;
+    color: darkslategrey;
+    font-size: 1em;
+    font-weight: bold
+}
+
+.crypto_item_desc {
+    text-align: left;
+    color: darkslategrey;
+    font-size: 1em;
+}
+
+.crypto_item {
+    text-align: right;
+    color: darkslategrey;
+    font-size: 1em;
+}

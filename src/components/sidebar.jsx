@@ -26,14 +26,7 @@ class Sidebar extends Component
 
             <div className="sidebarmenu">
 
-                <a className='menuitem submenuheader' href="/#"
-                   style={{
-                       backgroundImage: `url(${SideBarMenuTop})`,
-                       backgroundPosition: 'center',
-                       backgroundSize: 'cover',
-                       backgroundRepeat: 'no-repeat'
-                   }}
-                > Crypto Currencies </a>
+                <a className='menuitem submenuheader' href="/#"> Crypto Currencies </a>
 
                 <CryptoList/>
 

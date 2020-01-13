@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Header from "./header";
 import MainContent from "./main-content";
@@ -9,12 +10,12 @@ class MainContainerEnter extends Component{
         return (
             <div className="main_container">
                 <Header/>
-                <MainContent/>
+                    <MainContent/>
                 <Footer/>
             </div>
         )
     }
 }
 
-export default MainContainerEnter;
+export default connect()(MainContainerEnter);
 

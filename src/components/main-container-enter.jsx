@@ -17,5 +17,5 @@ class MainContainerEnter extends Component{
     }
 }
 
-export default connect()(MainContainerEnter);
+export default MainContainerEnter;
 

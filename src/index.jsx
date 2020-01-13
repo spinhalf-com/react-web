@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import MainContainerEnter from './components/main-container-enter';
 import MainContainerReconcile from './components/main-container-reconcile';
@@ -11,7 +12,7 @@ import MainContainerMap from './components/main-container-map';
 import './css/main.css';
 import './css/jfrzapple.css';
 
-const routing = (
+const Routed = (
     <Router>
         <div>
             <Route exact path="/" component={MainContainerEnter} />
@@ -24,6 +25,6 @@ const routing = (
 )
 
 ReactDOM.render(
-    routing,
+    Routed,
     document.getElementById('root')
 );

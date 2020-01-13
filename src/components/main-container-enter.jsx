@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 import Header from "./header";
 import MainContent from "./main-content";
@@ -17,5 +17,5 @@ class MainContainerEnter extends Component{
     }
 }
 
-export default connect()(MainContainerEnter);
+export default MainContainerEnter;
 

@@ -4,7 +4,7 @@ import Header from "./header";
 import MainContent from "./main-content";
 import Footer from "./footer";
 
-class MainContainer extends Component{
+class MainContainerEnter extends Component{
     render() {
         return (
             <div className="main_container">
@@ -16,5 +16,5 @@ class MainContainer extends Component{
     }
 }
 
-export default MainContainer;
+export default MainContainerEnter;
 

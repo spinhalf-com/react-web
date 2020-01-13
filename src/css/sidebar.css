@@ -23,3 +23,12 @@
     color: darkslategrey;
     font-size: 1em;
 }
+
+.crypto {
+    background: #E6EAE9
+}
+
+.table {
+    width: 100%;
+    padding: 5px
+}

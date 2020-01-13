@@ -84,8 +84,8 @@ class CryptoList extends Component {
     render() {
         return (
             <div className='submenu'>
-                <ul style={{background:'#E6EAE9'}}><li>
-                    <table key={`ct`} style={{width:'100%',padding:'5px'}}>
+                <ul className={'crypto'}><li>
+                    <table key={`ct`} className={'table'}>
                         <tbody key={`cb`}>
                             {this.createCryptoList()}
                         </tbody>

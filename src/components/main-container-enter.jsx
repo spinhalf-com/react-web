@@ -1,20 +1,21 @@
 import React, { Component } from "react";
+// import { connect } from "react-redux";
 
 import Header from "./header";
 import MainContent from "./main-content";
 import Footer from "./footer";
 
-class MainContainer extends Component{
+class MainContainerEnter extends Component{
     render() {
         return (
             <div className="main_container">
                 <Header/>
-                <MainContent/>
+                    <MainContent/>
                 <Footer/>
             </div>
         )
     }
 }
 
-export default MainContainer;
+export default MainContainerEnter;
 

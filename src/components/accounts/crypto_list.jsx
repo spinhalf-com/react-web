@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CryptoValue from './crypto_value';
+import '../../css/sidebar.css';
 
 class CryptoList extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             accountBalances: [],
             error: null,
             totalBalance: 0,
-            balances_list: 'https://jfr.zapple.co/balances_json'
+            balances_list: 'https://jfr.zapple.co/balances_json',
+            data: [],
+            calcArray: {}
         };
-        this.runningTotal = this.runningTotal.bind(this);
+        this.childHandler = this.childHandler.bind(this)
     }
 
     componentDidMount() {
@@ -42,70 +45,54 @@ class CryptoList extends Component {
             });
     }
 
-    getCryptoPrice(symbol) {
-
-        let url = this.state.crypto_price_url + symbol;
-
-        axios.get(url)
-            .then(response => {
-
-                this.setState({
-                    accountBalances: response.data.cryptos_balances,
-                    price_loading: false,
-                    error: null
-                });
-            })
-            .catch(err => {
-                this.setState({
-                    price_loading: false,
-                    error: err
-                });
-            });
-    }
-
-    runningTotal = (total) => {
-        console.log(total);
-        let newTotal = parseFloat(total) +  parseFloat(this.state.totalBalance);
-        this.setState({totalBalance: newTotal});
-    };
-
     createCryptoList = () => {
         let rows = [];
 
         this.state.accountBalances.map((array) => (
             rows.push(<tr key={array[0]}>
-                <td id={`n`+array[0]} style={{textAlign:'left',color:'darkslategrey'}}>{array[2]}</td>
-                <td id={`v`+array[0]} style={{textAlign:'right',color:'darkslategrey'}}>
+                <td id={`n`+array[0]} className={'crypto_item_desc'}>{array[2]}</td>
+                <td id={`v`+array[0]} className={'crypto_item'}>
                     <CryptoValue
                         ticker={array[0]}
                         balance={array[1]}
-                        getChildValue={(value) => this.runningTotal}
+                        parentAction={this.childHandler}
                     />
                 </td>
             </tr>)
         ));
         rows.push(
             <tr key='total'>
-                <td style={{textAlign:'left',color:'darkslategrey',fontSize:"1em"}}>Total</td>
-                <td style={{textAlign:'right',color:'darkslategrey',fontSize:"1em"}}>£{this.state.totalBalance}</td>
+                <td className={'crypto_total_desc'} >Total</td>
+                <td className={'crypto_total'} >£{this.state.totalBalance}</td>
             </tr>
         )
         return rows;
     };
 
+    childHandler(dataFromChild) {
+        let calcArray = this.state.calcArray;
+        calcArray[dataFromChild.ticker] = dataFromChild.calculatedValue;
+
+        let totalBalance = 0;
+        for (var i in this.state.calcArray) {                       //we build a unique-keyed object to prevent XHR duplication
+            totalBalance += parseFloat(this.state.calcArray[i]);
+        }
+        this.setState({calcArray: calcArray});
+        this.setState({totalBalance: totalBalance.toFixed(2)});
+    }
+
     render() {
         return (
             <div className='submenu'>
-                <ul style={{background:'#E6EAE9'}}>
-                    <table key={`ct`} style={{width:'100%',padding:'5px'}}>
+                <ul className={'crypto'}><li>
+                    <table key={`ct`} className={'table'}>
                         <tbody key={`cb`}>
                             {this.createCryptoList()}
                         </tbody>
                     </table>
-                </ul>
+                </li></ul>
             </div>
         )
     }
 }
-
 export default CryptoList;

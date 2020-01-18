@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../css/login.css';
+import axios from 'axios';
+import config from '../config/config';
 
 class LoginPage extends Component {
     constructor() {
@@ -8,6 +10,7 @@ class LoginPage extends Component {
             username: '',
             password: '',
             error: '',
+            loginUrl: config.API_URL + 'oauth/token'
         };
 
         this.handlePassChange = this.handlePassChange.bind(this);
@@ -30,8 +33,32 @@ class LoginPage extends Component {
         if (!this.state.password) {
             return this.setState({ error: 'Password is required' });
         }
+        this.fetchData();
 
         return this.setState({ error: '' });
+    }
+
+    fetchData() {
+
+        let data = JSON.stringify({
+            password: this.state.password,
+            username: this.state.email
+        });
+
+        axios.post(this.state.loginUrl, data)
+            .then(response => {
+                this.setState({
+                    oauthToken: response.data.access_token,
+                    loading: false,
+                    error: null
+                });
+            })
+            .catch(err => {
+                this.setState({
+                    loading: false,
+                    error: err
+                });
+            });
     }
 
     handleUserChange(evt) {

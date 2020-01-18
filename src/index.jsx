@@ -11,6 +11,7 @@ import MainContainerReconcile from './components/main-container-reconcile';
 import MainContainerRegtrans from './components/main-container-regtrans';
 import MainContainerMileage from './components/main-container-mileage';
 import MainContainerMap from './components/main-container-map';
+import Login from './components/Login';
 
 import './css/main.css';
 import './css/jfrzapple.css';
@@ -23,6 +24,7 @@ const Routed = (
         <Router>
             <div>
                 <Route exact path="/" component={MainContainerEnter} />
+                <Route path="/login" component={Login} />
                 <Route path="/reconcile" component={MainContainerReconcile} />
                 <Route path="/regtrans" component={MainContainerRegtrans} />
                 <Route path="/mileage" component={MainContainerMileage} />
@@ -30,7 +32,7 @@ const Routed = (
             </div>
         </Router>
     </Provider>
-)
+);
 
 ReactDOM.render(
     Routed,

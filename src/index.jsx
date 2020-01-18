@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -23,8 +23,9 @@ const Routed = (
     <Provider store={store}>
         <Router>
             <div>
-                <Route exact path="/" component={MainContainerEnter} />
+                <Route exact path="/" component={Login} />
                 <Route path="/login" component={Login} />
+                <Route path="/enter" component={MainContainerEnter} />
                 <Route path="/reconcile" component={MainContainerReconcile} />
                 <Route path="/regtrans" component={MainContainerRegtrans} />
                 <Route path="/mileage" component={MainContainerMileage} />

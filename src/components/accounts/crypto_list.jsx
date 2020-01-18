@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CryptoValue from './crypto_value';
 import '../../css/sidebar.css';
+import config from '../../config/config';
 
 class CryptoList extends Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class CryptoList extends Component {
             accountBalances: [],
             error: null,
             totalBalance: 0,
-            balances_list: 'https://jfr.zapple.co/balances_json',
+            balances_list: config.API_URL + 'balances_json',
             data: [],
             calcArray: {}
         };

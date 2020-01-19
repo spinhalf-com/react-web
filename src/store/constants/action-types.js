@@ -1,1 +1,1 @@
-export const ADD_BALANCES = "ADD_BALANCES";
+export const BALANCES = "BALANCES";

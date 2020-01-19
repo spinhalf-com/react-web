@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../../css/sidebar.css';
 import config from '../../config/config';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import balances from '../../store/actions/actions-index';
 
 class AccountsRec extends Component {
     constructor(props) {
@@ -71,14 +72,14 @@ class AccountsRec extends Component {
 
 function mapStateToProps(state) {
     return {
-        data: state.balances
+        data: state.accountBalances
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         getBalances: () => {
-            dispatch(balan  23434ces.getBalances());
+            dispatch(balances.getBalances());
         }
     };
 }

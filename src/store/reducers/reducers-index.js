@@ -1,18 +1,12 @@
-import {ADD_CRYPTO_VALUE, ADD_TEMP_VALUE} from "../constants/action-types";
+import { ADD_BALANCES } from "../constants/action-types";
 const initialState = {
-    cryptoValues: []
+    balances: []
 };
 
 function rootReducer(state = initialState, action) {
-    if (action.type === ADD_CRYPTO_VALUE) {
+    if (action.type === ADD_BALANCES) {
         return Object.assign({}, state, {
-            cryptoValues: state.cryptoValues.concat(action.payload)
-        });
-    }
-
-    if (action.type === ADD_TEMP_VALUE) {
-        return Object.assign({}, state, {
-            tempValues: state.tempValues.concat(action.payload)
+            balances: state.balances.concat(action.payload)
         });
     }
     return state;

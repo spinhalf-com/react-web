@@ -1,2 +1,1 @@
-export const ADD_CRYPTO_VALUE = "ADD_CRYPTO_VALUE";
-export const ADD_TEMP_VALUE = "ADD_TEMP_VALUE";
+export const ADD_BALANCES = "ADD_BALANCES";

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import '../css/login.css';
 import config from '../config/config';
 
-class LoginPage extends Component {
+class EnterTransaction extends Component {
     constructor() {
         super();
 

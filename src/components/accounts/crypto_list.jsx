@@ -6,7 +6,7 @@ import config from '../../config/config';
 
 class CryptoList extends Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             accountBalances: [],

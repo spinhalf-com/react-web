@@ -105,23 +105,27 @@ class LoginPage extends Component {
         }
 
         return (
-            <div className="Login box">
-                <div className="form-box">
-                    <form onSubmit={this.handleSubmit}>
-                        {
-                            this.state.error &&
-                            <h3 data-test="error" onClick={this.dismissError}>
-                                <button onClick={this.dismissError}>✖</button>
-                                {this.state.error_message}
-                            </h3>
-                        }
-                        <input placeholder="Enter email" className="email" type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
+            <div>
+                <div className="Login box">
+                    <div className="form-box">
+                        <h1>Cash Manager</h1>
+                        <form onSubmit={this.handleSubmit}>
 
-                        <input placeholder="Enter password" className="password" type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
+                            <input placeholder="Enter email" className="email" type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
+                            <input placeholder="Enter password" className="password" type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
 
-                        <input className="btn" type="submit" value="Log In" data-test="submit" />
-
-                    </form>
+                            <input className="btn" type="submit" value="Log In" data-test="submit" />
+                        </form>
+                    </div>
+                </div>
+                <div className={this.state.error ? "errorbox_show" : "errorbox_hide"}>
+                    {
+                        this.state.error &&
+                        <h3 data-test="error" onClick={this.dismissError}>
+                            <button onClick={this.dismissError}>✖</button>
+                            {this.state.error_message}
+                        </h3>
+                    }
                 </div>
             </div>
         );

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../../css/sidebar.css';
 import config from '../../config/config';
+import {connect} from "react-redux";
 
 class AccountsRec extends Component {
     constructor(props) {
@@ -9,11 +10,10 @@ class AccountsRec extends Component {
 
         this.state = {
             accountBalances: [],
+            displayIndex: "rec_balances",
             error: null,
-            totalBalance: 0,
             balances_list: config.API_URL + 'balances_json',
-            data: [],
-            calcArray: {}
+            data: []
         };
     }
 
@@ -29,9 +29,8 @@ class AccountsRec extends Component {
     fetchData() {
         axios.get(this.state.balances_list)
             .then(response => {
-
                 this.setState({
-                    accountBalances: response.data.cryptos_balances,
+                    accountBalances: response.data,
                     loading: false,
                     error: null
                 });
@@ -46,11 +45,10 @@ class AccountsRec extends Component {
 
     createAccountsList = () => {
         let rows = [];
-
-        this.state.accountBalances.map((array) => (
+        this.state.accountBalances.rec_balances.map((array) => (
             rows.push(<tr key={array[0]}>
-                <td id={`n`+array[0]} className={'crypto_item_desc'}>{array[2]}</td>
-                <td id={`v`+array[0]} className={'crypto_item'}>{array[1]}</td>
+                <td id={`n`+array[0]} className={'account_item_desc'}>{array[2]}</td>
+                <td id={`v`+array[0]} className={'account_item'}>{array[1]}</td>
             </tr>)
         ));
         return rows;
@@ -70,4 +68,24 @@ class AccountsRec extends Component {
         )
     }
 }
-export default AccountsRec;
+
+function mapStateToProps(state) {
+    return {
+        data: state.balances
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getBalances: () => {
+            dispatch(balan  23434ces.getBalances());
+        }
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AccountsRec);
+
+

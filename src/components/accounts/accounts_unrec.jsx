@@ -9,11 +9,10 @@ class AccountsUnrec extends Component {
 
         this.state = {
             accountBalances: [],
+            displayIndex: "unrec_balances",
             error: null,
-            totalBalance: 0,
             balances_list: config.API_URL + 'balances_json',
-            data: [],
-            calcArray: {}
+            data: []
         };
     }
 

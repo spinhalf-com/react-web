@@ -51,8 +51,8 @@ class CryptoList extends Component {
 
         this.state.accountBalances.map((array) => (
             rows.push(<tr key={array[0]}>
-                <td id={`n`+array[0]} className={'crypto_item_desc'}>{array[2]}</td>
-                <td id={`v`+array[0]} className={'crypto_item'}>
+                <td id={`n`+array[0]} className={'account_item_desc'}>{array[2]}</td>
+                <td id={`v`+array[0]} className={'account_item'}>
                     <CryptoValue
                         ticker={array[0]}
                         balance={array[1]}
@@ -63,8 +63,8 @@ class CryptoList extends Component {
         ));
         rows.push(
             <tr key='total'>
-                <td className={'crypto_total_desc'} >Total</td>
-                <td className={'crypto_total'} >£{this.state.totalBalance}</td>
+                <td className={'account_total_desc'} >Total</td>
+                <td className={'account_total'} >£{this.state.totalBalance}</td>
             </tr>
         )
         return rows;
@@ -85,7 +85,7 @@ class CryptoList extends Component {
     render() {
         return (
             <div className='submenu'>
-                <ul className={'crypto'}><li>
+                <ul className={'account'}><li>
                     <table key={`ct`} className={'table'}>
                         <tbody key={`cb`}>
                             {this.createCryptoList()}

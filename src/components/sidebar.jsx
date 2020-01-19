@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import CryptoList from './accounts/crypto_list';
+import AccountRec from './accounts/accounts_rec';
+import AccountUnrec from './accounts/accounts_unrec';
 
 class Sidebar extends Component
 {

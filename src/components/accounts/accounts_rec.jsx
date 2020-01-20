@@ -3,11 +3,11 @@ import axios from 'axios';
 import '../../css/sidebar.css';
 import config from '../../config/config';
 import { connect } from "react-redux";
-import balances from '../../store/actions/actions-index';
+import { fetchBalances } from '../../store/actions/actions-index';
 
 class AccountsRec extends Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             accountBalances: [],
@@ -19,7 +19,7 @@ class AccountsRec extends Component {
     }
 
     componentDidMount() {
-        this.fetchData();
+        // this.fetchData();
         this._isMounted = true;
     }
 
@@ -46,12 +46,12 @@ class AccountsRec extends Component {
 
     createAccountsList = () => {
         let rows = [];
-        this.state.accountBalances.rec_balances.map((array) => (
-            rows.push(<tr key={array[0]}>
-                <td id={`n`+array[0]} className={'account_item_desc'}>{array[2]}</td>
-                <td id={`v`+array[0]} className={'account_item'}>{array[1]}</td>
-            </tr>)
-        ));
+        // fetchBalances().rec_balances.map((array) => (
+        //     rows.push(<tr key={array[0]}>
+        //         <td id={`n`+array[0]} className={'account_item_desc'}>{array[2]}</td>
+        //         <td id={`v`+array[0]} className={'account_item'}>{array[1]}</td>
+        //     </tr>)
+        // ));
         return rows;
     };
 
@@ -72,14 +72,14 @@ class AccountsRec extends Component {
 
 function mapStateToProps(state) {
     return {
-        data: state.accountBalances
+        balances: state.accountBalances
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(state, dispatch) {
     return {
         getBalances: () => {
-            dispatch(balances.getBalances());
+            dispatch(fetchBalances());
         }
     };
 }

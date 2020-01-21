@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { cryptos } from "../../actions/cryptos";
+import { cryptos } from "../../store/actions/cryptos";
 
 class CryptoList extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class CryptoList extends Component {
     createCryptoList = () => {
         let rows = [];
         let sum = 0.0;
-        this.props.data.map(item => {
+        this.props.cryptos_data.map(item => {
             let price = parseFloat(item[1]) * parseFloat(item[3])
             sum += price
             
@@ -35,7 +35,8 @@ class CryptoList extends Component {
                 <td id={`v`+item[0]} style={{textAlign:'right',color:'darkslategrey'}}>
                     £{price.toFixed(2)}
                 </td>
-            </tr>)
+            </tr>);
+            return null;
         });
         sum = sum.toFixed(2)
         rows.push(
@@ -63,7 +64,7 @@ class CryptoList extends Component {
 }
 function mapStateToProps(state) {
     return {
-        data: state.cryptos
+        cryptos_data: state.cryptos
     };
 }
 

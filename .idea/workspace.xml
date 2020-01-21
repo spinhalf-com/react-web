@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f639818a-1931-4da0-9bbd-c19afe8da9dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/accounts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/constants/accounts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducers/accounts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/cryptos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/cryptos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/accounts/crypto_list.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accounts/crypto_list.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/cryptos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/constants/cryptos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/cryptos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/cryptos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/jfrzapple.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/jfrzapple.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/cryptos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/cryptos.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +77,8 @@
       <workItem from="1578910865296" duration="19284000" />
       <workItem from="1578995048694" duration="2163000" />
       <workItem from="1579005296190" duration="15000" />
-      <workItem from="1579537089643" duration="14273000" />
+      <workItem from="1579537089643" duration="14450000" />
+      <workItem from="1579628915348" duration="1315000" />
     </task>
     <servers />
   </component>

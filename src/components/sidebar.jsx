@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import CryptoList from './accounts/crypto_list';
 import AccountsList from './accounts/accounts_unrec';
 
-// import SideBarMenuTop from '../assets/images/sidebar_menu_top.gif';
-
 class Sidebar extends Component
 {
     constructor(props) {

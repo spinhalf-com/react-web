@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { accounts } from '../../store/actions/accounts';
+import { cryptos } from "../../store/actions/cryptos";
 
 class AccountsList extends Component {
     constructor(props) {
@@ -22,12 +23,13 @@ class AccountsList extends Component {
     }
 
     formatToCurrency(number) {
+        var j;
         let decPlaces = 2;
         let decSep = ".";
         let thouSep =",";
         var sign = number < 0 ? "-" : "";
         var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
-        var j = (j = i.length) > 3 ? j % 3 : 0;
+        j = (j = i.length) > 3 ? j % 3 : 0;
 
         return "£" + sign +
             (j ? i.substr(0, j) + thouSep : "") +
@@ -50,6 +52,10 @@ class AccountsList extends Component {
         return rows;
     };
 
+    logger = () => {
+        //console.log(this.props.cryptos_data);
+    };
+
     render() {
         return (
             <div className='submenu'>
@@ -57,6 +63,7 @@ class AccountsList extends Component {
                     <table key={`ct`} style={{width:'100%',padding:'5px'}}>
                         <tbody key={`cb`}>
                         {this.createAccountsList()}
+                        {this.logger()}
                         </tbody>
                     </table>
                 </ul>
@@ -66,7 +73,8 @@ class AccountsList extends Component {
 }
 function mapStateToProps(state) {
     return {
-        accounts_data: state.accounts
+        accounts_data: state.accounts,
+        cryptos_data: state.cryptos
     };
 }
 
@@ -74,6 +82,9 @@ function mapDispatchToProps(dispatch) {
     return {
         getAccounts: () => {
             dispatch(accounts.getAccounts());
+        },
+        getCryptos: () => {
+            dispatch(cryptos.getCryptos());
         }
     };
 }

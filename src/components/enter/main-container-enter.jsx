@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 
-import Header from "./header";
-import MainContent from "./main-content";
-import Footer from "./footer";
+import Header from "../header";
+import MainContent from "../main-content";
+import Footer from "../footer";
 
 class MainContainerEnter extends Component{
     render() {

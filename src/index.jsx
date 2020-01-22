@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import rootReducer from './store/reducers/reducers-index';
-import MainContainerEnter from './components/main-container-enter';
+import MainContainerEnter from './components/enter/main-container-enter';
 import MainContainerReconcile from './components/main-container-reconcile';
 import MainContainerRegtrans from './components/main-container-regtrans';
 import MainContainerMileage from './components/main-container-mileage';

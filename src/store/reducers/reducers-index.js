@@ -5,9 +5,7 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
     if (action.type === BALANCES) {
-        return Object.assign({}, state, {
-            balances: state.balances.concat(action.payload)
-        });
+        return action.balances;
     }
     return state;
 }

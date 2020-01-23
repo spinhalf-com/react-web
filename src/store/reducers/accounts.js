@@ -9,12 +9,13 @@ export default function location(state = initialState, action) {
         case accountsConstants.GET_ACCOUNTS_SUCCESS:
             return action.data.unrec_balances;
         case accountsConstants.GET_ACCOUNTS_UPDATE_ITEM:
-            let newState = [...state]
+            let newState = [...state];
             newState.map(item => {
                 if(item[0] === action.data[0])
                 {
                     item = action.data
                 }
+                return item;
             });
             return newState;
         case accountsConstants.GET_LOCATIONS_FALIURE:

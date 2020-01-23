@@ -1,32 +1,22 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
-import config from '../config/config';
+// import config from '../config/config';
+// import axios from 'axios';
+import AccountSelector from "./subcomponents/account-selector";
+import CodeSelector from "./subcomponents/code-selector";
+import TableHead from "./subcomponents/table-head";
+import TableFoot from "./subcomponents/table-foot";
+
+import '../../css/jfrzapple.css';
+import '../../css/main.css';
 
 class EnterTransaction extends Component {
     constructor() {
         super();
 
         this.state = {
-            username: '',
-            password: '',
             error: '',
-            loginUrl: config.API_URL + 'oauth/token',
-            loginCredentials: {
-                username: '',
-                password: '',
-                client_id: config.CLIENT_ID,
-                client_secret: config.CLIENNT_SECRET,
-                scope: config.SCOPE,
-                grant_type: config.GRANT_TYPE
-            },
-            redirect: null,
+            postData: []
         };
-
-        this.handlePassChange = this.handlePassChange.bind(this);
-        this.handleUserChange = this.handleUserChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.dismissError = this.dismissError.bind(this);
     }
 
     dismissError() {
@@ -36,99 +26,106 @@ class EnterTransaction extends Component {
     handleSubmit(evt) {
         evt.preventDefault();
 
-        if (!this.state.username) {
-            return this.setState({ error: 'Username is required' });
-        }
-
-        if (!this.state.password) {
-            return this.setState({ error: 'Password is required' });
-        }
-
-        let loginObj = this.state.loginCredentials;
-        loginObj.username = this.state.username;
-        loginObj.password = this.state.password;
-
-        this.setState({
-            loginCredentials: loginObj
-        });
         this.postData();
-
         return this.setState({ error: '' });
     }
 
     postData() {
-        let data = this.state.loginCredentials;
-
-        axios.post(this.state.loginUrl, data).then(response => {
-            this.handleSuccess(response);
-        }).catch(error => {
-            this.handleError(error)
-        });
+        //let data = this.state.data;
     }
 
     handleSuccess(response) {
         this.setState({
-            oauthToken: response.access_token,
-            loading: false,
             error: null,
-            redirect: '/enter'
         });
-        localStorage.setItem('oauthToken', response.access_token);
     }
 
     handleError(error) {
         this.setState({
-            loading: false,
             error: true,
-            error_message: "Login failed.",
-            redirect: null
-        });
-    }
-
-    handleUserChange(evt) {
-        this.setState({
-            username: evt.target.value,
-        });
-    }
-
-    handlePassChange(evt) {
-        this.setState({
-            password: evt.target.value,
+            error_message: error,
         });
     }
 
     render() {
-
-        if (this.state.redirect) {
-            return <Redirect to={this.state.redirect} />
-        }
-
         return (
-            <div>
-                <div className="Login box">
-                    <div className="form-box">
-                        <h1>Cash Manager</h1>
-                        <form onSubmit={this.handleSubmit}>
+            <div id="left-m" className={"left-m"}>
+                <form id="trans" method="post" action="#">
+                    <table id="rounded-corner" summary="">
+                        <thead>
+                            <TableHead headertext={"Enter Transactions"}/>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td className="alt">
+                                Account
+                            </td>
+                            <td className="alt">
+                                <AccountSelector/>
+                            </td>
+                        </tr>
 
-                            <input placeholder="Enter email" className="email" type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
-                            <input placeholder="Enter password" className="password" type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
+                        <tr>
+                            <td className="alt disableDate">
+                                Date
+                            </td>
+                            <td className="alt" id="dc">
+                                <input type="text" id="date" name="date"  className={"inputCell"}/>
+                                    <input type="hidden" id="datestate" value="3"/>
+                            </td>
+                        </tr>
 
-                            <input className="btn" type="submit" value="Log In" data-test="submit" />
-                        </form>
-                    </div>
-                </div>
-                <div className={this.state.error ? "errorbox_show" : "errorbox_hide"}>
-                    {
-                        this.state.error &&
-                        <h3 data-test="error" onClick={this.dismissError}>
-                            <button onClick={this.dismissError}>✖</button>
-                            {this.state.error_message}
-                        </h3>
-                    }
-                </div>
+                        <tr>
+                            <td className="alt">
+                                Amount
+                            </td>
+                            <td className="alt">
+                                <input type="text" id="amount" name="amount" className={"inputCell"}/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td className="alt">
+                                Code
+                                <input type="checkbox" name="transfer" id="transfer"/>
+                            </td>
+                            <td className="alt">
+                               <CodeSelector/>
+                                <div id="instr">
+                                    <AccountSelector/>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td className="alt">
+                                Description
+                            </td>
+                            <td className="alt">
+                                <textarea id="description" name="description" cols="20" rows="3"
+                                          className="prompt inputCell"></textarea>
+                                <div id="hiddenList" className="hiddenList" style={{display:"none"}}></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <table style={{width:"250px"}} id="rounded-corner">
+                    <tbody>
+                        <tr>
+                            <td className="alt">
+                                <button value="Cancel" id="cancel" style={{width:"120px"}}>Cancel</button>
+                            </td>
+                            <td className="alt">
+                                <button value="Save" id="save" style={{width:"120px"}}>Save</button>
+                            </td>
+                        </tr>
+                        <TableFoot/>
+                    </tbody>
+                </table>
             </div>
         );
     }
 }
 
-export default LoginPage;
+export default EnterTransaction;

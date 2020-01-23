@@ -24,7 +24,8 @@ body {
 
 .app {
     max-width: 60rem;
-    width: 100%;
+    /*width: 100%;*/
+    width:250px;
     background: lightgray;
     padding: 1rem;
     font-size: 1rem;
@@ -66,4 +67,69 @@ body {
 .app > footer {
     background: #333;
     color: white;
+}
+
+#left-m {
+    width:300px;
+    float:left;
+    max-width: 300px;
+}
+
+#account {
+    width:175px;
+}
+
+#code {
+    width:175px;
+}
+
+.inputCell {
+    width:165px;
+}
+
+#acsel {
+    width:40px;
+    display:inline-block;
+}
+
+#d1sel {
+    width:80px;
+    display:inline-block;
+}
+
+#d2sel {
+    width:80px;
+    display:inline-block;
+}
+
+#amsel {
+    width:80px;
+    display:inline-block;
+}
+
+#desel {
+    width:30px;
+    display:inline-block;
+}
+
+#searchall {
+    float:right;
+    cursor:pointer;
+    display:inline-block;
+}
+
+#inst {
+    display: none;
+}
+.searchBar {
+    border-style: solid;
+    border-color:deepskyblue;
+    padding:3px;
+    border-radius:5px;
+    width:585px;
+}
+
+#statbar {
+    float:left;
+    width:600px;
 }

@@ -13,9 +13,6 @@ import MainContainerMileage from './components/main-container-mileage';
 import MainContainerMap from './components/main-container-map';
 import Login from './components/Login';
 
-import './css/main.css';
-import './css/jfrzapple.css';
-
 const createdStore = applyMiddleware(thunk)(createStore);
 const store = createdStore(rootReducer);
 

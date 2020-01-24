@@ -8,18 +8,15 @@ html {
     font-size: 100%;
 }
 
-html,
-body {
-    min-height: 100%;
-    min-height: 100vh;
-}
-
 body {
     font: 16px 'Roboto', Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
     margin: 0;
+    width:100%;
     background: #f6f6f6;
+    min-height: 100%;
+    min-height: 100vh;
 }
 
 .app {
@@ -72,7 +69,7 @@ body {
 #left-m {
     width:300px;
     float:left;
-    max-width: 300px;
+    max-width: 270px;
 }
 
 #account {
@@ -130,6 +127,7 @@ body {
 }
 
 #statbar {
-    float:left;
+    /*float:left;*/
     width:600px;
+    margin-left:30px;
 }

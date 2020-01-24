@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import '../css/login.css';
 import config from '../config/config';
 
 class LoginPage extends Component {
@@ -22,6 +21,7 @@ class LoginPage extends Component {
                 grant_type: config.GRANT_TYPE
             },
             redirect: null,
+            stylePath: '../css/login.css'
         };
 
         this.handlePassChange = this.handlePassChange.bind(this);
@@ -106,6 +106,7 @@ class LoginPage extends Component {
 
         return (
             <div>
+                <link rel="stylesheet" type="text/css" href={this.state.stylePath} />
                 <div className="Login box">
                     <div className="form-box">
                         <h1>Cash Manager</h1>

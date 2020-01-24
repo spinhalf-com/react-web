@@ -37,7 +37,7 @@ class RightContent extends Component {
                     </div>
                     <div className={"swap"} id="listrecords">
                     </div>
-                    <table style={{width:"600px"}} id="rounded-corner" className={"table-right"}>
+                    <table id="rounded-corner" className={"table-right rounded-corner-right"}>
                         <thead>
                         <tr>
                             <th className={"rounded"} colSpan="4" scope="col">

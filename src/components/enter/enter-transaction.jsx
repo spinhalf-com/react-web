@@ -15,6 +15,14 @@ class EnterTransaction extends Component {
             postData: [],
             showTransferAccount: false
         };
+
+        this.accountSetter = this.accountSetter.bind(this)
+    }
+
+    setPostState(key, value) {
+        let postData = this.state.postData;
+        postData[key] = value;
+        this.setState({postData: postData});
     }
 
     // dismissError() {
@@ -46,6 +54,10 @@ class EnterTransaction extends Component {
     //     });
     // }
 
+    accountSetter(target, value) {
+        this.setPostState(target, value);
+    }
+
     checkStatus() {
         this.setState({
             showTransferAccount: this.refs.is_transfer.checked
@@ -67,7 +79,7 @@ class EnterTransaction extends Component {
                                 Account
                             </td>
                             <td className="alt">
-                                <AccountSelector  id={'account'}/>
+                                <AccountSelector  id={'account'} parentAction={this.accountSetter}/>
                             </td>
                         </tr>
 

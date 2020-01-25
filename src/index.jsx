@@ -6,12 +6,12 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import rootReducer from './store/reducers/reducers-index';
-import MainContainerEnter from './components/main-container-enter';
-import MainContainerReconcile from './components/main-container-reconcile';
-import MainContainerRegtrans from './components/main-container-regtrans';
-import MainContainerMileage from './components/main-container-mileage';
-import MainContainerMap from './components/main-container-map';
-import Login from './components/Login';
+import MainContainerEnter from './components/enter/main-container-enter';
+import MainContainerReconcile from './components/reconcile/main-container-reconcile';
+import MainContainerRegtrans from './components/regtrans/main-container-regtrans';
+import MainContainerMileage from './components/mileage/main-container-mileage';
+import MainContainerMap from './components/map/main-container-map';
+import Login from './components/login';
 
 const createdStore = applyMiddleware(thunk)(createStore);
 const store = createdStore(rootReducer);

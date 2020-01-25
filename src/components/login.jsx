@@ -73,12 +73,12 @@ class LoginPage extends Component {
 
     handleSuccess(response) {
         this.setState({
-            oauthToken: response.access_token,
+            oauthToken: response.data.access_token,
             loading: false,
             error: null,
             redirect: '/enter'
         });
-        localStorage.setItem('oauthToken', response.access_token);
+        localStorage.setItem('oauthToken', response.data.access_token);
     }
 
     handleError(error) {

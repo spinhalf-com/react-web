@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
 
-import Header from "./header";
-import MainContent from "./main-content";
-import Footer from "./footer";
+import Header from "../common/header";
+import MainContent from "../common/main-content";
+import Footer from "../common/footer";
 
-
-class MainContainerEnter extends Component{
+class MainContainerMileage extends Component{
     render() {
         return (
             <div className="main_container">
@@ -18,5 +16,5 @@ class MainContainerEnter extends Component{
     }
 }
 
-export default MainContainerEnter;
+export default MainContainerMileage;
 

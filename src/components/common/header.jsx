@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../assets/images/SpinHalf.png';
+import logo from '../../assets/images/SpinHalf.png';
 
 class Header extends Component
 {
@@ -12,10 +12,10 @@ class Header extends Component
     }
 
     componentDidMount() {
-        require('./../css/jfrzapple.css');
-        require('./../css/main.css');
-        require('./../css/table.css');
-        require('./../css/sidebar.css');
+        require('../../css/jfrzapple.css');
+        require('../../css/main.css');
+        require('../../css/table.css');
+        require('../../css/sidebar.css');
     }
 
     render() {

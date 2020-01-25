@@ -10,9 +10,13 @@ class AccountsUnrec extends Component {
             accountBalances: [],
             displayIndex: "unrec_balances",
             error: null,
-            balances_list: config.API_URL + 'balances_json',
+            balances_list: config.API_URL + config.API_PREFIX + 'balances_json',
             data: []
         };
+
+        this.authObj = {
+            headers: { Authorization: "Bearer " + localStorage.getItem('oauthToken') }
+        }
     }
 
     componentDidMount() {
@@ -25,7 +29,7 @@ class AccountsUnrec extends Component {
     }
 
     fetchData() {
-        axios.get(this.state.balances_list)
+        axios.get(this.state.balances_list, this.authObj)
             .then(response => {
 
                 this.setState({

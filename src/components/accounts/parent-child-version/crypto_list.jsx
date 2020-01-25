@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CryptoValue from './crypto_value';
-import config from '../../config/config';
+import '../../css/sidebar.css';
 
 class CryptoList extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             accountBalances: [],
             error: null,
             totalBalance: 0,
-            balances_list: config.API_URL + config.API_PREFIX +  'balances_json',
+            balances_list: 'https://jfr.zapple.co/balances_json',
             data: [],
             calcArray: {}
         };
-        this.childHandler = this.childHandler.bind(this);
-        this.authObj = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('oauthToken') }
-        }
+        this.childHandler = this.childHandler.bind(this)
     }
 
     componentDidMount() {
@@ -31,7 +28,7 @@ class CryptoList extends Component {
     }
 
     fetchData() {
-        axios.get(this.state.balances_list, this.authObj)
+        axios.get(this.state.balances_list)
             .then(response => {
 
                 this.setState({
@@ -53,8 +50,8 @@ class CryptoList extends Component {
 
         this.state.accountBalances.map((array) => (
             rows.push(<tr key={array[0]}>
-                <td id={`n`+array[0]} className={'account_item_desc'}>{array[2]}</td>
-                <td id={`v`+array[0]} className={'account_item'}>
+                <td id={`n`+array[0]} className={'crypto_item_desc'}>{array[2]}</td>
+                <td id={`v`+array[0]} className={'crypto_item'}>
                     <CryptoValue
                         ticker={array[0]}
                         balance={array[1]}
@@ -65,8 +62,8 @@ class CryptoList extends Component {
         ));
         rows.push(
             <tr key='total'>
-                <td className={'account_total_desc'} >Total</td>
-                <td className={'account_total'} >£{this.state.totalBalance}</td>
+                <td className={'crypto_total_desc'} >Total</td>
+                <td className={'crypto_total'} >£{this.state.totalBalance}</td>
             </tr>
         )
         return rows;
@@ -87,7 +84,7 @@ class CryptoList extends Component {
     render() {
         return (
             <div className='submenu'>
-                <ul className={'account'}><li>
+                <ul className={'crypto'}><li>
                     <table key={`ct`} className={'table'}>
                         <tbody key={`cb`}>
                             {this.createCryptoList()}

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import Header from "./header";
-import MainContent from "./main-content";
-import Footer from "./footer";
+import Header from "../common/header";
+import MainContent from "../common/main-content";
+import Footer from "../common/footer";
 
-class MainContainerMap extends Component{
+class MainContainerReconcile extends Component{
     render() {
         return (
             <div className="main_container">
@@ -16,5 +16,5 @@ class MainContainerMap extends Component{
     }
 }
 
-export default MainContainerMap;
+export default MainContainerReconcile;
 

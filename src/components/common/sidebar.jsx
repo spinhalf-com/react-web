@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CryptoList from './accounts/crypto_list';
-import AccountRec from './accounts/accounts_rec';
+import CryptoList from '../accounts/crypto_list';
+import AccountRec from '../accounts/accounts_rec';
 // import AccountUnrec from './accounts/accounts_unrec';
 
 class Sidebar extends Component
@@ -38,7 +38,7 @@ class Sidebar extends Component
                     color='blue'> (Unreconciled)</font>
 
                     <span className='accordsuffix'>
-                        <img className='statusicon' src='../assets/images/plus.gif' alt={'link'}/>
+                        <img className='statusicon' src='../../assets/images/plus.gif' alt={'link'}/>
                     </span>
                 </a>
                 <div className='submenu'>

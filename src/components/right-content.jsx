@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import EnterTransaction from "./enter/enter-transaction";
-import TableFoot from "./enter/subcomponents/table-foot";
-
-import './../css/main.css';
-
+import ListTableFoot from "./enter/subcomponents/list-table-foot";
 
 class RightContent extends Component {
 
@@ -13,7 +10,7 @@ class RightContent extends Component {
 
                 <EnterTransaction/>
 
-                <div id="statbar">
+                <div className={"right-list-enclosure"}>
                     <div id="inst">
                         <div id="filterdiv">
                             <table>
@@ -40,10 +37,10 @@ class RightContent extends Component {
                     <table id="rounded-corner" className={"table-right rounded-corner-right"}>
                         <thead>
                         <tr>
-                            <th className={"rounded"} colSpan="4" scope="col">
+                            <th className={"rounded  top-blue"} colSpan="4" scope="col">
                                 Recent Transactions <button className={"filter"} style={{float:"right"}}>Filter</button>
                             </th>
-                            <th className={"rounded-q4"} scope="col">
+                            <th className={"rounded-q4  top-blue"} scope="col">
                             </th>
                         </tr>
                         </thead>
@@ -143,7 +140,7 @@ class RightContent extends Component {
                             </td>
                         </tr>
 
-                        <TableFoot/>
+                        <ListTableFoot/>
                         </tbody>
                     </table>
                 </div>

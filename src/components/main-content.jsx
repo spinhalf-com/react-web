@@ -3,6 +3,10 @@ import CentreContent from './centre-content';
 import Menu from "./menu";
 
 class MainContent extends Component{
+
+
+
+
     render() {
         return (
             <div className="main_content">

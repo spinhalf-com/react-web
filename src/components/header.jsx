@@ -3,6 +3,21 @@ import logo from '../assets/images/SpinHalf.png';
 
 class Header extends Component
 {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+
+        }
+    }
+
+    componentDidMount() {
+        require('./../css/jfrzapple.css');
+        require('./../css/main.css');
+        require('./../css/table.css');
+        require('./../css/sidebar.css');
+    }
+
     render() {
         return (
 

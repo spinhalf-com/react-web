@@ -4,47 +4,53 @@ import React, { Component } from 'react';
 import AccountSelector from "./subcomponents/account-selector";
 import CodeSelector from "./subcomponents/code-selector";
 import TableHead from "./subcomponents/table-head";
-import TableFoot from "./subcomponents/table-foot";
-
-import '../../css/jfrzapple.css';
-import '../../css/main.css';
+import EnterTableFoot from "./subcomponents/enter-table-foot";
 
 class EnterTransaction extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             error: '',
-            postData: []
+            postData: [],
+            showTransferAccount: false
         };
     }
 
-    dismissError() {
-        this.setState({ error: '' });
-    }
+    // dismissError() {
+    //     this.setState({ error: '' });
+    // }
+    //
+    // handleSubmit(evt) {
+    //     evt.preventDefault();
+    //
+    //     this.postData();
+    //     return this.setState({ error: '' });
+    // }
+    //
+    // postData() {
+    //     //let data = this.state.data;
+    // }
+    //
+    // handleSuccess(response) {
+    //     this.setState({
+    //         error: null,
+    //     });
+    // }
+    //
+    // handleError(error) {
+    //     this.setState({
+    //         error: true,
+    //         error_message: error,
+    //
+    //     });
+    // }
 
-    handleSubmit(evt) {
-        evt.preventDefault();
-
-        this.postData();
-        return this.setState({ error: '' });
-    }
-
-    postData() {
-        //let data = this.state.data;
-    }
-
-    handleSuccess(response) {
+    checkStatus() {
         this.setState({
-            error: null,
+            showTransferAccount: this.refs.is_transfer.checked
         });
-    }
-
-    handleError(error) {
-        this.setState({
-            error: true,
-            error_message: error,
-        });
+        // console.log(this.refs.is_transfer.checked);
     }
 
     render() {
@@ -61,7 +67,7 @@ class EnterTransaction extends Component {
                                 Account
                             </td>
                             <td className="alt">
-                                <AccountSelector/>
+                                <AccountSelector  id={'account'}/>
                             </td>
                         </tr>
 
@@ -87,12 +93,12 @@ class EnterTransaction extends Component {
                         <tr>
                             <td className="alt">
                                 Code
-                                <input type="checkbox" name="transfer" id="transfer"/>
+                                <input type="checkbox" name="transfer" ref="is_transfer" id="transfer" onChange={event => this.checkStatus(event)}/>
                             </td>
                             <td className="alt">
                                <CodeSelector/>
                                 <div id="instr">
-                                    <AccountSelector/>
+                                    { this.state.showTransferAccount ? <AccountSelector id={'taccount'}/> : null }
                                 </div>
                             </td>
                         </tr>
@@ -114,13 +120,13 @@ class EnterTransaction extends Component {
                     <tbody>
                         <tr>
                             <td className="alt">
-                                <button value="Cancel" id="cancel" style={{width:"120px"}}>Cancel</button>
+                                <button value="Cancel" id="cancel" style={{width:"117px"}}>Cancel</button>
                             </td>
                             <td className="alt">
                                 <button value="Save" id="save" style={{width:"120px"}}>Save</button>
                             </td>
                         </tr>
-                        <TableFoot/>
+                        <EnterTableFoot/>
                     </tbody>
                 </table>
             </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../../css/sidebar.css';
 import config from '../../config/config';
 
 class AccountsUnrec extends Component {

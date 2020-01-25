@@ -21,13 +21,17 @@ class LoginPage extends Component {
                 grant_type: config.GRANT_TYPE
             },
             redirect: null,
-            stylePath: '../css/login.css'
+            stylePath: './css/login.css'
         };
 
         this.handlePassChange = this.handlePassChange.bind(this);
         this.handleUserChange = this.handleUserChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.dismissError = this.dismissError.bind(this);
+    }
+
+    componentWillMount() {
+        require('./../css/login.css');
     }
 
     dismissError() {
@@ -106,7 +110,6 @@ class LoginPage extends Component {
 
         return (
             <div>
-                <link rel="stylesheet" type="text/css" href={this.state.stylePath} />
                 <div className="Login box">
                     <div className="form-box">
                         <h1>Cash Manager</h1>

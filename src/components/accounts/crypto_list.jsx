@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CryptoValue from './crypto_value';
-import '../../css/sidebar.css';
 import config from '../../config/config';
 
 class CryptoList extends Component {

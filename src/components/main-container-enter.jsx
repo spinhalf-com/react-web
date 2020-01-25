@@ -5,10 +5,6 @@ import Header from "./header";
 import MainContent from "./main-content";
 import Footer from "./footer";
 
-import '../css/main.css';
-import '../css/jfrzapple.css';
-import '../css/sidebar.css';
-import '../css/table.css';
 
 class MainContainerEnter extends Component{
     render() {

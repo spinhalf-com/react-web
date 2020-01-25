@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    font: 16px 'Roboto', Helvetica, sans-serif;
+    /*font: 16px 'Roboto', Helvetica, sans-serif;*/
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -72,7 +72,7 @@ body {
     max-width: 270px;
 }
 
-#account {
+.accountSelector {
     width:175px;
 }
 
@@ -124,10 +124,4 @@ body {
     padding:3px;
     border-radius:5px;
     width:585px;
-}
-
-#statbar {
-    /*float:left;*/
-    width:600px;
-    margin-left:30px;
 }

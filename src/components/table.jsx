@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import '../css/table.css';
 import Fucntions from '../functions/functions';
 
 class Table extends Component {

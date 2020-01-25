@@ -9,7 +9,7 @@ class TableHead extends Component {
     render() {
         return (
             <tr>
-                <th colSpan="2" className="rounded-both" scope="col">
+                <th colSpan="2" className="rounded-both top-blue" scope="col">
                     {this.props.headertext}
                 </th>
             </tr>

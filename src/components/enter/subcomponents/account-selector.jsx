@@ -4,11 +4,19 @@ import React, { Component } from 'react';
 class AccountSelector extends Component {
     // constructor(props) {
     //     super(props);
+    //
+    //
     // }
 
     render() {
         return (
-            <select id="account" name="account">
+            <select
+                id={this.props.id}
+                ref={this.props.account}
+                name="account"
+                className={"accountSelector"}
+                onChange={this.props.returnAccountValue}
+            >
                 <option value=""> - - - - - -</option>
                 <option value="AB">Barclays Current</option>
                 <option value="BC">Barclaycard</option>

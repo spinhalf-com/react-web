@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import ReactRedux from "react-redux";
 
-class TableFoot extends Component {
+class EnterTableFoot extends Component {
     // constructor(props) {
     //     super(props);
     // }
@@ -18,4 +18,4 @@ class TableFoot extends Component {
     }
 }
 
-export default TableFoot;
+export default EnterTableFoot;

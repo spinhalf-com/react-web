@@ -3,6 +3,21 @@ import logo from '../../assets/images/SpinHalf.png';
 
 class Header extends Component
 {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+
+        }
+    }
+
+    componentDidMount() {
+        require('../../css/jfrzapple.css');
+        require('../../css/main.css');
+        require('../../css/table.css');
+        require('../../css/sidebar.css');
+    }
+
     render() {
         return (
 
@@ -17,7 +32,7 @@ class Header extends Component
                         Welcome John Riordan
                         <a href="http://www.spinhalf.com"><font color='blue'>Goto Spinhalf</font></a>
                         <a className='current' href="https://jfr.zapple.co/logout"
-                           // onClick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            // onClick="event.preventDefault(); document.getElementById('logout-form').submit();"
                         >Log Out</a>
                     </span>
                 </div>

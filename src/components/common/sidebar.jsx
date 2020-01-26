@@ -26,30 +26,13 @@ class Sidebar extends Component
 
             <div className="sidebarmenu">
 
-                <a className='menuitem' href="/#"
-                   // style={{
-                   //     // backgroundImage: `url(${SideBarMenuTop})`,
-                   //     backgroundPosition: 'center',
-                   //     backgroundSize: 'cover',
-                   //     backgroundRepeat: 'no-repeat'
-                   // }}
-                > Crypto Currencies </a>
+                <a className='menuitem' href="/#"> Crypto Currencies </a>
 
                 <CryptoList/>
 
-                <a className='menuitem' href="/#"
-                    // style={{
-                    //     // backgroundImage: `url(${SideBarMenuTop})`,
-                    //     backgroundPosition: 'center',
-                    //     backgroundSize: 'cover',
-                    //     backgroundRepeat: 'no-repeat'
-                    // }}
-                > Accounts </a>
+                <a className='menuitem' href="/#"> Accounts </a>
 
                 <AccountsList/>
-
-
-
 
                 <a className='menuitem submenuheader' href="/#">Balances <font
                     color='blue'> (Reconciled)</font></a>

@@ -1,0 +1,38 @@
+.account_total_desc {
+    text-align: left;
+    color: darkslategrey;
+    font-size: 1em;
+    font-weight: bold
+}
+
+.account_total {
+    text-align: right;
+    color: darkslategrey;
+    font-size: 1em;
+    font-weight: bold
+}
+
+.account_item_desc {
+    text-align: left;
+    color: darkslategrey;
+    font-size: 1em;
+}
+
+.account_item {
+    text-align: right;
+    color: darkslategrey;
+    font-size: 1em;
+}
+
+.account {
+    background: #E6EAE9
+}
+
+.table {
+    width: 100%;
+    padding: 5px
+}
+
+.submenu {
+    border-radius: 15px;
+}

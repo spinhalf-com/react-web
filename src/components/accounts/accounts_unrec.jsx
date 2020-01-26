@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { accounts } from '../../store/actions/accounts';
 import { cryptos } from "../../store/actions/cryptos";
+import config from '../../config/config';
 
 class AccountsList extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             accountBalances: [],
-            error: null
+            displayIndex: "unrec_balances",
+            error: null,
+            balances_list: config.API_URL + config.API_PREFIX + 'balances_json',
+            data: []
         };
+
+        this.authObj = {
+            headers: { Authorization: "Bearer " + localStorage.getItem('oauthToken') }
+        }
     }
 
     componentDidMount() {

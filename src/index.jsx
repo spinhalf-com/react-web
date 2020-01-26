@@ -1,25 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
-import configureStore from "./store";
 
-import MainContainer from './components/common/main-container';
-import './css/main.css';
-import './css/jfrzapple.css';
-const store = configureStore({});
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 
-class App extends Component {
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-    render() {
-        return (
-            <Provider store={store}>
-                <MainContainer/>
-            </Provider>
-        );
-    }
-}
+import rootReducer from './store/reducers/index';
+import MainContainerEnter from './components/enter/main-container-enter';
+import MainContainerReconcile from './components/reconcile/main-container-reconcile';
+import MainContainerRegtrans from './components/regtrans/main-container-regtrans';
+import MainContainerMileage from './components/mileage/main-container-mileage';
+import MainContainerMap from './components/map/main-container-map';
+import Login from './components/login';
+
+const createdStore = applyMiddleware(thunk)(createStore);
+const store = createdStore(rootReducer);
+
+const Routed = (
+    <Provider store={store}>
+        <Router>
+            <div>
+                <Route exact path="/" component={Login} />
+                <Route path="/login" component={Login} />
+                <Route path="/enter" component={MainContainerEnter} />
+                <Route path="/reconcile" component={MainContainerReconcile} />
+                <Route path="/regtrans" component={MainContainerRegtrans} />
+                <Route path="/mileage" component={MainContainerMileage} />
+                <Route path="/map" component={MainContainerMap} />
+            </div>
+        </Router>
+    </Provider>
+);
 
 ReactDOM.render(
-    <App/>,
+    Routed,
     document.getElementById('root')
 );

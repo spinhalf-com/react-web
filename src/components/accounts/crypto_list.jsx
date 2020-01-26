@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { cryptos } from "../../store/actions/cryptos";
+import config from '../../config/config';
 
 class CryptoList extends Component {
     constructor(props) {
@@ -10,8 +11,14 @@ class CryptoList extends Component {
             accountBalances: [],
             error: null,
             totalBalance: 0,
-            balances_list: 'https://jfr.zapple.co/balances_json'
+            balances_list: config.API_URL + config.API_PREFIX +  'balances_json',
+            data: [],
+            calcArray: {}
         };
+        this.childHandler = this.childHandler.bind(this);
+        this.authObj = {
+            headers: { Authorization: "Bearer " + localStorage.getItem('oauthToken') }
+        }
     }
 
     componentDidMount() {
@@ -47,6 +54,18 @@ class CryptoList extends Component {
         )
         return rows;
     };
+
+    childHandler(dataFromChild) {
+        let calcArray = this.state.calcArray;
+        calcArray[dataFromChild.ticker] = dataFromChild.calculatedValue;
+
+        let totalBalance = 0;
+        for (var i in this.state.calcArray) {                       //we build a unique-keyed object to prevent XHR duplication
+            totalBalance += parseFloat(this.state.calcArray[i]);
+        }
+        this.setState({calcArray: calcArray});
+        this.setState({totalBalance: totalBalance.toFixed(2)});
+    }
 
     render() {
         return (

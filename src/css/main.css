@@ -104,8 +104,12 @@ body {
     display:inline-block;
 }
 
+#cdsel {
+    width: 50px;
+}
+
 #desel {
-    width:30px;
+    width:200px;
     display:inline-block;
 }
 
@@ -123,5 +127,5 @@ body {
     border-color:deepskyblue;
     padding:3px;
     border-radius:5px;
-    width:585px;
+    width:595px;
 }

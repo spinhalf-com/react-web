@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
 import ListTableFoot from "../enter/subcomponents/list-table-foot";
-import FilterDiv from '../enter/subcomponents/filter-div';
+import FilterDiv from './subcomponents/filter-div';
 
 class TransactionList extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            filterShow : 'block'
+        }
+    }
+
+    setFilterStatus() {
+        this.setState({
+            filterShow: this.state.filterShow == 'block' ? 'none': 'block'
+        });
+        console.log(this.state.filterShow);
+    }
 
     render() {
         return (
             <div className={"right-list-enclosure"}>
-                <div id="inst">
+                <div style={{display:this.state.filterShow}}>
                     <FilterDiv/>
                 </div>
                 <div className={"swap"} id="listrecords">
@@ -16,7 +30,7 @@ class TransactionList extends Component {
                     <thead>
                     <tr>
                         <th className={"rounded  top-blue"} colSpan="4" scope="col">
-                            Recent Transactions <button className={"filter"} style={{float:"right"}}>Filter</button>
+                            Recent Transactions <button onClick={() => this.setFilterStatus()} className={"filter"} style={{float:"right"}}>Filter</button>
                         </th>
                         <th className={"rounded-q4  top-blue"} scope="col">
                         </th>

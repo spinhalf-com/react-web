@@ -30,7 +30,7 @@ class LoginPage extends Component {
         this.dismissError = this.dismissError.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         require('./../css/login.css');
     }
 

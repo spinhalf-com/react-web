@@ -3,9 +3,14 @@ import React, { Component } from 'react';
 
 class FilterDiv extends Component {
 
+    constructor(props) {
+        super(props);
+        console.log(this.props.filterDisplay);
+    }
+
     render() {
         return (
-            <div id="filterdiv">
+            <div id="filterdiv" style={{display:"block"}}>
                 <table>
                     <tbody>
                     <tr>

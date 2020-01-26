@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import configureStore from "./store";
 
-import MainContainer from './components/main-container';
+import MainContainer from './components/common/main-container';
 import './css/main.css';
 import './css/jfrzapple.css';
 const store = configureStore({});

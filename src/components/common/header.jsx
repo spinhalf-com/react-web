@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../assets/images/SpinHalf.png';
+import logo from '../../assets/images/SpinHalf.png';
 
 class Header extends Component
 {

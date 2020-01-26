@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CryptoList from './accounts/crypto_list';
-import AccountsList from './accounts/accounts_unrec';
+import CryptoList from '../accounts/crypto_list';
+import AccountsList from '../accounts/accounts_unrec';
 
 class Sidebar extends Component
 {

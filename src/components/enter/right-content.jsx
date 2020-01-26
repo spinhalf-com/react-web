@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import EnterTransaction from "../enter/enter-transaction";
-import ListTableFoot from "../enter/subcomponents/list-table-foot";
+import EnterTransaction from "./enter-transaction";
+import ListTableFoot from "./subcomponents/list-table-foot";
 
 class RightContent extends Component {
 

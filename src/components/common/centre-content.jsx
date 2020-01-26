@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LeftContent from "./left-content";
-import RightContent from "./right-content";
+import RightContent from "../enter/right-content";
 
 
 class CentreContent extends Component {

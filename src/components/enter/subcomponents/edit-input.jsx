@@ -13,7 +13,7 @@ class EditInput extends Component {
     render() {
         return (
             <div>
-                <input value={this.props.value} style={{width: this.props.width}}/>
+                <input defaultValue={this.props.value} onChange={e => this.props.saveEdits(e)} style={{width: this.props.width}}/>
             </div>
         )
     }

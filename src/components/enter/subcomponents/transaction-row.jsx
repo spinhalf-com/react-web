@@ -28,7 +28,7 @@ class TransactionRow extends Component {
         };
         this.concealButtons = this.concealButtons.bind(this);
         this.revealButtons = this.revealButtons.bind(this);
-        this.editedCell = this.editedCell.bind(this);
+        this.saveEdits = this.saveEdits.bind(this);
     }
 
     formatDate(dateString) {
@@ -45,21 +45,18 @@ class TransactionRow extends Component {
         let obj = {};
         obj[target] = true;
         this.setState(obj);
-        console.log(this.state);
     }
 
-    editedCell(index, value) {
-        // axios update to db here
+    saveEdits(event) {
+        console.log(event)
     }
 
     revealButtons(event) {
         this.setState({deleteOptionsVisible: true});
-        console.log(this.state.deleteOptionsVisible);
     }
 
     concealButtons(event) {
-        setTimeout(this.setState({deleteOptionsVisible: false}), 3000);
-       // this.setState({deleteOptionsVisible: false});
+        this.setState({deleteOptionsVisible: false});
     }
 
     render() {
@@ -82,7 +79,7 @@ class TransactionRow extends Component {
                     did="39749"
                     field="description"
                     onMouseOver={() => this.revealButtons()}
-                    onMouseOut={() => this.concealButtons()}
+                    onMouseOut={() => setTimeout(() => this.concealButtons(), 3000)}
                     onDoubleClick={event => this.openEditableCell(event, "description")}
                 >
                     <div
@@ -91,7 +88,7 @@ class TransactionRow extends Component {
                         className={"editable"}
                         field="description"
                     >
-                        {this.state.descriptionEdit && this.editable ? <EditInput onChange={() => this.props.editedCell} width={'330px'} value={this.props.description}/> : this.props.description}
+                        {this.state.descriptionEdit && this.editable ? <EditInput saveEdits={() => this.editedCell} width={'330px'} value={this.props.description}/> : this.props.description}
                     </div>
                     {this.editable && this.state.deleteOptionsVisible ? <DeleteButtons
                                 mouseOut={e => this.concealButtons(e)}

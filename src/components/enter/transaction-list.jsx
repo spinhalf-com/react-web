@@ -4,13 +4,12 @@ import FilterDiv from './subcomponents/filter-div';
 import ListHeader from "./subcomponents/list-header";
 import PaginationRow from "./subcomponents/pagination-row";
 import TransactionRow from "./subcomponents/transaction-row";
-import TableHead from "./subcomponents/table-head";
+// import TableHead from "./subcomponents/table-head";
 import TableHeader from "./subcomponents/table-header";
 
 class TransactionList extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
 
         this.state = {
             filterShow : 'none'

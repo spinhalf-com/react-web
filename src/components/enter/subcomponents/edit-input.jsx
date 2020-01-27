@@ -6,13 +6,15 @@ class EditInput extends Component {
         super(props);
 
         this.state = {
-
+            value: "test"
         }
     }
 
     render() {
         return (
-            <div></div>
+            <div>
+                <input value={this.props.value} style={{width: this.props.width}}/>
+            </div>
         )
     }
 }

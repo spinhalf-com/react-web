@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f639818a-1931-4da0-9bbd-c19afe8da9dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/deletion-buttons.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/edit-input.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/list-header.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/pagination-row.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/transaction-row.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/delete-actions.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/menu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/menu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/deletion-buttons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/deletion-buttons.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/edit-input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/edit-input.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/pagination-row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/pagination-row.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/transaction-row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/transaction-row.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/enter/transaction-list.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/transaction-list.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1579882039933</updated>
       <workItem from="1579882042215" duration="5671000" />
-      <workItem from="1580117229210" duration="10726000" />
+      <workItem from="1580117229210" duration="24784000" />
     </task>
     <servers />
   </component>

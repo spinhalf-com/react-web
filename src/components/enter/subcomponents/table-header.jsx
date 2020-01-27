@@ -4,7 +4,7 @@ class TableHeader extends Component {
 
     setFilterStatus() {
         this.setState({
-            filterShow: this.state.filterShow == 'block' ? 'none': 'block'
+            filterShow: this.state.filterShow === 'block' ? 'none': 'block'
         });
 
         //move this logic to redux store - this component is now a grandchild of the target

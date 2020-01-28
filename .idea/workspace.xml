@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f639818a-1931-4da0-9bbd-c19afe8da9dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/edit-input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/edit-input.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/transaction-row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/transaction-row.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/menu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/menu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/accounts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/accounts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/constants/accounts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/constants/accounts.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +70,8 @@
       <option name="presentableId" value="Default" />
       <updated>1579882039933</updated>
       <workItem from="1579882042215" duration="5671000" />
-      <workItem from="1580117229210" duration="25817000" />
+      <workItem from="1580117229210" duration="25914000" />
+      <workItem from="1580229089641" duration="4043000" />
     </task>
     <servers />
   </component>

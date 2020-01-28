@@ -91,9 +91,9 @@ function mapDispatchToProps(dispatch) {
         getAccounts: () => {
             dispatch(accounts.getAccounts());
         },
-        getCryptos: () => {
-            dispatch(cryptos.getCryptos());
-        }
+        // getCryptos: () => {
+        //     dispatch(cryptos.getCryptos());
+        // }
     };
 }
 

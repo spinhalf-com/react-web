@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { accounts } from "../../store/actions/accounts";
 
 class Menu extends Component
 {
@@ -69,4 +71,23 @@ class Menu extends Component
         )
     }
 }
-export default Menu;
+function mapStateToProps(state) {
+    return {
+        default_arrays: state.default_arrays
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getDefaultData: () => {
+            dispatch(accounts.getDefaultArrays());
+        }
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Menu);
+
+// export default Menu;

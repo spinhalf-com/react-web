@@ -1,6 +1,6 @@
 import config from "../../config/config";
 import axios from "axios";
-import {accountsConstants} from "../constants/accounts";
+import {defaultsConstants} from "../constants/defaults";
 
 export const default_data = {
     getDefaultData
@@ -29,25 +29,25 @@ function getDefaultData() {
 
     function request() {
         return {
-            type: accountsConstants.GET_DEFAULT_ARRAYS
+            type: defaultsConstants.GET_DEFAULT_ARRAYS
         }
     }
 
     function success(data) {
         return {
-            type: accountsConstants.GET_DEFAULT_ARRAYS_SUCCESS, data
+            type: defaultsConstants.GET_DEFAULT_ARRAYS_SUCCESS, data
         }
     }
 
-    // function updateItem(data) {
-    //     return {
-    //         type: accountsConstants.GET_ACCOUNTS_UPDATE_ITEM, data
-    //     }
-    // }
+    function updateItem(data) {
+        return {
+            type: defaultsConstants.GET_DEFAULT_UPDATE_ITEM, data
+        }
+    }
 
     function failure(error) {
         return {
-            type: accountsConstants.GET_DEFAULT_ARRAYS_FAILURE, error
+            type: defaultsConstants.GET_DEFAULT_ARRAYS_FAILURE, error
         }
     }
 }

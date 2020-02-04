@@ -7,23 +7,23 @@ class CodeSelector extends Component {
     //     super(props);
     // }
 
-        createCodesArray = () => {
-                let rows = [];
-                console.log(this.props)
-                this.props.default_data.map(item => {
-                        rows.push(<option key={item[0]} value={item[0]}>
-                                {item[2]}
-                        </option>);
-                        return null;
-                });
-                return rows;
-        };
+    createCodesArray = () => {
+            let rows = [];
+            console.log(this.props)
+            // this.props.default_data.map(item => {
+            //         rows.push(<option key={item[0]} value={item[0]}>
+            //                 {item[2]}
+            //         </option>);
+            //         return null;
+            // });
+            return rows;
+    };
 
     render() {
         return (
             <select id="code" name="code">
                 <option value=""> - - - - - -</option>
-                    {/*{this.createCodesArray()}*/}
+                    { this.createCodesArray() }
                 {/*<option value="CD">Charitable Donations</option>*/}
                 {/*<option value="CP">Petrol</option>*/}
                 {/*<option value="CT">Council Tax</option>*/}
@@ -78,8 +78,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
         return {
-                getDefaultArrays: () => {
-                        dispatch(default_data.getDefaultArrays());
+            getDefaultData: () => {
+                        dispatch(default_data.getDefaultData());
                 }
         };
 }

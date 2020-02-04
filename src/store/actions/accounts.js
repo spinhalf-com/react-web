@@ -1,21 +1,20 @@
 import { accountsConstants } from '../constants/accounts';
 import axios from 'axios';
+import config from "../../config/config";
 
 export const accounts = {
-    getAccounts,
-    getDefaultArrays
+    getAccounts
 };
 
 function getAccounts() {
+    console.log('vruebwi')
     return dispatch => {
         dispatch(request());
-        axios.get(`https://jfr.zapple.co/balances_json`,{},
-            {
+        let getUrl = config.API_URL + 'balances_json';
+        axios.get(getUrl,{}, {
                 headers: { Authorization: "Bearer " + localStorage.getItem('oauthToken')}
-            })
-            .then(
+            }).then(
                 result => {
-
                     result.data.unrec_balances.map(async item => {
                         dispatch(updateItem(item))
                     });
@@ -24,7 +23,6 @@ function getAccounts() {
                 error => {
                     console.log(error);
                     return dispatch(failure(error));
-
                 }
             );
     };
@@ -53,48 +51,3 @@ function getAccounts() {
         }
     }
 }
-
-
-function getDefaultArrays() {
-    return dispatch => {
-        dispatch(request());
-        axios.get(`https://jfr.zapple.co/get_mobile_arrays`,{},
-            {
-                headers: { }
-            })
-            .then(
-                result => {
-                    return dispatch(success(result.data));
-                },
-                error => {
-                    console.log(error);
-                    return dispatch(failure(error));
-
-                }
-            );
-    };
-
-    function request() {
-        return {
-            type: accountsConstants.GET_DEFAULT_ARRAYS
-        }
-    }
-
-    function success(data) {
-        return {
-            type: accountsConstants.GET_DEFAULT_ARRAYS_SUCCESS, data
-        }
-    }
-    // function updateItem(data) {
-    //     return {
-    //         type: accountsConstants.GET_ACCOUNTS_UPDATE_ITEM, data
-    //     }
-    // }
-
-    function failure(error) {
-        return {
-            type: accountsConstants.GET_DEFAULT_ARRAYS_FAILURE, error
-        }
-    }
-}
-

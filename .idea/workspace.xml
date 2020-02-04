@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f639818a-1931-4da0-9bbd-c19afe8da9dd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/store/actions/default.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/reducers/defaults.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/menu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/menu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/account-selector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/account-selector.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/code-selector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/code-selector.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/accounts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/accounts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/constants/accounts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/constants/accounts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +75,10 @@
       <workItem from="1579882042215" duration="5671000" />
       <workItem from="1580117229210" duration="25914000" />
       <workItem from="1580229089641" duration="4043000" />
+      <workItem from="1580474118183" duration="9000" />
+      <workItem from="1580474590291" duration="1450000" />
+      <workItem from="1580487822726" duration="596000" />
+      <workItem from="1580833440466" duration="6970000" />
     </task>
     <servers />
   </component>

@@ -79,6 +79,7 @@ class AccountsList extends Component {
         )
     }
 }
+
 function mapStateToProps(state) {
     return {
         accounts_data: state.accounts,

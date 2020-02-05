@@ -1,30 +1,33 @@
 import { accountsConstants } from '../constants/accounts';
 import axios from 'axios';
 import config from "../../config/config";
+import headers from "../../config/headers";
 
 export const accounts = {
     getAccounts
 };
 
 function getAccounts() {
-    console.log('vruebwi')
     return dispatch => {
         dispatch(request());
-        let getUrl = config.API_URL + 'balances_json';
-        axios.get(getUrl,{}, {
-                headers: { Authorization: "Bearer " + localStorage.getItem('oauthToken')}
-            }).then(
-                result => {
-                    result.data.unrec_balances.map(async item => {
-                        dispatch(updateItem(item))
-                    });
-                    return dispatch(success(result.data));
-                },
-                error => {
-                    console.log(error);
-                    return dispatch(failure(error));
-                }
-            );
+        let getUrl = config.API_URL + config.API_PREFIX + 'balances_json';
+
+        axios({
+            method: 'GET',
+            url: getUrl,
+            headers: headers
+        }).then(
+            result => {
+                result.data.unrec_balances.map(async item => {
+                    dispatch(updateItem(item))
+                });
+                return dispatch(success(result.data));
+            },
+            error => {
+                console.log(error);
+                return dispatch(failure(error));
+            }
+        );
     };
 
     function request() {

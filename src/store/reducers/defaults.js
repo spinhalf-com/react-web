@@ -7,7 +7,7 @@ export default function location(state = initialState, action) {
         case defaultsConstants.GET_DEFAULT_ARRAYS:
             return state;
         case defaultsConstants.GET_DEFAULT_ARRAYS_SUCCESS:
-            return action.data;
+            return action.data.codes;
         case defaultsConstants.GET_DEFAULT_UPDATE_ITEM:
             let newState = [...state];
             newState.map(item => {

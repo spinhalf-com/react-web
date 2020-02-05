@@ -18,7 +18,7 @@ export default function location(state = initialState, action) {
                 return item;
             });
             return newState;
-        case accountsConstants.GET_LOCATIONS_FALIURE:
+        case accountsConstants.GET_ACCOUNTS_FAILURE:
             return action.error;
         default:
             return state;

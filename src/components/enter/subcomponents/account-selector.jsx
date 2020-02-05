@@ -70,7 +70,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         getAccounts: () => {
-            dispatch(accounts.getAccounts());
+            //dispatch(accounts.getAccounts());
         }
     };
 }

@@ -1,30 +1,34 @@
 import config from "../../config/config";
 import axios from "axios";
-import {defaultsConstants} from "../constants/defaults";
+import { defaultsConstants } from "../constants/defaults";
+import headers from "../../config/headers";
 
-export const default_data = {
+export const defaults = {
     getDefaultData
 };
 
 function getDefaultData() {
-    console.log('here');
+    // console.log('actions.default');
     return dispatch => {
         dispatch(request());
         let getUrl = config.API_URL + config.API_PREFIX + 'get_mobile_arrays';
-        axios.get(getUrl,{}, {
-                headers: { Authorization: "Bearer " + localStorage.getItem('oauthToken')}
-            }).then(
-                result => {
-                    // result.data.unrec_balances.map(async item => {
-                    //     dispatch(updateItem(item))
-                    // });
-                    return dispatch(success(result.data));
-                },
-                error => {
-                    console.log(error);
-                    return dispatch(failure(error));
-                }
-            );
+        axios({
+            method: 'GET',
+            url: getUrl,
+            headers: headers
+        }).then(
+            result => {
+                // result.data.codes.map(async item => {
+                //     dispatch(updateItem(item))
+                // });
+                console.log(result.data)
+                return dispatch(success(result.data));
+            },
+            error => {
+                console.log(error);
+                return dispatch(failure(error));
+            }
+        );
     };
 
     function request() {

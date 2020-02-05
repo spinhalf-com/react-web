@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
-import {connect} from "react-redux";
-import {default_data} from "../../../store/actions/default";
+import { connect } from "react-redux";
+import { defaults } from "../../../store/actions/default";
 
 class CodeSelector extends Component {
     // constructor(props) {
     //     super(props);
     // }
 
+    componentDidMount() {
+        this.props.getDefaults();
+    }
+
     createCodesArray = () => {
             let rows = [];
             console.log(this.props)
-            // this.props.default_data.map(item => {
-            //         rows.push(<option key={item[0]} value={item[0]}>
-            //                 {item[2]}
-            //         </option>);
-            //         return null;
-            // });
+            this.props.defaults.map(item => {
+                    rows.push(<option key={item['code']} value={item['code']}>
+                            {item['description']}
+                    </option>);
+                    return null;
+            });
             return rows;
     };
 
@@ -71,15 +75,16 @@ class CodeSelector extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state)
         return {
-                default_data: state.default_data
+                defaults: state.defaults
         };
 }
 
 function mapDispatchToProps(dispatch) {
         return {
-            getDefaultData: () => {
-                        dispatch(default_data.getDefaultData());
+            getDefaults: () => {
+                        dispatch(defaults.getDefaultData());
                 }
         };
 }

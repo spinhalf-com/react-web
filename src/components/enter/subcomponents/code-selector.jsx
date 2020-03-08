@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { defaults } from "../../../store/actions/default";
+import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {defaults} from "../../../store/actions/default";
 
 class CodeSelector extends Component {
     // constructor(props) {
@@ -12,22 +12,22 @@ class CodeSelector extends Component {
     }
 
     createCodesArray = () => {
-            let rows = [];
-            console.log(this.props)
-            this.props.defaults.map(item => {
-                    rows.push(<option key={item['code']} value={item['code']}>
-                            {item['description']}
-                    </option>);
-                    return null;
-            });
-            return rows;
+        let rows = [];
+        console.log(this.props)
+        this.props.defaults.map(item => {
+            rows.push(<option key={item['code']} value={item['code']}>
+                {item['description']}
+            </option>);
+            return null;
+        });
+        return rows;
     };
 
     render() {
         return (
             <select id="code" name="code">
                 <option value=""> - - - - - -</option>
-                    { this.createCodesArray() }
+                {this.createCodesArray()}
                 {/*<option value="CD">Charitable Donations</option>*/}
                 {/*<option value="CP">Petrol</option>*/}
                 {/*<option value="CT">Council Tax</option>*/}
@@ -76,17 +76,17 @@ class CodeSelector extends Component {
 
 function mapStateToProps(state) {
     console.log(state)
-        return {
-                defaults: state.defaults
-        };
+    return {
+        defaults: state.defaults
+    };
 }
 
 function mapDispatchToProps(dispatch) {
-        return {
-            getDefaults: () => {
-                        dispatch(defaults.getDefaultData());
-                }
-        };
+    return {
+        getDefaults: () => {
+            dispatch(defaults.getDefaultData());
+        }
+    };
 }
 
 export default connect(

@@ -1,10 +1,10 @@
 export default {
     MAX_ATTACHMENT_SIZE: 5000000,
-    // API_URL:"https://jfr.zapple.co/",
+    API_URL:"https://jfr.zapple.co/",
     API_PREFIX: "api/v2/",
-    API_URL:"http://jrcash.loc/",
+    //API_URL:"http://jrcash.loc/",
     CLIENT_ID: "1",
-    CLIENNT_SECRET: "pu9RvIPawwTWB3N8QsCJtWCZ24lPuHlNZZxPBIoR",
+    CLIENT_SECRET: "pu9RvIPawwTWB3N8QsCJtWCZ24lPuHlNZZxPBIoR",
     GRANT_TYPE:"password",
     SCOPE: "*",
     s3: {
@@ -15,17 +15,17 @@ export default {
         URL: ""
     },
     MONTHSLIST: [
-        {number: '01', name:  "January"},
-        {number: '02', name:  "February"},
-        {number: '03', name:  "March"},
-        {number: '04', name:  "April"},
-        {number: '05', name:  "May"},
-        {number: '06', name:  "June"},
-        {number: '07', name:  "July"},
-        {number: '08', name:  "August"},
-        {number: '09', name:  "September"},
-        {number: '10', name:  "October"},
-        {number: '11', name:  "November"},
-        {number: '12', name:  "December"}
+        {number: '01', name:  "January", index: 1},
+        {number: '02', name:  "February", index: 2},
+        {number: '03', name:  "March", index: 3},
+        {number: '04', name:  "April", index: 4},
+        {number: '05', name:  "May", index: 5},
+        {number: '06', name:  "June", index: 6},
+        {number: '07', name:  "July", index: 7},
+        {number: '08', name:  "August", index: 8},
+        {number: '09', name:  "September", index: 9},
+        {number: '10', name:  "October", index: 10},
+        {number: '11', name:  "November", index: 11},
+        {number: '12', name:  "December", index: 12}
     ]
 };

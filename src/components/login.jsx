@@ -16,7 +16,7 @@ class LoginPage extends Component {
                 username: '',
                 password: '',
                 client_id: config.CLIENT_ID,
-                client_secret: config.CLIENNT_SECRET,
+                client_secret: config.CLIENT_SECRET,
                 scope: config.SCOPE,
                 grant_type: config.GRANT_TYPE
             },

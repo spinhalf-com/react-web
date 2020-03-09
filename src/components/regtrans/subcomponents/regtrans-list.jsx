@@ -13,10 +13,6 @@ class RegtransList extends Component {
         this.setDateInfo();
     }
 
-    componentDidMount() {
-
-    }
-
     setDateInfo() {
         let date = new Date();
         console.log(date)
@@ -26,8 +22,10 @@ class RegtransList extends Component {
 
     buildMonthSelector() {
         let rows = [];
+        rows.push(<option key='' value=''> - select - </option>)
+
         config.MONTHSLIST.map(item => {
-            rows.push(<option key={item.number} value={item.number}>
+            rows.push(<option key={item.number} value={item.number} selected={item.index == this.month}>
                 {item.name}
             </option>);
             return null;
@@ -37,10 +35,12 @@ class RegtransList extends Component {
 
     buildYearSelector() {
         let rows = [];
-        rows.push(<option key={parseInt(this.year)-1} value={parseInt(this.year)-1}>{parseInt(this.year)-1}</option>);
-        rows.push(<option key={parseInt(this.year)} value={parseInt(this.year)}>{parseInt(this.year)}</option>);
-        rows.push(<option key={parseInt(this.year)+1} value={parseInt(this.year)+1}>{parseInt(this.year)+1}</option>);
-        rows.push(<option key={parseInt(this.year)+2} value={parseInt(this.year)+2}>{parseInt(this.year)+2}</option>);
+        rows.push(<option key='' value=''> - select - </option>)
+
+        for(var i = -1; i < 3; i++) {
+            let yearValue = parseInt(this.year) + i;
+            rows.push(<option key={yearValue} value={yearValue} selected={this.year == yearValue}>{yearValue}</option>);
+        }
         return rows;
     }
 

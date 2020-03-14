@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
 import config from './../../../config/config';
+import '../../../css/regtrans.css';
 
 class RegtransList extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             year: "",
             month: ""
-        }
+        };
         this.setDateInfo();
     }
 
     setDateInfo() {
         let date = new Date();
-        console.log(date)
+        // console.log(date)
         this.year = date.getFullYear();
-        this.month = parseInt(date.getMonth()) + 1;
+        let month = parseInt(date.getMonth()) + 1;
+        if(month.toString().length == 1) {
+            this.month = "0" + month.toString();
+        } else {
+            this.month = month.toString();
+        }
     }
 
     buildMonthSelector() {
@@ -25,7 +31,7 @@ class RegtransList extends Component {
         rows.push(<option key='' value=''> - select - </option>)
 
         config.MONTHSLIST.map(item => {
-            rows.push(<option key={item.number} value={item.number} selected={item.index == this.month}>
+            rows.push(<option key={item.number} value={item.number} >
                 {item.name}
             </option>);
             return null;
@@ -39,17 +45,26 @@ class RegtransList extends Component {
 
         for(var i = -1; i < 3; i++) {
             let yearValue = parseInt(this.year) + i;
-            rows.push(<option key={yearValue} value={yearValue} selected={this.year == yearValue}>{yearValue}</option>);
+            rows.push(<option key={yearValue} value={yearValue}>{yearValue}</option>);
         }
         return rows;
     }
 
+    chooseMonth(event) {
+        this.month = event.target.value;
+        console.log(this.month);
+    }
+
+    chooseYear(event) {
+        this.year = event.target.value;
+        console.log(this.year);
+    }
+
     render() {
         return (
-
             <div id="recdiv"  className={"regtrans_list"} style={{width:"850px"}}>
                 <form id="transtype" action="https://jfr.zapple.co/regtrans" method="post">
-                    <table id="rounded-corner" style={{width:"900px"}}>
+                    <table id="rounded-corner" className="regtrans-table">
                         <tbody>
                         <tr>
                             <th colSpan="3">
@@ -61,39 +76,23 @@ class RegtransList extends Component {
                                 Month / Year
                             </td>
                             <td className="alt">
-                                <select name="month">
+                                <select className="selects" name="month" defaultValue={this.month} onChange={(e) => this.chooseMonth(e)}>
                                     {this.buildMonthSelector()}
-
-                                    {/*<option value="01">January</option>*/}
-                                    {/*<option value="02">February</option>*/}
-                                    {/*<option value="03">March</option>*/}
-                                    {/*<option value="04">April</option>*/}
-                                    {/*<option value="05">May</option>*/}
-                                    {/*<option value="06">June</option>*/}
-                                    {/*<option value="07">July</option>*/}
-                                    {/*<option value="08">August</option>*/}
-                                    {/*<option value="09">September</option>*/}
-                                    {/*<option value="10">October</option>*/}
-                                    {/*<option value="11">November</option>*/}
-                                    {/*<option value="12">December</option>*/}
                                 </select>
                             </td>
                             <td className="alt">
-                                <select name="year">
+                                <select className="selects" name="year" defaultValue={this.year} onChange={(e) => this.chooseYear(e)}>
                                     {this.buildYearSelector()}
-                                    {/*<option value="2019">2019</option>*/}
-                                    {/*<option value="2020">2020</option>*/}
-                                    {/*<option value="2021">2021</option>*/}
-                                    {/*<option value="2022">2022</option>*/}
                                 </select>
-                                <span style={{cursor:"pointer"}}> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                                    type="submit" value="Confirm"/></span>
+                                <span style={{cursor:"pointer"}}>
+                                    <input type="submit" value="Confirm" id="confirm"/>
+                                </span>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </form>
-                <div id="recdiv" style={{width:"850px"}}>
+                <div id="recdiv">
                 </div>
             </div>
         )

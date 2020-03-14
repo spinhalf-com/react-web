@@ -1,14 +1,14 @@
 import config from "../../config/config";
 import axios from "axios";
-import { defaultsConstants } from "../constants/defaults";
+import { regtransConstants } from "../constants/regtrans";
 import headers from "../../config/headers";
 
 export const defaults = {
     getDefaultData
 };
 
-function getRectransData() {
-    // console.log('actions.default');
+function getRegtransData() {
+    
     return dispatch => {
         dispatch(request());
         let getUrl = config.API_URL + config.API_PREFIX + 'regtrans';
@@ -18,10 +18,10 @@ function getRectransData() {
             headers: headers
         }).then(
             result => {
-                // result.data.codes.map(async item => {
-                //     dispatch(updateItem(item))
-                // });
-                console.log(result.data)
+                result.data.codes.map(async item => {
+                    dispatch(updateItem(item))
+                });
+                // console.log(result.data)
                 return dispatch(success(result.data));
             },
             error => {
@@ -33,25 +33,25 @@ function getRectransData() {
 
     function request() {
         return {
-            type: defaultsConstants.GET_DEFAULT_ARRAYS
+            type: regtransConstants.GET_REGTRANS_REQUEST
         }
     }
 
     function success(data) {
         return {
-            type: defaultsConstants.GET_DEFAULT_ARRAYS_SUCCESS, data
+            type: regtransConstants.GET_REGTRANS_SUCCESS, data
         }
     }
 
     function updateItem(data) {
         return {
-            type: defaultsConstants.GET_DEFAULT_UPDATE_ITEM, data
+            type: regtransConstants.GET_REGTRANS_UPDATE_ITEM, data
         }
     }
 
     function failure(error) {
         return {
-            type: defaultsConstants.GET_DEFAULT_ARRAYS_FAILURE, error
+            type: regtransConstants.GET_REGTRANS_FAILURE, error
         }
     }
 }

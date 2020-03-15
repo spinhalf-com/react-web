@@ -3,12 +3,12 @@ import axios from "axios";
 import { regtransConstants } from "../constants/regtrans";
 import headers from "../../config/headers";
 
-export const defaults = {
-    getDefaultData
+export const regtransData = {
+    getRegtransData
 };
 
 function getRegtransData() {
-    
+
     return dispatch => {
         dispatch(request());
         let getUrl = config.API_URL + config.API_PREFIX + 'regtrans';
@@ -18,11 +18,10 @@ function getRegtransData() {
             headers: headers
         }).then(
             result => {
-                result.data.codes.map(async item => {
+                result.data.data.map(async item => {
                     dispatch(updateItem(item))
                 });
-                // console.log(result.data)
-                return dispatch(success(result.data));
+                return dispatch(success(result.data.data));
             },
             error => {
                 console.log(error);
@@ -55,4 +54,3 @@ function getRegtransData() {
         }
     }
 }
-

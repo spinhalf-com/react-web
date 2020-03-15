@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { regtransData } from '../../../store/actions/regtrans';
 import config from './../../../config/config';
 import '../../../css/regtrans.css';
+import Checker from './checker';
 
 class RegtransList extends Component {
 
@@ -14,12 +17,18 @@ class RegtransList extends Component {
         this.setDateInfo();
     }
 
+    componentDidMount() {
+        this.props.getRegtransData();
+        this._isMounted = true;
+    }
+
+
     setDateInfo() {
         let date = new Date();
         // console.log(date)
         this.year = date.getFullYear();
         let month = parseInt(date.getMonth()) + 1;
-        if(month.toString().length == 1) {
+        if(month.toString().length === 1) {
             this.month = "0" + month.toString();
         } else {
             this.month = month.toString();
@@ -52,13 +61,38 @@ class RegtransList extends Component {
 
     chooseMonth(event) {
         this.month = event.target.value;
-        console.log(this.month);
+        console.log(this.props.regtrans_data);
     }
 
     chooseYear(event) {
         this.year = event.target.value;
         console.log(this.year);
     }
+
+    createRegtransList = () => {
+        let rows = [];
+        rows.push(<tr key='0'>
+                <th>Account</th>
+                <th>Day</th>
+                <th>Amount</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th><input type='checkbox'></input></th>
+            </tr>);
+        this.props.regtrans_data.map(item => {
+
+            rows.push(<tr key={item.id}>
+                <td>{item.account}</td>
+                <td>{item.day}</td>
+                <td>{item.amount}</td>
+                <td>{item.code}</td>
+                <td>{item.description}</td>
+                <td><Checker id={item.id}/></td>
+            </tr>);
+            return null;
+        });
+        return rows;
+    };
 
     render() {
         return (
@@ -93,9 +127,40 @@ class RegtransList extends Component {
                     </table>
                 </form>
                 <div id="recdiv">
+                    <table id="rounded-corner" className="regtrans-table">
+                        <thead>
+                            <tr>
+                                <th colSpan="6">
+                                    Select Transactions For Entry
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.createRegtransList()}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )
     }
 }
-export default RegtransList;
+
+function mapStateToProps(state) {
+    return {
+        regtrans_data: state.regtrans
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getRegtransData: () => {
+            dispatch(regtransData.getRegtransData());
+        }
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(RegtransList);
+

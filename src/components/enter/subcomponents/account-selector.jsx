@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
-import {accounts} from "../../../store/actions/accounts";
 
 class AccountSelector extends Component {
     // constructor(props) {

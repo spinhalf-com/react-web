@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { accounts } from '../../store/actions/accounts';
-// import { cryptos } from "../../store/actions/cryptos";
 import config from '../../config/config';
 
 class AccountsList extends Component {

@@ -18,9 +18,9 @@ function getDefaultData() {
             headers: headers
         }).then(
             result => {
-                // result.data.codes.map(async item => {
-                //     dispatch(updateItem(item))
-                // });
+                result.data.codes.map(async item => {
+                    dispatch(updateItem(item))
+                });
                 console.log(result.data)
                 return dispatch(success(result.data));
             },

@@ -6,6 +6,8 @@ import '../../../css/regtrans.css';
 class Checker extends Component {
     // constructor(props) {
     //     super(props);
+    //
+    //
     // }
 
     componentDidMount() {

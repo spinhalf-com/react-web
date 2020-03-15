@@ -42,6 +42,12 @@ function getRegtransData() {
         }
     }
 
+    function tickList(data) {
+        return {
+            type: regtransConstants.GET_REGTRANS_TICKLIST, data
+        }
+    }
+
     function updateItem(data) {
         return {
             type: regtransConstants.GET_REGTRANS_UPDATE_ITEM, data

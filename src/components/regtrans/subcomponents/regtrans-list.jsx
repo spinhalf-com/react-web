@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { regtransData } from '../../../store/actions/regtrans';
 import config from './../../../config/config';
 import '../../../css/regtrans.css';
-import Checker from './checker';
+import Checker from './checker.jsx';
 
 class RegtransList extends Component {
 
@@ -12,7 +12,13 @@ class RegtransList extends Component {
 
         this.state = {
             year: "",
-            month: ""
+            month: "",
+            selectedIds: [
+                1,7,11
+            ],
+            allIds: [
+
+            ]
         };
         this.setDateInfo();
     }
@@ -22,6 +28,9 @@ class RegtransList extends Component {
         this._isMounted = true;
     }
 
+    handleClick(event) {
+        event.preventDefault();
+    }
 
     setDateInfo() {
         let date = new Date();
@@ -69,28 +78,50 @@ class RegtransList extends Component {
         console.log(this.year);
     }
 
+    flip(event) {
+        let allIds = [];
+        this.props.regtrans_data.map(item => {
+            allIds.push(item.id);
+        });
+        if(event.target.checked) {
+            this.setState({'selectedIds': allIds});
+        } else {
+            this.setState({'selectedIds': []});
+        }
+    }
+
+    inclusive(id) {
+        if(this.state.selectedIds.length == 0) {
+            return false;
+        }
+        return this.state.selectedIds.includes(id);
+    }
+
     createRegtransList = () => {
         let rows = [];
+        let allIds = [];
         rows.push(<tr key='0'>
                 <th>Account</th>
                 <th>Day</th>
                 <th>Amount</th>
                 <th>Code</th>
                 <th>Description</th>
-                <th><input type='checkbox'></input></th>
+                <th><input type='checkbox' onClick={(e) => this.flip(e)}></input></th>
             </tr>);
-        this.props.regtrans_data.map(item => {
 
+        this.props.regtrans_data.map(item => {
+            allIds.push(item.id);
             rows.push(<tr key={item.id}>
                 <td>{item.account}</td>
                 <td>{item.day}</td>
                 <td>{item.amount}</td>
                 <td>{item.code}</td>
                 <td>{item.description}</td>
-                <td><Checker id={item.id}/></td>
+                <td><Checker id={item.id} checked={this.inclusive(item.id)}/></td>
             </tr>);
             return null;
         });
+        // this.setState({'allIds': allIds});
         return rows;
     };
 
@@ -119,7 +150,7 @@ class RegtransList extends Component {
                                     {this.buildYearSelector()}
                                 </select>
                                 <span style={{cursor:"pointer"}}>
-                                    <input type="submit" value="Confirm" id="confirm"/>
+                                    <input type="submit" value="Confirm" onClick={(e) => this.handleClick(e)} id="confirm"/>
                                 </span>
                             </td>
                         </tr>

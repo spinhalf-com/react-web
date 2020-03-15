@@ -35,6 +35,9 @@ export default function location(state = initialState, action) {
             });
             return checkedState;
 
+        case regtransConstants.GET_REGTRANS_TICKLIST:
+
+
         default:
             return state;
     }

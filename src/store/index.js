@@ -1,9 +1,9 @@
-import { createStore, applyMiddleware, compose, composeEnhancers } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import reducers from "./reducers";
 
 const configureStore = initialState => {
-  const middlewares = [thunk];
+  // const middlewares = [thunk];
   //const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   //middlewares.push(require("redux-logger").createLogger({ collapsed: true }));
@@ -21,7 +21,7 @@ const configureStore = initialState => {
       initialState,
       compose(
           applyMiddleware(thunk),
-          window.devToolsExtension ? window.devToolsExtension() : f => f
+          window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
       )
   );
   return store;

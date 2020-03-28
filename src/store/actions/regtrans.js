@@ -1,16 +1,14 @@
-import config from "../../config/config";
-import axios from "axios";
-import { regtransConstants } from "../constants/regtrans";
-import headers from "../../config/headers";
+import config from '../../config/config';
+import axios from 'axios';
+import { regtransConstants } from '../constants/regtrans';
+import headers from '../../config/headers';
 
 export const regtransData = {
-    getRegtransData,
-    tickListData
+    getRegtransData
 };
 
 function getRegtransData() {
-
-    return dispatch => {
+    return (dispatch) => {
         dispatch(request());
         let getUrl = config.API_URL + config.API_PREFIX + 'regtrans';
         axios({
@@ -18,13 +16,10 @@ function getRegtransData() {
             url: getUrl,
             headers: headers
         }).then(
-            result => {
-                result.data.data.map(async item => {
-                    dispatch(updateItem(item))
-                });
-                return dispatch(success(result.data.data));
+            (result) => {
+                dispatch(success(result.data.data));
             },
-            error => {
+            (error) => {
                 console.log(error);
                 return dispatch(failure(error));
             }
@@ -34,43 +29,67 @@ function getRegtransData() {
     function request() {
         return {
             type: regtransConstants.GET_REGTRANS_REQUEST
-        }
+        };
     }
 
     function success(data) {
         return {
             type: regtransConstants.GET_REGTRANS_SUCCESS,
             data
-        }
-    }
-
-    function updateItem(data) {
-        return {
-            type: regtransConstants.GET_REGTRANS_UPDATE_ITEM,
-            data
-        }
+        };
     }
 
     function failure(error) {
         return {
             type: regtransConstants.GET_REGTRANS_FAILURE,
             error
-        }
+        };
     }
 }
 
-function tickListData() {
-    function tickList() {
-        return {
-            type: regtransConstants.GET_REGTRANS_TICKLIST
-        }
-    }
+export function setTickList(data) {
+    return {
+        type: regtransConstants.SET_REGTRANS_SELECTED_ENTRIES,
+        data
+    };
+}
 
-    function updateTickList(data) {
-        return {
-            type: regtransConstants.UPDATE_REGTRANS_TICKLIST,
+export function setYear(data) {
+    return {
+        type: regtransConstants.SET_REGTRANS_YEAR,
+        data
+    };
+}
+
+export function setMonth(data) {
+    return {
+        type: regtransConstants.SET_REGTRANS_MONTH,
+        data
+    };
+}
+
+export function submitEntries({ year, month, ids }) {
+    const data = {
+        year: year,
+        month: month,
+        ids: ids
+    };
+
+    return (dispatch) => {
+        let getUrl = config.API_URL + config.API_PREFIX + 'regtrans/run';
+
+        axios({
+            method: 'POST',
+            url: getUrl,
+            headers: headers,
             data
-        }
-    }
-
+        }).then(
+            (result) => {
+                alert('Sent successfully');
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    };
 }

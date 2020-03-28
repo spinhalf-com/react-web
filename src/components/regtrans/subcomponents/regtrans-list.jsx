@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { regtransData } from '../../../store/actions/regtrans';
+import { connect } from 'react-redux';
+import {
+    regtransData,
+    setTickList,
+    setYear,
+    setMonth
+} from '../../../store/actions/regtrans';
 import config from './../../../config/config';
 import '../../../css/regtrans.css';
-import Checker from './checker.jsx';
+import ConfirmButton from './confirm-button';
 
 class RegtransList extends Component {
-
     constructor(props) {
         super(props);
 
         this.state = {
-            year: "",
-            month: "",
-            selectedIds: [
-                1,7,11
-            ],
-            allIds: [
-
-            ]
+            year: '',
+            month: '',
+            selectedIds: [],
+            allIds: []
         };
         this.setDateInfo();
     }
@@ -37,8 +37,8 @@ class RegtransList extends Component {
         // console.log(date)
         this.year = date.getFullYear();
         let month = parseInt(date.getMonth()) + 1;
-        if(month.toString().length === 1) {
-            this.month = "0" + month.toString();
+        if (month.toString().length === 1) {
+            this.month = '0' + month.toString();
         } else {
             this.month = month.toString();
         }
@@ -46,12 +46,19 @@ class RegtransList extends Component {
 
     buildMonthSelector() {
         let rows = [];
-        rows.push(<option key='' value=''> - select - </option>)
+        rows.push(
+            <option key='' value=''>
+                {' '}
+                - select -{' '}
+            </option>
+        );
 
-        config.MONTHSLIST.map(item => {
-            rows.push(<option key={item.number} value={item.number} >
-                {item.name}
-            </option>);
+        config.MONTHSLIST.map((item) => {
+            rows.push(
+                <option key={item.number} value={item.number}>
+                    {item.name}
+                </option>
+            );
             return null;
         });
         return rows;
@@ -59,11 +66,20 @@ class RegtransList extends Component {
 
     buildYearSelector() {
         let rows = [];
-        rows.push(<option key='' value=''> - select - </option>)
+        rows.push(
+            <option key='' value=''>
+                {' '}
+                - select -{' '}
+            </option>
+        );
 
-        for(var i = -1; i < 3; i++) {
+        for (var i = -1; i < 3; i++) {
             let yearValue = parseInt(this.year) + i;
-            rows.push(<option key={yearValue} value={yearValue}>{yearValue}</option>);
+            rows.push(
+                <option key={yearValue} value={yearValue}>
+                    {yearValue}
+                </option>
+            );
         }
         return rows;
     }
@@ -71,39 +87,48 @@ class RegtransList extends Component {
     chooseMonth(event) {
         this.month = event.target.value;
         console.log(this.props.regtrans_data);
+        this.props.setPostMonth(event.target.value);
     }
 
     chooseYear(event) {
         this.year = event.target.value;
         console.log(this.year);
+        this.props.setPostYear(event.target.value);
     }
 
     flip(event) {
         let allIds = [];
-        this.props.regtrans_data.map(item => {
+        this.props.regtrans_data.map((item) => {
             allIds.push(item.id);
             return null;
         });
-        if(event.target.checked) {
-            this.setState({'selectedIds': allIds});
+        if (event.target.checked) {
+            this.setState({ selectedIds: allIds });
+            this.props.setCheckboxList(allIds);
         } else {
-            this.setState({'selectedIds': []});
+            this.setState({ selectedIds: [] });
+            this.props.setCheckboxList([]);
         }
     }
 
-    flipBox(event) {
-        console.log(event.target.id);
-        let allIds = this.state.selectedIds;
-        if(allIds.includes(event.target.id)) {
-            allIds.remove(event.target.id);
+    flipBox(id) {
+        let checkedEntries = [...this.state.selectedIds];
+
+        // If the ID is in the array, remove it - else push it.
+        const isInArray = checkedEntries.indexOf(id);
+        if (isInArray !== -1) {
+            checkedEntries.splice(isInArray, 1);
         } else {
-            allIds.push(event.target.id);
+            checkedEntries.push(id);
         }
-        this.setState({'selectedIds': allIds});
+        // Set the local component state
+        this.setState({ selectedIds: checkedEntries });
+        // Set the Redux state
+        this.props.setCheckboxList(checkedEntries);
     }
 
     inclusive(id) {
-        if(this.state.selectedIds.length === 0) {
+        if (this.state.selectedIds.length === 0) {
             return false;
         }
         return this.state.selectedIds.includes(id);
@@ -112,25 +137,40 @@ class RegtransList extends Component {
     createRegtransList = () => {
         let rows = [];
         let allIds = [];
-        rows.push(<tr key='0'>
+        rows.push(
+            <tr key='0'>
                 <th>Account</th>
                 <th>Day</th>
                 <th>Amount</th>
                 <th>Code</th>
                 <th>Description</th>
-                <th><input type='checkbox' onClick={(e) => this.flip(e)}></input></th>
-            </tr>);
+                <th>
+                    <input
+                        type='checkbox'
+                        onClick={(e) => this.flip(e)}
+                    ></input>
+                </th>
+            </tr>
+        );
 
-        this.props.regtrans_data.map(item => {
+        this.props.regtrans_data.map((item) => {
             allIds.push(item.id);
-            rows.push(<tr key={item.id}>
-                <td>{item.account}</td>
-                <td>{item.day}</td>
-                <td>{item.amount}</td>
-                <td>{item.code}</td>
-                <td>{item.description}</td>
-                <td><Checker id={item.id} checked={this.inclusive(item.id)} onClick={(e) => this.flipBox(e)}/></td>
-            </tr>);
+            rows.push(
+                <tr key={item.id}>
+                    <td>{item.account}</td>
+                    <td>{item.day}</td>
+                    <td>{item.amount}</td>
+                    <td>{item.code}</td>
+                    <td>{item.description}</td>
+                    <td>
+                        <input
+                            type='checkbox'
+                            checked={this.inclusive(item.id)}
+                            onChange={(e) => this.flipBox(item.id)}
+                        />
+                    </td>
+                </tr>
+            );
             return null;
         });
         // this.setState({'allIds': allIds});
@@ -139,58 +179,65 @@ class RegtransList extends Component {
 
     render() {
         return (
-            <div id="recdiv"  className={"regtrans_list"} style={{width:"850px"}}>
-                <form id="transtype" action="https://jfr.zapple.co/regtrans" method="post">
-                    <table id="rounded-corner" className="regtrans-table">
-                        <tbody>
+            <div
+                id='recdiv'
+                className={'regtrans_list'}
+                style={{ width: '850px' }}
+            >
+                <table id='rounded-corner' className='regtrans-table'>
+                    <tbody>
                         <tr>
-                            <th colSpan="3">
-                                Regular Transactions
-                            </th>
+                            <th colSpan='3'>Regular Transactions</th>
                         </tr>
                         <tr>
-                            <td className="alt">
-                                Month / Year
-                            </td>
-                            <td className="alt">
-                                <select className="selects" name="month" defaultValue={this.month} onChange={(e) => this.chooseMonth(e)}>
+                            <td className='alt'>Month / Year</td>
+                            <td className='alt'>
+                                <select
+                                    className='selects'
+                                    name='month'
+                                    defaultValue={this.month}
+                                    onChange={(e) => this.chooseMonth(e)}
+                                >
                                     {this.buildMonthSelector()}
                                 </select>
                             </td>
-                            <td className="alt">
-                                <select className="selects" name="year" defaultValue={this.year} onChange={(e) => this.chooseYear(e)}>
+                            <td className='alt'>
+                                <select
+                                    className='selects'
+                                    name='year'
+                                    defaultValue={this.year}
+                                    onChange={(e) => this.chooseYear(e)}
+                                >
                                     {this.buildYearSelector()}
                                 </select>
-                                <span style={{cursor:"pointer"}}>
-                                    <input type="submit" value="Confirm" onClick={(e) => this.handleClick(e)} id="confirm"/>
+                                <span style={{ cursor: 'pointer' }}>
+                                    <ConfirmButton />
                                 </span>
                             </td>
                         </tr>
-                        </tbody>
-                    </table>
-                </form>
-                <div id="recdiv">
-                    <table id="rounded-corner" className="regtrans-table">
+                    </tbody>
+                </table>
+
+                <div id='recdiv'>
+                    <table id='rounded-corner' className='regtrans-table'>
                         <thead>
                             <tr>
-                                <th colSpan="6">
+                                <th colSpan='6'>
                                     Select Transactions For Entry
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {this.createRegtransList()}
-                        </tbody>
+                        <tbody>{this.createRegtransList()}</tbody>
                     </table>
                 </div>
             </div>
-        )
+        );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        regtrans_data: state.regtrans
+        regtrans_data: state.regtrans.entries
     };
 }
 
@@ -201,12 +248,17 @@ function mapDispatchToProps(dispatch) {
         },
         buildTickList: () => {
             dispatch(regtransData.tickList());
+        },
+        setCheckboxList: (array) => {
+            dispatch(setTickList(array));
+        },
+        setPostYear: (data) => {
+            dispatch(setYear(data));
+        },
+        setPostMonth: (data) => {
+            dispatch(setMonth(data));
         }
     };
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(RegtransList);
-
+export default connect(mapStateToProps, mapDispatchToProps)(RegtransList);

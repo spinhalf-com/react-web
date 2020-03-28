@@ -1,5 +1,7 @@
 import { cryptosConstants } from '../constants/cryptos';
 import axios from 'axios';
+import config from "../../config/config";
+import headers from "../../config/headers";
 
 export const cryptos = {
     getCryptos,
@@ -8,7 +10,14 @@ export const cryptos = {
 function getCryptos() {
     return dispatch => {
         dispatch(request());
-        axios.get(`https://jfr.zapple.co/balances_json`,{}, { headers: { } }).then(
+
+        let getUrl = config.API_URL + config.API_PREFIX + 'balances_json';
+
+        axios({
+            method: 'GET',
+            url: getUrl,
+            headers: headers
+        }).then(
             result => {
                 result.data.cryptos_balances.map(async item => {
                     item[3] = 0;

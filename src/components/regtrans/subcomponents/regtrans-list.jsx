@@ -82,6 +82,7 @@ class RegtransList extends Component {
         let allIds = [];
         this.props.regtrans_data.map(item => {
             allIds.push(item.id);
+            return null;
         });
         if(event.target.checked) {
             this.setState({'selectedIds': allIds});
@@ -90,8 +91,19 @@ class RegtransList extends Component {
         }
     }
 
+    flipBox(event) {
+        console.log(event.target.id);
+        let allIds = this.state.selectedIds;
+        if(allIds.includes(event.target.id)) {
+            allIds.remove(event.target.id);
+        } else {
+            allIds.push(event.target.id);
+        }
+        this.setState({'selectedIds': allIds});
+    }
+
     inclusive(id) {
-        if(this.state.selectedIds.length == 0) {
+        if(this.state.selectedIds.length === 0) {
             return false;
         }
         return this.state.selectedIds.includes(id);
@@ -117,7 +129,7 @@ class RegtransList extends Component {
                 <td>{item.amount}</td>
                 <td>{item.code}</td>
                 <td>{item.description}</td>
-                <td><Checker id={item.id} checked={this.inclusive(item.id)}/></td>
+                <td><Checker id={item.id} checked={this.inclusive(item.id)} onClick={(e) => this.flipBox(e)}/></td>
             </tr>);
             return null;
         });
@@ -186,6 +198,9 @@ function mapDispatchToProps(dispatch) {
     return {
         getRegtransData: () => {
             dispatch(regtransData.getRegtransData());
+        },
+        buildTickList: () => {
+            dispatch(regtransData.tickList());
         }
     };
 }

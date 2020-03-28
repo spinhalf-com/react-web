@@ -46,16 +46,18 @@ class AccountsList extends Component {
 
     createAccountsList = () => {
         let rows = [];
-        this.props.accounts_data.map(item => {
-            let colour = item[1] < 0 ? 'red': 'darkslategrey';
-            rows.push(<tr key={item[0]}>
-                <td id={`n`+item[0]} style={{textAlign:'left',color:'darkslategrey'}}>{item[2]}</td>
-                <td id={`v`+item[0]} style={{textAlign:'right',color:colour}}>
-                    {this.formatToCurrency(item[1])}
-                </td>
-            </tr>);
-            return null;
-        });
+        if(this.props.accounts_data.length) {
+            this.props.accounts_data.map(item => {
+                let colour = item[1] < 0 ? 'red' : 'darkslategrey';
+                rows.push(<tr key={item[0]}>
+                    <td id={`n` + item[0]} style={{textAlign: 'left', color: 'darkslategrey'}}>{item[2]}</td>
+                    <td id={`v` + item[0]} style={{textAlign: 'right', color: colour}}>
+                        {this.formatToCurrency(item[1])}
+                    </td>
+                </tr>);
+                return null;
+            });
+        }
         return rows;
     };
 

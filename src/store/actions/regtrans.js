@@ -4,7 +4,8 @@ import { regtransConstants } from "../constants/regtrans";
 import headers from "../../config/headers";
 
 export const regtransData = {
-    getRegtransData
+    getRegtransData,
+    tickListData
 };
 
 function getRegtransData() {
@@ -38,25 +39,38 @@ function getRegtransData() {
 
     function success(data) {
         return {
-            type: regtransConstants.GET_REGTRANS_SUCCESS, data
-        }
-    }
-
-    function tickList(data) {
-        return {
-            type: regtransConstants.GET_REGTRANS_TICKLIST, data
+            type: regtransConstants.GET_REGTRANS_SUCCESS,
+            data
         }
     }
 
     function updateItem(data) {
         return {
-            type: regtransConstants.GET_REGTRANS_UPDATE_ITEM, data
+            type: regtransConstants.GET_REGTRANS_UPDATE_ITEM,
+            data
         }
     }
 
     function failure(error) {
         return {
-            type: regtransConstants.GET_REGTRANS_FAILURE, error
+            type: regtransConstants.GET_REGTRANS_FAILURE,
+            error
         }
     }
+}
+
+function tickListData() {
+    function tickList() {
+        return {
+            type: regtransConstants.GET_REGTRANS_TICKLIST
+        }
+    }
+
+    function updateTickList(data) {
+        return {
+            type: regtransConstants.UPDATE_REGTRANS_TICKLIST,
+            data
+        }
+    }
+
 }

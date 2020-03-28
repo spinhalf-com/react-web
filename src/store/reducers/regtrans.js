@@ -37,7 +37,7 @@ export default function location(state = initialState, action) {
 
         case regtransConstants.GET_REGTRANS_TICKLIST:
 
-
+        break;
         default:
             return state;
     }

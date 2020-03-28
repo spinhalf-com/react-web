@@ -13,13 +13,14 @@ class CodeSelector extends Component {
 
     createCodesArray = () => {
         let rows = [];
-        console.log(this.props)
-        this.props.defaults.map(item => {
-            rows.push(<option key={item['code']} value={item['code']}>
-                {item['description']}
-            </option>);
-            return null;
-        });
+        if(this.props.defaults.length) {
+            this.props.defaults.map(item => {
+                rows.push(<option key={item['code']} value={item['code']}>
+                    {item['description']}
+                </option>);
+                return null;
+            });
+        }
         return rows;
     };
 
@@ -75,7 +76,6 @@ class CodeSelector extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
     return {
         defaults: state.defaults
     };

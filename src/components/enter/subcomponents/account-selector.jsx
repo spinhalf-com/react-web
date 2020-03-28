@@ -10,12 +10,14 @@ class AccountSelector extends Component {
 
     createAccountsArray = () => {
         let rows = [];
-        this.props.accounts_data.map(item => {
-            rows.push(<option key={item[0]} value={item[0]}>
-                {item[2]}
-            </option>);
-            return null;
-        });
+        if(this.props.accounts_data.length) {
+            this.props.accounts_data.map(item => {
+                rows.push(<option key={item[0]} value={item[0]}>
+                    {item[2]}
+                </option>);
+                return null;
+            });
+        }
         return rows;
     };
 

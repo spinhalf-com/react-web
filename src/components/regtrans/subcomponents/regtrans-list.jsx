@@ -9,6 +9,7 @@ import {
 import config from './../../../config/config';
 import '../../../css/regtrans.css';
 import ConfirmButton from './confirm-button';
+import EditCell from './edit-cell';
 
 class RegtransList extends Component {
     constructor(props) {
@@ -48,8 +49,7 @@ class RegtransList extends Component {
         let rows = [];
         rows.push(
             <option key='' value=''>
-                {' '}
-                - select -{' '}
+                {' '}- select -{' '}
             </option>
         );
 
@@ -157,7 +157,9 @@ class RegtransList extends Component {
             allIds.push(item.id);
             rows.push(
                 <tr key={item.id}>
-                    <td>{item.account}</td>
+                    <td>
+                        <EditCell value={item.account} type='account' did={item.id}/>
+                    </td>
                     <td>{item.day}</td>
                     <td>{item.amount}</td>
                     <td>{item.code}</td>

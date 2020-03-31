@@ -93,3 +93,23 @@ export function submitEntries({ year, month, ids }) {
         );
     };
 }
+
+export function updateRegtransItem(data) {
+    return (dispatch) => {
+        let putUrl = config.API_URL + config.API_PREFIX + 'regtrans/' + data.id;
+
+        axios({
+            method: 'PUT',
+            url: putUrl,
+            headers: headers,
+            data
+        }).then(
+            (result) => {
+                dispatch(getRegtransData())
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    };
+}

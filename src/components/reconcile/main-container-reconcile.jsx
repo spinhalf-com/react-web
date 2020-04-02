@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Header from "../common/header";
-import MainContent from "../common/main-content";
+import MainContentReconcile from "./main-content-reconcile";
 import Footer from "../common/footer";
 
 class MainContainerReconcile extends Component{
@@ -9,7 +9,7 @@ class MainContainerReconcile extends Component{
         return (
             <div className="main_container">
                 <Header/>
-                <MainContent/>
+                <MainContentReconcile/>
                 <Footer/>
             </div>
         )

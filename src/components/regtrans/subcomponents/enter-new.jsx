@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { regtransData, addRegtransItem } from "../../../store/actions/regtrans";
-import { getDefaultData } from "../../../store/actions/default";
 import AccountSelector from "../../enter/subcomponents/account-selector";
 import CodeSelector from "../../enter/subcomponents/code-selector";
 

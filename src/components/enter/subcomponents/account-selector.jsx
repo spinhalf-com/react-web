@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 class AccountSelector extends Component {
     // constructor(props) {
@@ -12,7 +12,7 @@ class AccountSelector extends Component {
         let rows = [];
         if(this.props.accounts_data.length) {
             this.props.accounts_data.map(item => {
-                rows.push(<option key={item[0]} value={item[0]}>
+                rows.push(<option key={item[0]} value={item[0] }>
                     {item[2]}
                 </option>);
                 return null;
@@ -28,9 +28,10 @@ class AccountSelector extends Component {
                 ref={this.props.account}
                 name="account"
                 className={"accountSelector"}
-                onChange={this.props.returnAccountValue}
+                onChange={this.props.parentAction}
+                value={this.props.value}
             >
-                <option value=""> - - - - - -</option>
+                <option value=""> - select -</option>
                 {this.createAccountsArray()}
 
                 {/*<option value="AB">Barclays Current</option>*/}

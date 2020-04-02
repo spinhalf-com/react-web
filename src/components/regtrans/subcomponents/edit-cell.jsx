@@ -6,7 +6,7 @@ class EditCell extends Component {
     constructor(props) {
         super(props);
 
-        console.log(props);
+        //console.log(props);
 
         this.state = {
             editing: false,
@@ -18,12 +18,12 @@ class EditCell extends Component {
 
     makeEditable() {
         this.setState( {editing: true});
-        console.log(this.state)
+        //console.log(this.state)
     }
 
     editedCell(e) {
         this.setState({ value: e.target.value });
-        console.log(this.state)
+        //console.log(this.state)
     }
 
     updateRecord() {
@@ -34,7 +34,7 @@ class EditCell extends Component {
         putData[this.state.type] = this.state.value;
 
         this.props.updateRegtransItem(putData);
-        console.log('blur', putData)
+        //console.log('blur', putData)
     }
 
 

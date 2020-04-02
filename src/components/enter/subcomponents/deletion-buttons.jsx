@@ -15,12 +15,12 @@ class DeleteButtons extends Component {
 
     revealButtons(event) {
         this.setState({ clickReveal: true});
-        console.log(this.state);
+        //console.log(this.state);
     }
 
     hideButtons(event) {
         this.setState({ clickReveal: false});
-        console.log(this.state);
+        //console.log(this.state);
     }
 
     confirmDelete() {

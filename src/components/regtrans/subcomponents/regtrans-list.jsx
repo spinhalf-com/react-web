@@ -10,6 +10,7 @@ import config from './../../../config/config';
 import '../../../css/regtrans.css';
 import ConfirmButton from './confirm-button';
 import EditCell from './edit-cell';
+import EnterNew from './enter-new';
 
 class RegtransList extends Component {
     constructor(props) {
@@ -86,13 +87,13 @@ class RegtransList extends Component {
 
     chooseMonth(event) {
         this.month = event.target.value;
-        console.log(this.props.regtrans_data);
+        //console.log(this.props.regtrans_data);
         this.props.setPostMonth(event.target.value);
     }
 
     chooseYear(event) {
         this.year = event.target.value;
-        console.log(this.year);
+        //console.log(this.year);
         this.props.setPostYear(event.target.value);
     }
 
@@ -153,28 +154,40 @@ class RegtransList extends Component {
             </tr>
         );
 
-        this.props.regtrans_data.map((item) => {
-            allIds.push(item.id);
-            rows.push(
-                <tr key={item.id}>
-                    <td>
-                        <EditCell value={item.account} type='account' did={item.id}/>
-                    </td>
-                    <td>{item.day}</td>
-                    <td>{item.amount}</td>
-                    <td>{item.code}</td>
-                    <td>{item.description}</td>
-                    <td>
-                        <input
-                            type='checkbox'
-                            checked={this.inclusive(item.id)}
-                            onChange={(e) => this.flipBox(item.id)}
-                        />
-                    </td>
-                </tr>
-            );
-            return null;
-        });
+        //console.log(this.props.regtrans_data);
+
+        if(this.props.regtrans_data.length) {
+            this.props.regtrans_data.map((item) => {
+                allIds.push(item.id);
+                rows.push(
+                    <tr key={item.id}>
+                        <td>
+                            <EditCell value={item.account} type='account' did={item.id}/>
+                        </td>
+                        <td>
+                            <EditCell value={item.day} type='day' did={item.id}/>
+                        </td>
+                        <td>
+                            <EditCell value={item.amount} type='amount' did={item.id}/>
+                        </td>
+                        <td>
+                            <EditCell value={item.code} type='code' did={item.id}/>
+                        </td>
+                        <td>
+                            <EditCell value={item.description} type='description' did={item.id}/>
+                        </td>
+                        <td>
+                            <input
+                                type='checkbox'
+                                checked={this.inclusive(item.id)}
+                                onChange={(e) => this.flipBox(item.id)}
+                            />
+                        </td>
+                    </tr>
+                );
+                return null;
+            });
+        }
         // this.setState({'allIds': allIds});
         return rows;
     };
@@ -197,7 +210,7 @@ class RegtransList extends Component {
                                 <select
                                     className='selects'
                                     name='month'
-                                    defaultValue={this.month}
+                                    //defaultValue={this.month}
                                     onChange={(e) => this.chooseMonth(e)}
                                 >
                                     {this.buildMonthSelector()}
@@ -207,7 +220,7 @@ class RegtransList extends Component {
                                 <select
                                     className='selects'
                                     name='year'
-                                    defaultValue={this.year}
+                                    //defaultValue={this.year}
                                     onChange={(e) => this.chooseYear(e)}
                                 >
                                     {this.buildYearSelector()}
@@ -230,6 +243,7 @@ class RegtransList extends Component {
                             </tr>
                         </thead>
                         <tbody>{this.createRegtransList()}</tbody>
+                        <EnterNew/>
                     </table>
                 </div>
             </div>

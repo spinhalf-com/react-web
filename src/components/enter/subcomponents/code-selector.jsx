@@ -26,8 +26,8 @@ class CodeSelector extends Component {
 
     render() {
         return (
-            <select id="code" name="code">
-                <option value=""> - - - - - -</option>
+            <select id="code" name="code" onChange={this.props.parentAction} value={this.props.value}>
+                <option value=""> - select - </option>
                 {this.createCodesArray()}
                 {/*<option value="CD">Charitable Donations</option>*/}
                 {/*<option value="CP">Petrol</option>*/}

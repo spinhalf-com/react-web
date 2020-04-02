@@ -113,3 +113,23 @@ export function updateRegtransItem(data) {
         );
     };
 }
+
+export function addRegtransItem(data) {
+    return (dispatch) => {
+        let postUrl = config.API_URL + config.API_PREFIX + 'regtrans/';
+
+        axios({
+            method: 'POST',
+            url: postUrl,
+            headers: headers,
+            data
+        }).then(
+            (result) => {
+                dispatch(getRegtransData())
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    };
+}

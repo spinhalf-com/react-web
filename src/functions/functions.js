@@ -8,7 +8,20 @@ const Functions = {
                 .substring(1);
         }
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    },
+    parseQuery(query) {
+        return query
+            ? (/^[?#]/.test(query) ? query.slice(1) : query)
+                .split('&')
+                .reduce((params, param) => {
+                        let [key, value] = param.split('=');
+                        params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+                        return params;
+                    }, {}
+                )
+            : {}
     }
-}
+};
 
 export { Functions as default }
+

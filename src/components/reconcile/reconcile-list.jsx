@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-    regtransData,
-    setTickList,
-    setYear,
-    setMonth
-} from '../../store/actions/regtrans';
-import config from './../../config/config';
+    reconcileData,
+    setTickList
+} from '../../store/actions/reconcile';
 import '../../css/regtrans.css';
 import ConfirmButton from './confirm-button';
 import EditCell from './edit-cell';
@@ -23,7 +20,7 @@ class ReconcileList extends Component {
             selectedIds: [],
             allIds: []
         };
-        this.setDateInfo();
+        this.accountSetter = this.accountSetter.bind(this)
     }
 
     componentDidMount() {
@@ -31,8 +28,8 @@ class ReconcileList extends Component {
         this._isMounted = true;
     }
 
-    handleClick(event) {
-        event.preventDefault();
+    accountSetter(event) {
+
     }
 
     setDateInfo() {
@@ -47,56 +44,6 @@ class ReconcileList extends Component {
         }
     }
 
-    buildMonthSelector() {
-        let rows = [];
-        rows.push(
-            <option key='' value=''>
-                {' '}- select -{' '}
-            </option>
-        );
-
-        config.MONTHSLIST.map((item) => {
-            rows.push(
-                <option key={item.number} value={item.number}>
-                    {item.name}
-                </option>
-            );
-            return null;
-        });
-        return rows;
-    }
-
-    buildYearSelector() {
-        let rows = [];
-        rows.push(
-            <option key='' value=''>
-                {' '}
-                - select -{' '}
-            </option>
-        );
-
-        for (var i = -1; i < 3; i++) {
-            let yearValue = parseInt(this.year) + i;
-            rows.push(
-                <option key={yearValue} value={yearValue}>
-                    {yearValue}
-                </option>
-            );
-        }
-        return rows;
-    }
-
-    chooseMonth(event) {
-        this.month = event.target.value;
-        //console.log(this.props.regtrans_data);
-        this.props.setPostMonth(event.target.value);
-    }
-
-    chooseYear(event) {
-        this.year = event.target.value;
-        //console.log(this.year);
-        this.props.setPostYear(event.target.value);
-    }
 
     flip(event) {
         let allIds = [];
@@ -208,7 +155,7 @@ class ReconcileList extends Component {
                         <tr>
                             <td className='alt'>Account</td>
                             <td className='alt'>
-                                <AccountSelector/>
+                                <AccountSelector parentAction={(event) => this.accountSetter(event)}/>
                             </td>
                             <td className='alt'>
                                 <input/>

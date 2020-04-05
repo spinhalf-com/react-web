@@ -8,6 +8,7 @@ export default {
     CLIENT_SECRET: 'pu9RvIPawwTWB3N8QsCJtWCZ24lPuHlNZZxPBIoR',
     GRANT_TYPE: 'password',
     SCOPE: '*',
+    SELF_URL: "http://localhost:3000/",
     s3: {
         BUCKET: ''
     },
@@ -28,5 +29,14 @@ export default {
         { number: '10', name: 'October', index: 10 },
         { number: '11', name: 'November', index: 11 },
         { number: '12', name: 'December', index: 12 }
-    ]
+    ],
+    fitbitAuth: {
+        url: "https://www.fitbit.com/oauth2/authorize",
+        scope: "activity%20nutrition%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight",
+        client_id: "22BHDP",
+        client_secret: "f1c2743cda9922a08e8470cb77e95ba1",
+        callback_url: "fitbitcallback",
+        token_url: "fitbit_token",
+    }
+
 };

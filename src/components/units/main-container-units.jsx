@@ -1,20 +1,21 @@
 import React, { Component } from "react";
-
 import Header from "../common/header";
-// import MainContent from "../common/main-content";
 import Footer from "../common/footer";
+// import MainContentUnits from './subcomponents/main-content-units';
 
-class MainContainerMap extends Component{
+
+class MainContainerUnits extends Component{
+
     render() {
         return (
             <div className="main_container">
                 <Header/>
-                {/*<MainContent/>*/}
+                {/*<MainContentUnits/>*/}
                 <Footer/>
             </div>
         )
     }
 }
 
-export default MainContainerMap;
+export default MainContainerUnits;
 

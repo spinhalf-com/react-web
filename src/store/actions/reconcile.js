@@ -3,14 +3,14 @@ import axios from 'axios';
 import { regtransConstants } from '../constants/regtrans';
 import headers from '../../config/headers';
 
-export const regtransData = {
-    getRegtransData
+export const reconcileData = {
+    getReconcileData
 };
 
-function getRegtransData() {
+function getReconcileData() {
     return (dispatch) => {
         dispatch(request());
-        let getUrl = config.API_URL + config.API_PREFIX + 'regtrans';
+        let getUrl = config.API_URL + config.API_PREFIX + 'reconcile/';
         axios({
             method: 'GET',
             url: getUrl,
@@ -54,69 +54,14 @@ export function setTickList(data) {
     };
 }
 
-export function setYear(data) {
-    return {
-        type: regtransConstants.SET_REGTRANS_YEAR,
-        data
-    };
-}
-
-export function setMonth(data) {
-    return {
-        type: regtransConstants.SET_REGTRANS_MONTH,
-        data
-    };
-}
 
 export function submitEntries({ year, month, ids }) {
     const data = {
-        year: year,
-        month: month,
         ids: ids
     };
 
     return (dispatch) => {
-        let getUrl = config.API_URL + config.API_PREFIX + 'regtrans/run';
-
-        axios({
-            method: 'POST',
-            url: getUrl,
-            headers: headers,
-            data
-        }).then(
-            (result) => {
-                alert('Sent successfully');
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-    };
-}
-
-export function updateRegtransItem(data) {
-    return (dispatch) => {
-        let putUrl = config.API_URL + config.API_PREFIX + 'regtrans/' + data.id;
-
-        axios({
-            method: 'PUT',
-            url: putUrl,
-            headers: headers,
-            data
-        }).then(
-            (result) => {
-                dispatch(getRegtransData())
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-    };
-}
-
-export function addRegtransItem(data) {
-    return (dispatch) => {
-        let postUrl = config.API_URL + config.API_PREFIX + 'regtrans/';
+        let postUrl = config.API_URL + config.API_PREFIX + 'reconcile/run';
 
         axios({
             method: 'POST',
@@ -125,7 +70,27 @@ export function addRegtransItem(data) {
             data
         }).then(
             (result) => {
-                dispatch(getRegtransData())
+                dispatch(getReconcileData())
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    };
+}
+
+export function updateReconcileItem(data) {
+    return (dispatch) => {
+        let putUrl = config.API_URL + config.API_PREFIX + 'reconcile/' + data.id;
+
+        axios({
+            method: 'PUT',
+            url: putUrl,
+            headers: headers,
+            data
+        }).then(
+            (result) => {
+                dispatch(getReconcileData())
             },
             (error) => {
                 console.log(error);

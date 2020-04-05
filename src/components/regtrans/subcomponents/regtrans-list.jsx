@@ -156,7 +156,7 @@ class RegtransList extends Component {
 
         //console.log(this.props.regtrans_data);
 
-        if(this.props.regtrans_data.length) {
+        if(this.props.regtrans_data && this.props.regtrans_data.length) {
             this.props.regtrans_data.map((item) => {
                 allIds.push(item.id);
                 rows.push(

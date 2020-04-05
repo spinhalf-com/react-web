@@ -23,6 +23,7 @@ class Menu extends Component
         this.pedometerPath = '/pedometer';
         this.unitsPath = '/units';
         this.foodPath = '/food';
+        this.fitbitPath = '/fitbit';
     }
 
     render() {
@@ -70,6 +71,10 @@ class Menu extends Component
                     </li>
                     <li>
                         <a className='current' href={this.unitsPath}>Units</a>
+                        <ul></ul>
+                    </li>
+                    <li>
+                        <a className='current' href={this.fitbitPath}>Fitbit</a>
                         <ul></ul>
                     </li>
                     <li>

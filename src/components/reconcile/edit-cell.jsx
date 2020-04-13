@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateReconcileItem } from './../../store/actions/reconcile';
+import { editTransactionItem } from './../../store/actions/reconcile';
 
 class EditCell extends Component {
     constructor(props) {
@@ -33,7 +33,7 @@ class EditCell extends Component {
         };
         putData[this.state.type] = this.state.value;
 
-        this.props.updateReconcileItem(putData, this.props.account);
+        this.props.editTransactionItem(putData, this.props.account);
     }
 
 
@@ -49,8 +49,8 @@ class EditCell extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateReconcileItem: (data, account) => {
-            dispatch(updateReconcileItem(data, account));
+        editTransactionItem: (data, account) => {
+            dispatch(editTransactionItem(data, account));
         },
     };
 }

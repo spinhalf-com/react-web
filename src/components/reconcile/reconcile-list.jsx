@@ -49,10 +49,10 @@ class ReconcileList extends Component {
         let month = parseInt(dateObj.getMonth()) + 1;
         let day = dateObj.getDate();
 
-        if(String(month).length == 1) {
+        if(String(month).length === 1) {
             month = "0" + String(month);
         }
-        if(String(day).length == 1) {
+        if(String(day).length === 1) {
             day = "0" + String(day);
         }
         return year + "-" + month + "-" + day;
@@ -68,6 +68,10 @@ class ReconcileList extends Component {
     
     flipState(id) {
         this.props.updateReconcileItem(id, this.state.account);
+    }
+
+    refresh() {
+        this.props.getReconcileData(this.state.account);
     }
 
     inclusive(id) {
@@ -172,6 +176,7 @@ class ReconcileList extends Component {
                             <tr>
                                 <th colSpan='6'>
                                     Select Transactions For Reconciliation
+                                    <button className="refresh-button" onClick={() => this.refresh()}>Refresh</button>
                                 </th>
                             </tr>
                         </thead>

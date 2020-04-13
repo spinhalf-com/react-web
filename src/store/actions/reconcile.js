@@ -54,6 +54,26 @@ export function setTickList(data) {
     };
 }
 
+export function editTransactionItem(data, account) {
+    return (dispatch) => {
+        let putUrl = config.API_URL + config.API_PREFIX + 'recupdate/' + data.id;
+
+        axios({
+            method: 'PUT',
+            url: putUrl,
+            headers: headers,
+            data: data
+        }).then(
+            (result) => {
+                dispatch(getReconcileData(account))
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    };
+}
+
 export function updateReconcileItem(id, account) {
     return (dispatch) => {
         let putUrl = config.API_URL + config.API_PREFIX + 'reconcile/' + id;
@@ -64,7 +84,6 @@ export function updateReconcileItem(id, account) {
             headers: headers
         }).then(
             (result) => {
-                console.log(result.data)
                 dispatch(getReconcileData(account))
             },
             (error) => {

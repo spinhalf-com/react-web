@@ -1040,14 +1040,6 @@ div.pagination span.disabled {
     border-width: 0px 0px 1px 1px;
 }
 
-#menudiv {
-    position: fixed;
-    right: 0;
-    top: 50%;
-    width: 150px;
-    margin-top: -2.5em;
-}
-
 #menu {
     position: fixed;
     list-style-type: none;

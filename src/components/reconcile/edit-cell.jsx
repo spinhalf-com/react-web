@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { regtransData, updateRegtransItem } from "../../../store/actions/regtrans";
+import { updateReconcileItem } from './../../store/actions/reconcile';
 
 class EditCell extends Component {
     constructor(props) {
@@ -33,8 +33,7 @@ class EditCell extends Component {
         };
         putData[this.state.type] = this.state.value;
 
-        // this.props.updateRegtransItem(putData);
-        //console.log('blur', putData)
+        this.props.updateReconcileItem(putData, this.props.account);
     }
 
 
@@ -50,12 +49,9 @@ class EditCell extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        // getRegtransData: () => {
-        //     dispatch(regtransData.getRegtransData());
-        // },
-        // updateRegtransItem: (data) => {
-        //     dispatch(updateRegtransItem(data));
-        // },
+        updateReconcileItem: (data, account) => {
+            dispatch(updateReconcileItem(data, account));
+        },
     };
 }
 

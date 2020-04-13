@@ -1,8 +1,11 @@
 import { reconcileConstants } from '../constants/reconcile';
 
 const initialState = {
-    entries: [],
-    selectedEntries: []
+    unreconciled_records: [],
+    selectedEntries: [],
+    reconciled_total: null,
+    candidate_total: null,
+    running_total: null
 };
 
 export default function location(state = initialState, action) {
@@ -11,8 +14,13 @@ export default function location(state = initialState, action) {
             return state;
 
         case reconcileConstants.GET_RECONCILE_SUCCESS:
+
             return Object.assign({}, state, {
-                entries: action.data
+                unreconciled_records: action.data.records,
+                reconciled_total: currency(action.data.totals.reconciled).toFixed(2),
+                unreconciled_total: currency(action.data.totals.unreconciled).toFixed(2),
+                candidate_total: currency(action.data.totals.unconfirmed).toFixed(2),
+                running_total: (currency(action.data.totals.reconciled) + currency(action.data.totals.unconfirmed)).toFixed(2)
             });
 
         case reconcileConstants.GET_RECONCILE_FAILURE:
@@ -35,4 +43,11 @@ export default function location(state = initialState, action) {
         default:
             return state;
     }
+}
+
+function currency(value) {
+    if(isNaN(value) || value === null || value === "") {
+        return 0;
+    }
+    return parseFloat(value)
 }

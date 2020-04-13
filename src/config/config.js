@@ -1,8 +1,8 @@
 export default {
     MAX_ATTACHMENT_SIZE: 5000000,
     // API_URL:"http://jrcash.loc/",
-    // API_URL:"https://jfr.zapple.co/",
-    API_URL: 'http://localhost:8888/',
+    API_URL:"https://jfr.zapple.co/",
+    // API_URL: 'http://localhost:8888/',
     API_PREFIX: 'api/v2/',
     CLIENT_ID: '1',
     CLIENT_SECRET: 'pu9RvIPawwTWB3N8QsCJtWCZ24lPuHlNZZxPBIoR',
@@ -38,5 +38,4 @@ export default {
         callback_url: "fitbitcallback",
         token_url: "fitbit_token",
     }
-
 };

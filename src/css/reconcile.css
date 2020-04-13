@@ -1,0 +1,70 @@
+#recdiv {
+    width: 850px;
+}
+
+#confirm {
+    margin-left: 20px;
+    width: 200px;
+}
+
+.selects {
+    margin-left: 20px;
+    width: 200px;
+}
+
+.unconfirmed {
+    background-color: #CCFF99;
+}
+
+.reconcile-table {
+    width:900px;
+}
+
+.rec-balances-div {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    width: 160px;
+    margin-top: -2.5em;
+    background-color: #49bae8;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+    height: 95px;
+    opacity: 0.5;
+}
+
+.rec-balances-div-box {
+    width:80px;
+    text-align:right;
+    font-size: 100%;
+    float:right;
+    clear: both;
+    margin-bottom: 5px;
+    opacity: 100%;
+    background-color: #DDEFEF;
+    font-weight: bold;
+}
+
+.rec-balances-div-label {
+    float: left;
+    width: 10em;
+    margin-right: 1em;
+}
+
+.rec-balances-list {
+    width: 150px;
+    list-style-type: none;
+}
+
+.aligner {
+    float:right;
+}
+
+.headerValues {
+    text-align:right;
+    width:120px;
+}
+
+.confirm-button {
+    width: 150px
+}

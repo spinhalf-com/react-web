@@ -12,7 +12,7 @@ const ConfirmButton = (props) => {
     };
 
     return (
-        <button value='Confirm' id='confirm' onClick={(e) => submitEntries()}>
+        <button className="confirm-button" value='Confirm' id='confirm' onClick={(e) => submitEntries()}>
             Confirm
         </button>
     );

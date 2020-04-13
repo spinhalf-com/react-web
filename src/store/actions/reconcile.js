@@ -1,16 +1,16 @@
 import config from '../../config/config';
 import axios from 'axios';
-import { regtransConstants } from '../constants/regtrans';
+import { reconcileConstants } from "../constants/reconcile";
 import headers from '../../config/headers';
 
 export const reconcileData = {
     getReconcileData
 };
 
-function getReconcileData() {
+function getReconcileData(account) {
     return (dispatch) => {
         dispatch(request());
-        let getUrl = config.API_URL + config.API_PREFIX + 'reconcile/';
+        let getUrl = config.API_URL + config.API_PREFIX + 'reconcile/' + account;
         axios({
             method: 'GET',
             url: getUrl,
@@ -28,20 +28,20 @@ function getReconcileData() {
 
     function request() {
         return {
-            type: regtransConstants.GET_REGTRANS_REQUEST
+            type: reconcileConstants.GET_RECONCILE_REQUEST
         };
     }
 
     function success(data) {
         return {
-            type: regtransConstants.GET_REGTRANS_SUCCESS,
+            type: reconcileConstants.GET_RECONCILE_SUCCESS,
             data
         };
     }
 
     function failure(error) {
         return {
-            type: regtransConstants.GET_REGTRANS_FAILURE,
+            type: reconcileConstants.GET_RECONCILE_FAILURE,
             error
         };
     }
@@ -49,28 +49,23 @@ function getReconcileData() {
 
 export function setTickList(data) {
     return {
-        type: regtransConstants.SET_REGTRANS_SELECTED_ENTRIES,
+        type: reconcileConstants.SET_RECONCILE_SELECTED_ENTRIES,
         data
     };
 }
 
-
-export function submitEntries({ year, month, ids }) {
-    const data = {
-        ids: ids
-    };
-
+export function updateReconcileItem(id, account) {
     return (dispatch) => {
-        let postUrl = config.API_URL + config.API_PREFIX + 'reconcile/run';
+        let putUrl = config.API_URL + config.API_PREFIX + 'reconcile/' + id;
 
         axios({
-            method: 'POST',
-            url: postUrl,
-            headers: headers,
-            data
+            method: 'PUT',
+            url: putUrl,
+            headers: headers
         }).then(
             (result) => {
-                dispatch(getReconcileData())
+                console.log(result.data)
+                dispatch(getReconcileData(account))
             },
             (error) => {
                 console.log(error);
@@ -79,18 +74,36 @@ export function submitEntries({ year, month, ids }) {
     };
 }
 
-export function updateReconcileItem(data) {
+export function confirmReconcileItems(account) {
     return (dispatch) => {
-        let putUrl = config.API_URL + config.API_PREFIX + 'reconcile/' + data.id;
+        let putUrl = config.API_URL + config.API_PREFIX + 'reconcile/run/' + account;
 
         axios({
             method: 'PUT',
             url: putUrl,
-            headers: headers,
-            data
+            headers: headers
         }).then(
             (result) => {
-                dispatch(getReconcileData())
+                dispatch(getReconcileData(account))
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    };
+}
+
+export function clearReconcileItems(account) {
+    return (dispatch) => {
+        let deleteUrl = config.API_URL + config.API_PREFIX + 'reconcile/' + account;
+
+        axios({
+            method: 'DELETE',
+            url: deleteUrl,
+            headers: headers
+        }).then(
+            (result) => {
+                dispatch(getReconcileData(account))
             },
             (error) => {
                 console.log(error);

@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
     reconcileData,
-    setTickList
+    setTickList,
+    updateReconcileItem,
+    clearReconcileItems,
+    confirmReconcileItems
 } from '../../store/actions/reconcile';
 import '../../css/regtrans.css';
-import ConfirmButton from './confirm-button';
 import EditCell from './edit-cell';
 import AccountSelector from './../enter/subcomponents/account-selector';
 
@@ -15,8 +17,6 @@ class ReconcileList extends Component {
         super(props);
 
         this.state = {
-            year: '',
-            month: '',
             selectedIds: [],
             allIds: []
         };
@@ -24,56 +24,50 @@ class ReconcileList extends Component {
     }
 
     componentDidMount() {
-        // this.props.getRegtransData();
         this._isMounted = true;
+        this.pathAccount();
+    }
+
+    pathAccount() {
+        let pathStack = window.location.pathname.split('/');
+        let account = pathStack[2] === undefined ? "": pathStack[2];
+        this.setState({ account: account})
+        if(pathStack[2] !== undefined) {
+            this.props.getReconcileData(pathStack[2])
+        }
     }
 
     accountSetter(event) {
-
+        let pathStack = window.location.pathname.split('/');
+        pathStack[2] = event.target.value;
+        window.location.href = pathStack.join('/');
     }
 
-    setDateInfo() {
-        let date = new Date();
-        // console.log(date)
-        this.year = date.getFullYear();
-        let month = parseInt(date.getMonth()) + 1;
-        if (month.toString().length === 1) {
-            this.month = '0' + month.toString();
-        } else {
-            this.month = month.toString();
+    formatDate(date) {
+        let dateObj = new Date(date);
+        let year = dateObj.getFullYear();
+        let month = parseInt(dateObj.getMonth()) + 1;
+        let day = dateObj.getDate();
+
+        if(String(month).length == 1) {
+            month = "0" + String(month);
         }
+        if(String(day).length == 1) {
+            day = "0" + String(day);
+        }
+        return year + "-" + month + "-" + day;
     }
 
-
-    flip(event) {
-        let allIds = [];
-        this.props.regtrans_data.map((item) => {
-            allIds.push(item.id);
-            return null;
-        });
-        if (event.target.checked) {
-            this.setState({ selectedIds: allIds });
-            this.props.setCheckboxList(allIds);
-        } else {
-            this.setState({ selectedIds: [] });
-            this.props.setCheckboxList([]);
-        }
+    clear() {
+        this.props.clearReconcileItems(this.state.account)
     }
 
-    flipBox(id) {
-        let checkedEntries = [...this.state.selectedIds];
-
-        // If the ID is in the array, remove it - else push it.
-        const isInArray = checkedEntries.indexOf(id);
-        if (isInArray !== -1) {
-            checkedEntries.splice(isInArray, 1);
-        } else {
-            checkedEntries.push(id);
-        }
-        // Set the local component state
-        this.setState({ selectedIds: checkedEntries });
-        // Set the Redux state
-        this.props.setCheckboxList(checkedEntries);
+    confirm() {
+        this.props.confirmReconcileItems(this.state.account)
+    }
+    
+    flipState(id) {
+        this.props.updateReconcileItem(id, this.state.account);
     }
 
     inclusive(id) {
@@ -83,52 +77,52 @@ class ReconcileList extends Component {
         return this.state.selectedIds.includes(id);
     }
 
-    createRegtransList = () => {
+    createReconcileList = () => {
         let rows = [];
         let allIds = [];
         rows.push(
             <tr key='0'>
                 <th>Account</th>
-                <th>Day</th>
+                <th>Date</th>
                 <th>Amount</th>
                 <th>Code</th>
                 <th>Description</th>
                 <th>
-                    <input
-                        type='checkbox'
-                        onClick={(e) => this.flip(e)}
-                    ></input>
+                    <button
+                        onClick={() => this.clear()}
+                    >Clear</button>
                 </th>
             </tr>
         );
 
-        //console.log(this.props.regtrans_data);
-
-        if(this.props.regtrans_data.length) {
-            this.props.regtrans_data.map((item) => {
+        if(this.props.unreconciled_records) {
+            this.props.unreconciled_records.map((item) => {
                 allIds.push(item.id);
+                let background = item.Reconciled === 2 ? "#CCFF99": "";
+                let formattedDate = this.formatDate(item.Date);
+
                 rows.push(
                     <tr key={item.id}>
-                        <td>
-                            <EditCell value={item.account} type='account' did={item.id}/>
+                        <td style={{backgroundColor: background}}>
+                            <EditCell value={item.Transtype} type='account' account={this.state.account} did={item.id}/>
                         </td>
-                        <td>
-                            <EditCell value={item.day} type='day' did={item.id}/>
+                        <td style={{backgroundColor: background}}>
+                            <EditCell value={formattedDate} type='date' account={this.state.account} did={item.id}/>
                         </td>
-                        <td>
-                            <EditCell value={item.amount} type='amount' did={item.id}/>
+                        <td style={{backgroundColor: background}}>
+                            <EditCell value={item.Amount} type='amount' account={this.state.account} did={item.id}/>
                         </td>
-                        <td>
-                            <EditCell value={item.code} type='code' did={item.id}/>
+                        <td style={{backgroundColor: background}}>
+                            <EditCell value={item.Code} type='code' account={this.state.account} did={item.id}/>
                         </td>
-                        <td>
-                            <EditCell value={item.description} type='description' did={item.id}/>
+                        <td style={{backgroundColor: background}}>
+                            <EditCell value={item.Description} type='description' account={this.state.account} did={item.id}/>
                         </td>
-                        <td>
+                        <td style={{backgroundColor: background}}>
                             <input
                                 type='checkbox'
-                                checked={this.inclusive(item.id)}
-                                onChange={(e) => this.flipBox(item.id)}
+                                checked={item.Reconciled === 2}
+                                onChange={(e) => this.flipState(item.id)}
                             />
                         </td>
                     </tr>
@@ -136,7 +130,6 @@ class ReconcileList extends Component {
                 return null;
             });
         }
-        // this.setState({'allIds': allIds});
         return rows;
     };
 
@@ -147,7 +140,7 @@ class ReconcileList extends Component {
                 className={'regtrans_list'}
                 style={{ width: '850px' }}
             >
-                <table id='rounded-corner' className='regtrans-table'>
+                <table id='rounded-corner' className='reconcile-table'>
                     <tbody>
                         <tr>
                             <th colSpan='6'>Reconcile Transactions</th>
@@ -155,34 +148,34 @@ class ReconcileList extends Component {
                         <tr>
                             <td className='alt'>Account</td>
                             <td className='alt'>
-                                <AccountSelector parentAction={(event) => this.accountSetter(event)}/>
+                                <AccountSelector value={this.state.account} parentAction={(event) => this.accountSetter(event)}/>
                             </td>
                             <td className='alt'>
-                                <input/>
+                                <input className="headerValues" readOnly value={this.props.reconciled_total || ""}/>
                             </td>
                             <td className='alt'>
-                                <input/>
+                                <input className="headerValues" readOnly value={this.props.candidate_total || ""}/>
                             </td>
                             <td className='alt'>
-                                <input/>
+                                <input className="headerValues" readOnly value={this.props.running_total || ""}/>
                             </td>
                             <td className='alt'>
-                                <ConfirmButton/>
+                                <button className="confirm-button" onClick={() => this.confirm()}>Confirm</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div id='recdiv'>
-                    <table id='rounded-corner' className='regtrans-table'>
+                    <table id='rounded-corner' className='reconcile-table'>
                         <thead>
                             <tr>
                                 <th colSpan='6'>
-                                    Select Transactions For Entry
+                                    Select Transactions For Reconciliation
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>{/**this.createRegtransList()**/}</tbody>
+                        <tbody>{ this.createReconcileList() }</tbody>
                     </table>
                 </div>
             </div>
@@ -192,13 +185,31 @@ class ReconcileList extends Component {
 
 function mapStateToProps(state) {
     return {
-
+        unreconciled_records: state.reconcile.unreconciled_records,
+        reconciled_total: state.reconcile.reconciled_total,
+        candidate_total: state.reconcile.candidate_total,
+        running_total: state.reconcile.running_total,
+        unreconciled_total: state.reconcile.unreconciled_total
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-
+        getReconcileData: (account) => {
+            dispatch(reconcileData.getReconcileData(account));
+        },
+        buildTickList: () => {
+            dispatch(setTickList());
+        },
+        updateReconcileItem: (item, account) => {
+            dispatch(updateReconcileItem(item, account));
+        },
+        clearReconcileItems: (account) => {
+            dispatch(clearReconcileItems(account));
+        },
+        confirmReconcileItems: (account) => {
+            dispatch(confirmReconcileItems(account));
+        }
     };
 }
 

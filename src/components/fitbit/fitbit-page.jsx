@@ -24,6 +24,7 @@ class FitbitPage extends Component {
         let params = Functions.parseQuery(window.location.hash);
         Object.entries(params).map(([key, value]) => {
             this.setState({[key]: value});
+            return null;
         });
     }
 
@@ -55,7 +56,7 @@ class FitbitPage extends Component {
     }
     
     fitbitAuthUrl() {
-        let authUrl = config.fitbitAuth.url + "?response_type=token" + "&client_id=" + config.fitbitAuth.client_id + "&redirect_uri=" + config.SELF_URL + config.fitbitAuth.callback_url + "&scope=" + config.fitbitAuth.scope + "&expires_in=31536000";
+        let authUrl = config.fitbitAuth.url + "?response_type=token&client_id=" + config.fitbitAuth.client_id + "&redirect_uri=" + config.SELF_URL + config.fitbitAuth.callback_url + "&scope=" + config.fitbitAuth.scope + "&expires_in=31536000";
         return authUrl;
     }
 

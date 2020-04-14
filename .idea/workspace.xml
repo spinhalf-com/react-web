@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f639818a-1931-4da0-9bbd-c19afe8da9dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/actions/transactions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/constants/transactions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducers/transactions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/enter/enter-transaction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/enter-transaction.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/edit-input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/edit-cell.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/transaction-row.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/transaction-row.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/transaction-list.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/transaction-list.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functions/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/transactions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/transactions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/constants/transactions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/constants/transactions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/transactions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/transactions.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,22 +22,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/reconcile/reconcile-list.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="192" selection-start-line="192" selection-end-line="222" selection-end-column="75" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/enter/enter-transaction.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="8" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+            <state relative-caret-position="626">
+              <caret line="158" selection-start-line="158" selection-end-line="170" selection-end-column="1" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="e#155#218#0" expanded="true" />
@@ -48,10 +35,44 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/edit-cell.jsx">
+        <entry file="file://$PROJECT_DIR$/src/components/enter/transaction-list.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="630">
+              <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#432#487#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/functions/functions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/reconcile/reconcile-list.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="47" selection-start-line="47" selection-end-line="60" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -62,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/store/actions/transactions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="114" column="37" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="37" />
+            <state relative-caret-position="480">
+              <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -72,13 +93,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/store/reducers/index.js">
+        <entry file="file://$PROJECT_DIR$/src/store/reducers/transactions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="195">
+              <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -123,8 +141,10 @@
       <find>console</find>
       <find>RECONCILE</find>
       <find>reconcileConstants</find>
-      <find>getReconcileData</find>
+      <find>Recent Transactions</find>
       <find>Reconcile</find>
+      <find>forEach</find>
+      <find>getReconcileData</find>
     </findStrings>
     <replaceStrings>
       <replace>RECONCILE</replace>
@@ -134,10 +154,11 @@
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/components/regtrans</dir>
-      <dir>$PROJECT_DIR$/src/components</dir>
       <dir>$PROJECT_DIR$/src/components/reconcile</dir>
       <dir>$PROJECT_DIR$/src/css</dir>
       <dir>$PROJECT_DIR$/src</dir>
+      <dir>$PROJECT_DIR$/src/components/enter</dir>
+      <dir>$PROJECT_DIR$/src/components</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -146,10 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/regtrans/subcomponents/checker.jsx" />
-        <option value="$PROJECT_DIR$/src/store/reducers/regtrans.js" />
-        <option value="$PROJECT_DIR$/src/store/constants/regtrans.js" />
-        <option value="$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx" />
         <option value="$PROJECT_DIR$/src/store/actions/default.js" />
         <option value="$PROJECT_DIR$/src/store/actions/cryptos.js" />
         <option value="$PROJECT_DIR$/src/components/enter/subcomponents/deletion-buttons.jsx" />
@@ -191,12 +208,16 @@
         <option value="$PROJECT_DIR$/src/components/reconcile/edit-cell.jsx" />
         <option value="$PROJECT_DIR$/src/components/reconcile/reconcile-list.jsx" />
         <option value="$PROJECT_DIR$/src/components/enter/subcomponents/edit-input.jsx" />
-        <option value="$PROJECT_DIR$/src/store/constants/transactions.js" />
-        <option value="$PROJECT_DIR$/src/store/reducers/transactions.js" />
         <option value="$PROJECT_DIR$/src/store/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/components/enter/subcomponents/edit-cell.jsx" />
-        <option value="$PROJECT_DIR$/src/store/actions/transactions.js" />
         <option value="$PROJECT_DIR$/src/components/enter/enter-transaction.jsx" />
+        <option value="$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx" />
+        <option value="$PROJECT_DIR$/src/store/constants/transactions.js" />
+        <option value="$PROJECT_DIR$/src/store/reducers/transactions.js" />
+        <option value="$PROJECT_DIR$/src/store/actions/transactions.js" />
+        <option value="$PROJECT_DIR$/src/functions/functions.js" />
+        <option value="$PROJECT_DIR$/src/components/enter/transaction-list.jsx" />
+        <option value="$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx" />
       </list>
     </option>
   </component>
@@ -291,6 +312,12 @@
               <item name="react-web" type="b2602c69:ProjectViewProjectNode" />
               <item name="react-web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="store" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -328,6 +355,7 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -391,12 +419,12 @@
       <workItem from="1585292540180" duration="508000" />
       <workItem from="1585331459066" duration="3402000" />
       <workItem from="1586378321060" duration="382000" />
-      <workItem from="1586454644581" duration="39348000" />
+      <workItem from="1586454644581" duration="49959000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92116000" />
+    <option name="totallyTimeSpent" value="102727000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="23" width="1220" height="1123" extended-state="0" />
@@ -423,6 +451,28 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2665535" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297769" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -461,39 +511,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/store/constants/defaults.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/default.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/code-selector.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="92" selection-start-line="28" selection-start-column="92" selection-end-line="28" selection-end-column="92" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/menu.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/regtrans/subcomponents/enter-new.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -857,23 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/constants/transactions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/reconcile/edit-cell.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -891,10 +891,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducers/transactions.js">
+    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -908,33 +908,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/reconcile/reconcile-list.jsx">
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="192" selection-start-line="192" selection-end-line="222" selection-end-column="75" />
+        <state relative-caret-position="225">
+          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/transactions.js">
+    <entry file="file://$PROJECT_DIR$/src/store/constants/transactions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="114" column="37" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/enter/enter-transaction.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="8" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        <state relative-caret-position="626">
+          <caret line="158" selection-start-line="158" selection-end-line="170" selection-end-column="1" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="e#155#218#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/transactions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/transactions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/reconcile/reconcile-list.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="47" selection-start-line="47" selection-end-line="60" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functions/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/transaction-list.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#432#487#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>

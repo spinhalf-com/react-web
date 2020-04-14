@@ -2,7 +2,8 @@ import { transactionsConstants } from '../constants/transactions';
 
 const initialState = {
     transactions_array: [],
-    selectedEntries: []
+    selectedEntries: [],
+    queryString: null
 };
 
 export default function location(state = initialState, action) {
@@ -11,13 +12,21 @@ export default function location(state = initialState, action) {
             return state;
 
         case transactionsConstants.GET_TRANSACTIONS_SUCCESS:
-
             return Object.assign({}, state, {
-                unreconciled_records: action.data.records
+                transactions_array: action.data.data
             });
 
         case transactionsConstants.GET_TRANSACTIONS_FAILURE:
             return action.error;
+
+        case transactionsConstants.GET_TRANSACTION_SEARCH_QUERY:
+            return state.queryString;
+
+        case transactionsConstants.SET_TRANSACTION_SEARCH_QUERY:
+            return Object.assign({}, state, {
+                queryString: action.data
+            });
+            return state;
 
         case transactionsConstants.UPDATE_TRANSACTIONS_TICKLIST:
             let checkedState = [...state];

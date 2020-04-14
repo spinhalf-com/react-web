@@ -7,10 +7,10 @@ export const transactionsData = {
     getTransactionsData
 };
 
-function getTransactionsData(account) {
+function getTransactionsData(queryArray = null) {
     return (dispatch) => {
         dispatch(request());
-        let getUrl = config.API_URL + config.API_PREFIX + 'transactions/' + account;
+        let getUrl = config.API_URL + config.API_PREFIX + queryArray;
         axios({
             method: 'GET',
             url: getUrl,
@@ -53,6 +53,20 @@ export function setTickList(data) {
         data
     };
 }
+
+export function setQueryString(data) {
+    return {
+        type: transactionsConstants.SET_TRANSACTION_SEARCH_QUERY,
+        data
+    };
+}
+
+export function getQueryString() {
+    return {
+        type: transactionsConstants.GET_TRANSACTION_SEARCH_QUERY
+    };
+}
+
 
 export function editTransactionItem(data, account) {
     return (dispatch) => {

@@ -20,6 +20,20 @@ const Functions = {
                     }, {}
                 )
             : {}
+    },
+    formatDate(date) {
+        let dateObj = new Date(date);
+        let year = dateObj.getFullYear();
+        let month = parseInt(dateObj.getMonth()) + 1;
+        let day = dateObj.getDate();
+
+        if(String(month).length === 1) {
+            month = "0" + String(month);
+        }
+        if(String(day).length === 1) {
+            day = "0" + String(day);
+        }
+        return year + "-" + month + "-" + day;
     }
 };
 

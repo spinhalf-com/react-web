@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ListTableFoot from "../enter/subcomponents/list-table-foot";
 import FilterDiv from './subcomponents/filter-div';
 import ListHeader from "./subcomponents/list-header";
@@ -6,6 +7,8 @@ import PaginationRow from "./subcomponents/pagination-row";
 import TransactionRow from "./subcomponents/transaction-row";
 // import TableHead from "./subcomponents/table-head";
 import TableHeader from "./subcomponents/table-header";
+import {getQueryString, setQueryString, transactionsData} from "../../store/actions/transactions";
+import Functions from './../../functions/functions';
 
 class TransactionList extends Component {
     constructor(props) {
@@ -16,24 +19,12 @@ class TransactionList extends Component {
         }
     }
 
-    returnTransactions() {
-        return [{
-            id: 39747,
-            account: 'MZ',
-            date: '2020-01-22',
-            amount: -5.97,
-            code: 'F',
-            description: 'GERRARDS CROSS CONN GERRARDS CROSS GBR',
-            reconciled: 0
-        },{
-            id: 39748,
-            account: 'AB',
-            date: '2020-01-18',
-            amount: -1200,
-            code: '65B',
-            description: 'Mortgage',
-            reconciled: 1
-        }];
+    componentDidMount() {
+        this.props.getTransactionsData('transaction_search');
+    }
+
+    reveal() {
+        console.log(this.props.transactions_array);
     }
 
     render() {
@@ -44,21 +35,21 @@ class TransactionList extends Component {
                 </div>
                 <div className={"swap"} id="listrecords">
                 </div>
-                <table id="rounded-corner" className={"table-right rounded-corner-right"}>
+                <table id="rounded-corner" className={"table-right rounded-corner-right"} onMouseOver={this.reveal()}>
                     <TableHeader/>
                     <tbody>
                     <ListHeader/>
                     <PaginationRow/>
                     {
-                        this.returnTransactions().map((item) =>
+                        this.props.transactions_array.map((item) =>
                             <TransactionRow key={item.id}
                                 id={item.id}
-                                account={item.account}
-                                date={item.date}
-                                amount={item.amount}
-                                code={item.code}
-                                description={item.description}
-                                reconciled={item.reconciled}
+                                account={item.Transtype}
+                                date={Functions.formatDate(item.Date)}
+                                amount={item.Amount}
+                                code={item.Code}
+                                description={item.Description}
+                                reconciled={item.Reconciled}
                             />
                         )
                     }
@@ -69,4 +60,21 @@ class TransactionList extends Component {
         )
     }
 }
-export default TransactionList;
+
+
+function mapStateToProps(state) {
+    return {
+        transactions_array: state.transactions.transactions_array
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getTransactionsData: (queryString = null) => {
+            dispatch(transactionsData.getTransactionsData(queryString));
+        }
+    };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionList);

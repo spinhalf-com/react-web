@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EditInput from "./edit-input";
+import EditInput from "./edit-cell";
 import DeleteButtons from "./deletion-buttons";
 
 class TransactionRow extends Component {

@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+
 // import config from '../config/config';
 // import axios from 'axios';
 import AccountSelector from "./subcomponents/account-selector";
 import CodeSelector from "./subcomponents/code-selector";
 import TableHead from "./subcomponents/table-head";
 import EnterTableFoot from "./subcomponents/enter-table-foot";
+import EditCell from './subcomponents/edit-cell';
+import {
+    transactionsData,
+    updateTransactionItem,
+    confirmTransactionItems,
+    clearTransactionItems
+} from "../../store/actions/transactions";
 
 class EnterTransaction extends Component {
     constructor(props) {
@@ -146,4 +156,18 @@ class EnterTransaction extends Component {
     }
 }
 
-export default EnterTransaction;
+function mapStateToProps(state) {
+    return {
+        transactions_array: state.reconcile.transactions_array
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getTransactionsData: (account) => {
+            dispatch(transactionsData.getTransactionsData(account));
+        }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EnterTransaction);

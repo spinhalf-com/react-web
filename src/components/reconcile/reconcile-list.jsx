@@ -38,9 +38,11 @@ class ReconcileList extends Component {
     }
 
     accountSetter(event) {
+        this.setState({ account: event.target.value})
         let pathStack = window.location.pathname.split('/');
         pathStack[2] = event.target.value;
-        window.location.href = pathStack.join('/');
+        // window.location.href = pathStack.join('/');
+        this.refresh(event.target.value);
     }
 
     formatDate(date) {
@@ -70,8 +72,8 @@ class ReconcileList extends Component {
         this.props.updateReconcileItem(id, this.state.account);
     }
 
-    refresh() {
-        this.props.getReconcileData(this.state.account);
+    refresh(account = null) {
+        this.props.getReconcileData(account ? account: this.state.account);
     }
 
     inclusive(id) {

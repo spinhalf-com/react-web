@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import Functions from './../../functions/functions';
 
 // import config from '../config/config';
 // import axios from 'axios';
@@ -13,7 +13,8 @@ import {
     transactionsData,
     updateTransactionItem,
     confirmTransactionItems,
-    clearTransactionItems
+    clearTransactionItems,
+    getDescriptionOptions
 } from "../../store/actions/transactions";
 
 class EnterTransaction extends Component {
@@ -22,7 +23,13 @@ class EnterTransaction extends Component {
 
         this.state = {
             error: '',
-            postData: [],
+            postData: {
+                account: '',
+                date: '',
+                amount: '',
+                code: '',
+                description: ''
+            },
             showTransferAccount: false
         };
 
@@ -35,35 +42,6 @@ class EnterTransaction extends Component {
         this.setState({postData: postData});
     }
 
-    // dismissError() {
-    //     this.setState({ error: '' });
-    // }
-    //
-    // handleSubmit(evt) {
-    //     evt.preventDefault();
-    //
-    //     this.postData();
-    //     return this.setState({ error: '' });
-    // }
-    //
-    // postData() {
-    //     //let data = this.state.data;
-    // }
-    //
-    // handleSuccess(response) {
-    //     this.setState({
-    //         error: null,
-    //     });
-    // }
-    //
-    // handleError(error) {
-    //     this.setState({
-    //         error: true,
-    //         error_message: error,
-    //
-    //     });
-    // }
-
     accountSetter(target, value) {
         this.setPostState(target, value);
     }
@@ -73,6 +51,44 @@ class EnterTransaction extends Component {
             showTransferAccount: this.refs.is_transfer.checked
         });
         // console.log(this.refs.is_transfer.checked);
+    }
+
+    clearForm() {
+
+    }
+
+    save() {
+        console.log(this.state.postData)
+    }
+
+    autoDate(event) {
+        let date = null;
+        if(event.target.value === '') {
+            date = Functions.formatDate(new Date());
+        } else {
+            date = Functions.formatDate(event.target.value);
+        }
+        this.setPostState('date', date);
+        console.log(Functions.formatDate(event.target.value))
+    }
+
+    checkAmount(amount) {
+        if(amount > 0) {
+            if(window.confirm("Is this a credit amount?")) {
+                this.setPostState('amount', amount);
+            } else {
+                this.setPostState('amount', -amount);
+            }
+        }
+    }
+    
+    descriptionSearch(event) {
+        let text = event.target.value;
+        let code = this.state.postData.code;
+        
+        if(text.length > 1) {
+            this.props.getDescriptionOptions(text, code);
+        }
     }
 
     render() {
@@ -89,7 +105,7 @@ class EnterTransaction extends Component {
                                 Account
                             </td>
                             <td className="alt">
-                                <AccountSelector  id={'account'} parentAction={this.accountSetter}/>
+                                <AccountSelector  name={'account'} parentAction={this.accountSetter}/>
                             </td>
                         </tr>
 
@@ -98,8 +114,8 @@ class EnterTransaction extends Component {
                                 Date
                             </td>
                             <td className="alt" id="dc">
-                                <input type="text" id="date" name="date"  className={"inputCell"}/>
-                                    <input type="hidden" id="datestate" value="3"/>
+                                <input type="text" value={this.state.postData.date} onFocus={(event) => this.autoDate(event)} onChange={(event) => this.autoDate(event)} name="date"  className={"inputCell"}/>
+
                             </td>
                         </tr>
 
@@ -108,7 +124,7 @@ class EnterTransaction extends Component {
                                 Amount
                             </td>
                             <td className="alt">
-                                <input type="text" id="amount" name="amount" className={"inputCell"}/>
+                                <input type="text" value={this.state.postData.amount} onChange={(event) => this.checkAmount(event.target.value)} name="amount" className={"inputCell"}/>
                             </td>
                         </tr>
 
@@ -118,9 +134,9 @@ class EnterTransaction extends Component {
                                 <input type="checkbox" name="transfer" ref="is_transfer" id="transfer" onChange={event => this.checkStatus(event)}/>
                             </td>
                             <td className="alt">
-                               <CodeSelector/>
+                               <CodeSelector name="code" onChange={(event) => this.accountSetter(event)}/>
                                 <div id="instr">
-                                    { this.state.showTransferAccount ? <AccountSelector id={'taccount'}/> : null }
+                                    { this.state.showTransferAccount ? <AccountSelector parentAction={this.accountSetter} name={'taccount'}/> : null }
                                 </div>
                             </td>
                         </tr>
@@ -130,7 +146,7 @@ class EnterTransaction extends Component {
                                 Description
                             </td>
                             <td className="alt">
-                                <textarea id="description" name="description" cols="20" rows="3"
+                                <textarea id="description" name="description" cols="20" rows="3" onKeyUp={(event) => this.descriptionSearch(event)}
                                           className="prompt inputCell"></textarea>
                                 <div id="hiddenList" className="hiddenList" style={{display:"none"}}></div>
                             </td>
@@ -158,7 +174,8 @@ class EnterTransaction extends Component {
 
 function mapStateToProps(state) {
     return {
-        transactions_array: state.reconcile.transactions_array
+        transactions_array: state.transactions.transactions_array,
+        matching_description_data: state.transactions.matching_description_data
     };
 }
 
@@ -166,6 +183,9 @@ function mapDispatchToProps(dispatch) {
     return {
         getTransactionsData: (account) => {
             dispatch(transactionsData.getTransactionsData(account));
+        },
+        getDescriptionOptions: (text, code) => {
+            dispatch(getDescriptionOptions(text, code));
         }
     };
 }

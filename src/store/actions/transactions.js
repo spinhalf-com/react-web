@@ -47,9 +47,9 @@ function getTransactionsData(queryArray = null) {
     }
 }
 
-export function setTickList(data) {
+export function setMatchingDescriptionData(data) {
     return {
-        type: transactionsConstants.SET_TRANSACTIONS_SELECTED_ENTRIES,
+        type: transactionsConstants.SET_MATCHING_DESCRIPTION_DATA,
         data
     };
 }
@@ -67,10 +67,9 @@ export function getQueryString() {
     };
 }
 
-
 export function editTransactionItem(data, account) {
     return (dispatch) => {
-        let putUrl = config.API_URL + config.API_PREFIX + 'recupdate/' + data.id;
+        let putUrl = config.API_URL + config.API_PREFIX + 'transaction/' + data.id;
 
         axios({
             method: 'PUT',
@@ -79,7 +78,7 @@ export function editTransactionItem(data, account) {
             data: data
         }).then(
             (result) => {
-                dispatch(getTransactionsData(account))
+                dispatch(getTransactionsData())
             },
             (error) => {
                 console.log(error);
@@ -88,17 +87,17 @@ export function editTransactionItem(data, account) {
     };
 }
 
-export function updateTransactionItem(id, account) {
+export function getDescriptionOptions(text, code) {
     return (dispatch) => {
-        let putUrl = config.API_URL + config.API_PREFIX + 'reconcile/' + id;
+        let getUrl = config.API_URL + config.API_PREFIX + 'recent/' + code + '/' + text;
 
         axios({
-            method: 'PUT',
-            url: putUrl,
-            headers: headers
+            method: 'GET',
+            url: getUrl,
+            headers: headers,
         }).then(
             (result) => {
-                dispatch(getTransactionsData(account))
+                dispatch(setMatchingDescriptionData(result.data))
             },
             (error) => {
                 console.log(error);
@@ -107,17 +106,18 @@ export function updateTransactionItem(id, account) {
     };
 }
 
-export function confirmTransactionItems(account) {
+export function saveTransactionItem(data) {
     return (dispatch) => {
-        let putUrl = config.API_URL + config.API_PREFIX + 'reconcile/run/' + account;
+        let postUrl = config.API_URL + config.API_PREFIX + 'transaction';
 
         axios({
-            method: 'PUT',
-            url: putUrl,
-            headers: headers
+            method: 'POST',
+            url: postUrl,
+            headers: headers,
+            data: data
         }).then(
             (result) => {
-                dispatch(getTransactionsData(account))
+                dispatch(getTransactionsData())
             },
             (error) => {
                 console.log(error);
@@ -126,21 +126,3 @@ export function confirmTransactionItems(account) {
     };
 }
 
-export function clearTransactionItems(account) {
-    return (dispatch) => {
-        let deleteUrl = config.API_URL + config.API_PREFIX + 'reconcile/' + account;
-
-        axios({
-            method: 'DELETE',
-            url: deleteUrl,
-            headers: headers
-        }).then(
-            (result) => {
-                dispatch(getTransactionsData(account))
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-    };
-}

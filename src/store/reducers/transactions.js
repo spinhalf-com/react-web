@@ -3,7 +3,8 @@ import { transactionsConstants } from '../constants/transactions';
 const initialState = {
     transactions_array: [],
     selectedEntries: [],
-    queryString: null
+    queryString: null,
+    matching_description_data: []
 };
 
 export default function location(state = initialState, action) {
@@ -41,6 +42,11 @@ export default function location(state = initialState, action) {
         case transactionsConstants.SET_TRANSACTIONS_SELECTED_ENTRIES:
             return Object.assign({}, state, {
                 selectedEntries: action.data
+            });
+
+        case transactionsConstants.SET_MATCHING_DESCRIPTION_DATA:
+            return Object.assign({}, state, {
+                matching_description_data: action.data
             });
         default:
             return state;

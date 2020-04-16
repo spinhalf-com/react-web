@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { transactionsData } from './../../../store/actions/transactions';
 
 import FilterDiv from './filter-div';
 

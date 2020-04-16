@@ -7,7 +7,7 @@ import PaginationRow from "./subcomponents/pagination-row";
 import TransactionRow from "./subcomponents/transaction-row";
 // import TableHead from "./subcomponents/table-head";
 import TableHeader from "./subcomponents/table-header";
-import {getQueryString, setQueryString, transactionsData} from "../../store/actions/transactions";
+import { transactionsData } from "../../store/actions/transactions";
 import Functions from './../../functions/functions';
 
 class TransactionList extends Component {
@@ -24,7 +24,7 @@ class TransactionList extends Component {
     }
 
     reveal() {
-        console.log(this.props.transactions_array);
+        // console.log(this.props.transactions_array);
     }
 
     render() {

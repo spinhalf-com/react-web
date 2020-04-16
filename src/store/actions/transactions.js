@@ -49,8 +49,14 @@ function getTransactionsData(queryArray = null) {
 
 export function setMatchingDescriptionData(data) {
     return {
-        type: transactionsConstants.SET_MATCHING_DESCRIPTION_DATA,
+        type: transactionsConstants.GET_MATCHING_DESCRIPTION_DATA,
         data
+    };
+}
+
+export function clearMatchingDescriptionData(data) {
+    return {
+        type: transactionsConstants.CLEAR_MATCHING_DESCRIPTION_DATA
     };
 }
 
@@ -103,6 +109,12 @@ export function getDescriptionOptions(text, code) {
                 console.log(error);
             }
         );
+    };
+}
+
+export function clearDescriptionOptions() {
+    return (dispatch) => {
+        dispatch(clearMatchingDescriptionData())
     };
 }
 

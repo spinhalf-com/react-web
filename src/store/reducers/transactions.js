@@ -1,4 +1,5 @@
 import { transactionsConstants } from '../constants/transactions';
+import Functions from './../../functions/functions';
 
 const initialState = {
     transactions_array: [],
@@ -17,11 +18,11 @@ export default function location(state = initialState, action) {
             });
 
         case transactionsConstants.GET_TRANSACTIONS_FAILURE:
-            return action.error;
+            return action.data;
 
-        case transactionsConstants.SET_TRANSACTION_SEARCH_QUERY:
+        case transactionsConstants.TRANSACTION_SEARCH_QUERY:
             return Object.assign({}, state, {
-                queryString: action.data
+                queryString: Functions.makeTransactionsQueryString(action.data)
             });
 
         case transactionsConstants.GET_MATCHING_DESCRIPTION_DATA:
@@ -32,6 +33,11 @@ export default function location(state = initialState, action) {
         case transactionsConstants.CLEAR_MATCHING_DESCRIPTION_DATA:
             return Object.assign({}, state, {
                 matching_description_data: null
+            });
+
+        case transactionsConstants.TRANSACTIONS_SAVE_ERROR:
+            return Object.assign({}, state, {
+                saveErrors: action.data
             });
         default:
             return state;

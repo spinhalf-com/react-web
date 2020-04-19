@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f639818a-1931-4da0-9bbd-c19afe8da9dd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/amount-input.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/css/transactions.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/enter-transaction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/enter-transaction.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/account-selector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/account-selector.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/enter/transaction-list.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/enter/transaction-list.jsx" afterDir="false" />
@@ -22,14 +28,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/enter/enter-transaction.jsx">
+        <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/amount-input.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
-              <caret line="158" selection-start-line="158" selection-end-line="170" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-                <element signature="e#155#218#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="345">
+              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -37,30 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/enter/transaction-list.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-                <element signature="e#432#487#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functions/functions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/reconcile/reconcile-list.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="47" selection-start-line="47" selection-end-line="60" selection-end-column="5" />
+            <state relative-caret-position="774">
+              <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -68,11 +48,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/accounts/crypto_list.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+            <state relative-caret-position="-2">
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -83,8 +74,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/store/actions/transactions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+            <state relative-caret-position="-135">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="775">
+              <caret line="72" column="56" lean-forward="true" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/functions/functions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="729">
+              <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -95,8 +119,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/store/reducers/transactions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
+            <state relative-caret-position="375">
+              <caret line="25" column="15" lean-forward="true" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#66#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,26 +135,13 @@
       <list>
         <option value="HTML File" />
         <option value="tsconfig.json" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>right-content-regtrans.js</find>
-      <find>right-content-regtrans</find>
-      <find>GET_ACCOUNTS_REQUEST</find>
-      <find>getAccounts</find>
-      <find>regtrans_data</find>
-      <find>reducers/</find>
-      <find>accounts_data</find>
-      <find>balances_list</find>
-      <find>console.log</find>
-      <find>unrecs</find>
-      <find>setCheckboxList</find>
-      <find>CentreContentRegtrans</find>
-      <find>MainContent</find>
       <find>EnterNew</find>
       <find>REGTRANS</find>
       <find>Confi</find>
@@ -145,20 +159,34 @@
       <find>Reconcile</find>
       <find>forEach</find>
       <find>getReconcileData</find>
+      <find>postData</find>
+      <find>SET_MATCHING_DESCRIPTION_DATA</find>
+      <find>amountSetter</find>
+      <find>logger</find>
+      <find>Enter Transactions</find>
+      <find>queryArray</find>
+      <find>&amp;&amp;</find>
+      <find>TRANSACTION_SEARCH_QUERY</find>
+      <find>setQueryString</find>
+      <find>join</find>
+      <find>getQ</find>
+      <find>getTransactionsData</find>
+      <find>formatToCurrency</find>
     </findStrings>
     <replaceStrings>
       <replace>RECONCILE</replace>
       <replace>TRANSACTIONS</replace>
       <replace>transactionsConstants</replace>
+      <replace>GET_MATCHING_DESCRIPTION_DATA</replace>
       <replace>Transactions</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/components/regtrans</dir>
       <dir>$PROJECT_DIR$/src/components/reconcile</dir>
       <dir>$PROJECT_DIR$/src/css</dir>
-      <dir>$PROJECT_DIR$/src</dir>
-      <dir>$PROJECT_DIR$/src/components/enter</dir>
       <dir>$PROJECT_DIR$/src/components</dir>
+      <dir>$PROJECT_DIR$/src/components/enter</dir>
+      <dir>$PROJECT_DIR$/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -167,15 +195,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/store/actions/default.js" />
-        <option value="$PROJECT_DIR$/src/store/actions/cryptos.js" />
-        <option value="$PROJECT_DIR$/src/components/enter/subcomponents/deletion-buttons.jsx" />
-        <option value="$PROJECT_DIR$/src/components/regtrans/subcomponents/edit-cell.jsx" />
         <option value="$PROJECT_DIR$/src/store/actions/accounts.js" />
         <option value="$PROJECT_DIR$/src/components/regtrans/subcomponents/enter-new.js" />
         <option value="$PROJECT_DIR$/src/store/actions/regtrans.js" />
         <option value="$PROJECT_DIR$/src/components/regtrans/subcomponents/regtrans-list.jsx" />
-        <option value="$PROJECT_DIR$/src/components/enter/subcomponents/account-selector.jsx" />
         <option value="$PROJECT_DIR$/src/components/enter/subcomponents/code-selector.jsx" />
         <option value="$PROJECT_DIR$/src/components/common/menu.jsx" />
         <option value="$PROJECT_DIR$/src/components/regtrans/subcomponents/enter-new.jsx" />
@@ -210,14 +233,19 @@
         <option value="$PROJECT_DIR$/src/components/enter/subcomponents/edit-input.jsx" />
         <option value="$PROJECT_DIR$/src/store/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/components/enter/subcomponents/edit-cell.jsx" />
+        <option value="$PROJECT_DIR$/src/css/transactions.css" />
+        <option value="$PROJECT_DIR$/src/components/enter/subcomponents/amount-input.js" />
         <option value="$PROJECT_DIR$/src/components/enter/enter-transaction.jsx" />
-        <option value="$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx" />
+        <option value="$PROJECT_DIR$/src/components/enter/subcomponents/account-selector.jsx" />
         <option value="$PROJECT_DIR$/src/store/constants/transactions.js" />
-        <option value="$PROJECT_DIR$/src/store/reducers/transactions.js" />
-        <option value="$PROJECT_DIR$/src/store/actions/transactions.js" />
-        <option value="$PROJECT_DIR$/src/functions/functions.js" />
+        <option value="$PROJECT_DIR$/src/components/enter/subcomponents/pagination-row.jsx" />
         <option value="$PROJECT_DIR$/src/components/enter/transaction-list.jsx" />
+        <option value="$PROJECT_DIR$/src/store/reducers/transactions.js" />
         <option value="$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx" />
+        <option value="$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx" />
+        <option value="$PROJECT_DIR$/src/store/actions/transactions.js" />
+        <option value="$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx" />
+        <option value="$PROJECT_DIR$/src/functions/functions.js" />
       </list>
     </option>
   </component>
@@ -227,7 +255,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="70" />
     <option name="y" value="23" />
-    <option name="width" value="1220" />
+    <option name="width" value="1396" />
     <option name="height" value="1123" />
   </component>
   <component name="ProjectId" id="1WqfRpuRYHhm3E5xbxZm7kEusn1" />
@@ -236,7 +264,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -272,6 +299,13 @@
               <item name="react-web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="accounts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="react-web" type="b2602c69:ProjectViewProjectNode" />
@@ -345,6 +379,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -419,18 +454,19 @@
       <workItem from="1585292540180" duration="508000" />
       <workItem from="1585331459066" duration="3402000" />
       <workItem from="1586378321060" duration="382000" />
-      <workItem from="1586454644581" duration="49959000" />
+      <workItem from="1586454644581" duration="75764000" />
+      <workItem from="1587276824041" duration="5721000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102727000" />
+    <option name="totallyTimeSpent" value="134253000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="70" y="23" width="1220" height="1123" extended-state="0" />
+    <frame x="70" y="23" width="1396" height="1123" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2665535" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23559822" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -511,78 +547,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/regtrans/subcomponents/enter-new.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/main-content.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/regtrans/subcomponents/right-content-regtrans.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/centre-content.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/reconcile/right-content-reconcile.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="41" lean-forward="true" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/reconcile/main-content-reconcile.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/reconcile/centre-content-reconcile.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/constants/regtrans.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/fitbit/main-container-fitbit.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -627,13 +591,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build/static/js/main.35b95265.chunk.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/build/static/js/main.35b95265.chunk.js" />
     <entry file="file://$PROJECT_DIR$/build/static/js/runtime-main.7f4541e7.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -641,63 +599,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build/static/js/2.31fe19c1.chunk.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13626">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/static/css/main.b18c2e92.chunk.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7836">
-          <caret line="35" column="19" lean-forward="true" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
-          <folding>
-            <element signature="e#337#1412#1" expanded="true" />
-            <element signature="e#2003#2522#1" expanded="true" />
-            <element signature="e#2591#3494#1" expanded="true" />
-            <element signature="e#4660#5119#1" expanded="true" />
-            <element signature="e#5703#5814#1" expanded="true" />
-            <element signature="e#5875#5986#1" expanded="true" />
-            <element signature="e#6061#6520#1" expanded="true" />
-            <element signature="e#6711#7170#1" expanded="true" />
-            <element signature="e#8095#9374#1" expanded="true" />
-            <element signature="e#9558#10837#1" expanded="true" />
-            <element signature="e#10932#12211#1" expanded="true" />
-            <element signature="e#12462#13777#1" expanded="true" />
-            <element signature="e#13833#18892#1" expanded="true" />
-            <element signature="e#18954#23933#1" expanded="true" />
-            <element signature="e#23993#29328#1" expanded="true" />
-            <element signature="e#29881#31160#1" expanded="true" />
-            <element signature="e#31630#37145#1" expanded="true" />
-            <element signature="e#37215#37650#1" expanded="true" />
-            <element signature="e#37726#39617#1" expanded="true" />
-            <element signature="e#39694#45181#1" expanded="true" />
-            <element signature="e#45259#45694#1" expanded="true" />
-            <element signature="e#45731#51246#1" expanded="true" />
-            <element signature="e#51502#51978#1" expanded="true" />
-            <element signature="e#52059#52543#1" expanded="true" />
-            <element signature="e#52944#53779#1" expanded="true" />
-            <element signature="e#53955#54786#1" expanded="true" />
-            <element signature="e#55023#55466#1" expanded="true" />
-            <element signature="e#55568#56079#1" expanded="true" />
-            <element signature="e#56181#56692#1" expanded="true" />
-            <element signature="e#56971#57242#1" expanded="true" />
-            <element signature="e#57342#57849#1" expanded="true" />
-            <element signature="e#57949#58456#1" expanded="true" />
-            <element signature="e#58732#59083#1" expanded="true" />
-            <element signature="e#59181#59696#1" expanded="true" />
-            <element signature="e#59794#60309#1" expanded="true" />
-            <element signature="e#60461#60684#1" expanded="true" />
-            <element signature="e#60756#60975#1" expanded="true" />
-            <element signature="e#61648#61747#1" expanded="true" />
-            <element signature="e#61813#66952#1" expanded="true" />
-            <element signature="e#67141#72684#1" expanded="true" />
-            <element signature="e#72805#78804#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/build/static/js/2.31fe19c1.chunk.js" />
+    <entry file="file://$PROJECT_DIR$/build/static/css/main.b18c2e92.chunk.css" />
     <entry file="file://$PROJECT_DIR$/build/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-140">
@@ -719,16 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/account-selector.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="31" column="19" lean-forward="true" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -742,16 +635,6 @@
           <caret selection-end-line="18" selection-end-column="5" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -820,16 +703,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/reconcile/confirm-button.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/reconcile/confirm-button.jsx" />
     <entry file="file://$PROJECT_DIR$/src/components/reconcile/rec-balances-div.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -891,10 +765,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx">
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="73" />
+        <state relative-caret-position="225">
+          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/reconcile/reconcile-list.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1790">
+          <caret line="47" selection-start-line="47" selection-end-line="60" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/code-selector.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="75" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -908,55 +805,144 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducers/index.js">
+    <entry file="file://$PROJECT_DIR$/src/css/transactions.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        <state relative-caret-position="15">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/enter-transaction.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2895">
+          <caret line="209" column="89" selection-start-line="209" selection-start-column="89" selection-end-line="209" selection-end-column="89" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/account-selector.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/amount-input.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/pagination-row.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/table-head.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/transaction-row.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="68" column="103" lean-forward="true" selection-start-line="68" selection-start-column="103" selection-end-line="68" selection-end-column="103" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/store/constants/transactions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/enter/enter-transaction.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/table-header.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="158" selection-start-line="158" selection-end-line="170" selection-end-column="1" />
+        <state relative-caret-position="585">
+          <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#155#218#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="72" column="56" lean-forward="true" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/transactions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/store/reducers/transactions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
+        <state relative-caret-position="375">
+          <caret line="25" column="15" lean-forward="true" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/transactions.js">
+    <entry file="file://$PROJECT_DIR$/src/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+        <state relative-caret-position="510">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/enter/transaction-list.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/reconcile/reconcile-list.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/accounts/crypto_list.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="47" selection-start-line="47" selection-end-line="60" selection-end-column="5" />
+        <state relative-caret-position="-2">
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/accounts/accounts_unrec.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -965,29 +951,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/functions/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/enter/transaction-list.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#432#487#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/enter/subcomponents/filter-div.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="729">
+          <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
         </state>
       </provider>
     </entry>

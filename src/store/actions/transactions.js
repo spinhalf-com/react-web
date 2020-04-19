@@ -7,10 +7,16 @@ export const transactionsData = {
     getTransactionsData
 };
 
-function getTransactionsData(queryArray = null) {
+function getTransactionsData(queryString = null) {
+
+    if(queryString === null || queryString === undefined) {
+        queryString = '';
+    } 
+
     return (dispatch) => {
         dispatch(request());
-        let getUrl = config.API_URL + config.API_PREFIX + queryArray;
+        let getUrl = config.API_URL + config.API_PREFIX + 'transactions' + queryString;
+        console.log(getUrl);
         axios({
             method: 'GET',
             url: getUrl,
@@ -21,7 +27,7 @@ function getTransactionsData(queryArray = null) {
             },
             (error) => {
                 console.log(error);
-                return dispatch(failure(error));
+                return dispatch(failure([]));
             }
         );
     };
@@ -39,10 +45,10 @@ function getTransactionsData(queryArray = null) {
         };
     }
 
-    function failure(error) {
+    function failure(data) {
         return {
             type: transactionsConstants.GET_TRANSACTIONS_FAILURE,
-            error
+            data
         };
     }
 }
@@ -60,16 +66,16 @@ export function clearMatchingDescriptionData(data) {
     };
 }
 
-export function setQueryString(data) {
+export function transactionsQueryData(data) {
     return {
-        type: transactionsConstants.SET_TRANSACTION_SEARCH_QUERY,
+        type: transactionsConstants.TRANSACTION_SEARCH_QUERY,
         data
     };
 }
 
 export function getQueryString() {
     return {
-        type: transactionsConstants.GET_TRANSACTION_SEARCH_QUERY
+        type: transactionsConstants.TRANSACTION_SEARCH_QUERY
     };
 }
 
@@ -118,6 +124,13 @@ export function clearDescriptionOptions() {
     };
 }
 
+export function transactionsDataSaveError(data) {
+    return {
+        type: transactionsConstants.TRANSACTIONS_SAVE_ERROR,
+        data
+    };
+}
+
 export function saveTransactionItem(data) {
     return (dispatch) => {
         let postUrl = config.API_URL + config.API_PREFIX + 'transaction';
@@ -129,12 +142,16 @@ export function saveTransactionItem(data) {
             data: data
         }).then(
             (result) => {
-                dispatch(getTransactionsData())
+                dispatch(getTransactionsData('transaction_search'))
+                dispatch(transactionsDataSaveError(false))
             },
             (error) => {
                 console.log(error);
+                dispatch(transactionsDataSaveError(true))
             }
         );
     };
 }
+
+
 

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-    transactionsData,
-    setQueryString,
-    getQueryString
+    transactionsQueryData
 } from './../../../store/actions/transactions';
 
 
@@ -14,6 +12,8 @@ class FilterDiv extends Component {
             let name = event.target.name;
             let value = event.target.value;
 
+            console.log(name, value)
+
             if(value === null || value === undefined || value === "") {
                 this.setState({[name]: undefined});
             } else {
@@ -22,6 +22,8 @@ class FilterDiv extends Component {
         } else {
             this.clearState();
         }
+        console.log(this.state);
+        this.props.transactionsQueryData(this.state);
     }
 
     clearState() {
@@ -31,16 +33,7 @@ class FilterDiv extends Component {
         this.setState({"amsel": null});
         this.setState({"cdsel": null});
         this.setState({"desel": null});
-        this.props.setQueryString(null);
-    }
-
-    buildQuery() {
-        let obj = this.state;
-
-        var queryString = "/transactions?" + Object.keys(obj).map((key) => {
-            return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key])
-        }).join('&');
-        this.props.setQueryString(queryString);
+        this.props.transactionsQueryData(null);
     }
 
     render() {
@@ -57,7 +50,7 @@ class FilterDiv extends Component {
                                 <input style={{width:"80px"}} onChange={(event) => this.builder(event)} type="text" name="amsel" className={"_chg"} placeholder="amount"/>
                                 <input style={{width:"50px"}} onChange={(event) => this.builder(event)} type="text" name="cdsel" className={"_chg"} placeholder="code"/>
                                 <input style={{width:"200px"}} onChange={(event) => this.builder(event)} type="text" name="desel" className={"_chg"} placeholder="description"/>
-                                <button onClick={() => this.buildQuery()} >Go</button>
+                                <button onClick={(e) => this.builder(e)} >Go</button>
                             </div>
                         </td>
                     </tr>
@@ -76,14 +69,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getTransactionsData: (account) => {
-            dispatch(transactionsData.getTransactionsData(account));
-        },
-        setQueryString: (string) => {
-            dispatch(setQueryString(string));
-        },
-        getQueryString: () => {
-            dispatch(getQueryString());
+        transactionsQueryData: (filterData) => {
+            dispatch(transactionsQueryData(filterData));
         }
     };
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
+
 import Functions from './../../functions/functions';
 
 // import config from '../config/config';
@@ -8,11 +10,15 @@ import AccountSelector from "./subcomponents/account-selector";
 import CodeSelector from "./subcomponents/code-selector";
 import TableHead from "./subcomponents/table-head";
 import EnterTableFoot from "./subcomponents/enter-table-foot";
+import AmountInput from './subcomponents/amount-input';
 import {
     transactionsData,
     getDescriptionOptions,
-    clearDescriptionOptions
+    clearDescriptionOptions,
+    saveTransactionItem,
+    transactionsDataSaveError
 } from "../../store/actions/transactions";
+import './../../css/transactions.css';
 
 class EnterTransaction extends Component {
     constructor(props) {
@@ -25,22 +31,33 @@ class EnterTransaction extends Component {
                 date: '',
                 amount: '',
                 code: '',
-                description: ''
+                description: '',
+                taccount: ''
             },
-            showTransferAccount: false
+            description: '',
+            showTransferAccount: false,
+            errors: false
         };
         this.accountSetter = this.accountSetter.bind(this)
         this.codeSetter = this.codeSetter.bind(this)
+        this.amountSetter = this.amountSetter.bind(this)
+    }
+
+    componentDidMount() {
+        this.autoDate();
+        this.props.transactionsDataSaveError(false);
     }
 
     setPostState(key, value) {
         let postData = this.state.postData;
         postData[key] = value;
+        console.log('pos',postData);
         this.setState({postData: postData});
         //console.log(this.state);
     }
 
     accountSetter(e) {
+        console.log(e.target)
         this.setPostState(e.target.name, e.target.value);
     }
 
@@ -63,61 +80,44 @@ class EnterTransaction extends Component {
         console.log(this.state.postData)
     }
 
-    autoDate(event) {
+    autoDate(event = null) {
         let date = null;
-        if(event.target.value === '') {
+        if(!event || event.target.value === '') {
             date = Functions.formatDate(new Date());
         } else {
             date = Functions.formatDate(event.target.value);
         }
         this.setPostState('date', date);
-        console.log(Functions.formatDate(event.target.value))
     }
 
-    checkAmount(amount) {
-        let logicalAmount = '';
-        if(amount > 0) {
-            if(window.confirm("Is this a credit amount?")) {
-                logicalAmount = amount;
-            } else {
-                logicalAmount = -amount;
-            }
-            this.setPostState('amount', logicalAmount);
-            return logicalAmount;
-        }
+    amountSetter(event) {
+        console.log('parent', event.target.value)
+        this.setPostState('amount', event.target.value);
+        console.log(this.state.postData);
     }
     
     descriptionSearch(event) {
         let text = event.target.value;
         let code = this.state.postData.code;
-        // console.log(code);
-        if(text.length > 1) {
+        if(code.length > 1 && text.length > 1) {
             this.props.getDescriptionOptions(text, code);
         }
     }
 
     renderDescList() {
-        if(this.props.matching_description_data !== null) {
+        if(!_.isEmpty(this.props.matching_description_data)) {
             return (<ul style={{listStyle:"none",paddingLeft:"0"}}>
                 {this.props.matching_description_data.map((item, key) =>
                     <li key={key} className="injump" onClick={() => this.chooseDescription(item)}>{item}</li>
-                )
-            };
-            </ul>);
+                )}</ul>);
         }
         return null;
-
-        //
-        //
-        // return (<ul style={{listStyle:"none",paddingLeft:"0"}}>
-        //     <li className="injump">TESCO STORE 2668 HIGH WYCOMBE GBR</li>
-        //     <li className="injump">TESCO STORES 2041 AYLESBURY 2 GBR</li>
-        //     <li className="injump">TESCO STORES 2564 GERRARDS CROS GBR</li>
-        // </ul>)
     }
 
     chooseDescription(item) {
+        console.log(item);
         this.setPostState('description', item);
+        document.getElementById('description').value = item;
         this.props.clearDescriptionOptions();
     }
 
@@ -127,12 +127,16 @@ class EnterTransaction extends Component {
         if(postData.taccount === null || postData.taccount === '') {
             delete(postData.taccount)
         }
+        this.props.saveTransactionItem(postData);
+    }
 
+    descSet() {
 
     }
 
-    logger() {
-        console.log(this.props.matching_description_data);
+    logger(event) {
+        // this.props.transactionsDataSaveError(!this.props.saveErrors);
+        console.log(this.state.postData);
     }
 
     render() {
@@ -178,14 +182,9 @@ class EnterTransaction extends Component {
                                 Amount
                             </td>
                             <td className="alt">
-                                <input
-                                    type="text"
-                                    value={this.state.postData.amount}
-                                    // onBlur={(event) => this.checkAmount(event.target.value)}
-                                    onChange={(event) => this.checkAmount(event.target.value)}
-                                    name="amount"
-                                    className={"inputCell"}
-                                />
+                               <AmountInput
+                                   parentAction={(e) =>  this.amountSetter(e)}
+                               />
                             </td>
                         </tr>
 
@@ -207,7 +206,7 @@ class EnterTransaction extends Component {
                                />
                                 <div id="instr">
                                     { this.state.showTransferAccount ? <AccountSelector
-                                                                        parentAction={() => this.accountSetter()}
+                                                                        parentAction={(e) => this.accountSetter(e)}
                                                                         name={'taccount'}
                                                                     />
                                     : null }
@@ -227,6 +226,8 @@ class EnterTransaction extends Component {
                                     rows="3"
                                     onKeyUp={(event) => this.descriptionSearch(event)}
                                     className="prompt inputCell"
+                                    ref={(textarea) => { this.descriptionArea = textarea; }}
+                                    onBlur={(e) => this.setPostState('description', e.target.value)}
                                 ></textarea>
                                 <div id="hiddenList" className="hiddenList" style={{display:"block"}}>
                                     {this.renderDescList()}
@@ -240,12 +241,19 @@ class EnterTransaction extends Component {
                     <tbody>
                         <tr>
                             <td className="alt">
-                                <button value="Cancel" id="cancel" style={{width:"117px"}}>Cancel</button>
+                                <button value="Cancel" id="cancel" style={{width:"117px"}} onClick={() => this.cancel()}>Cancel</button>
                             </td>
                             <td className="alt">
-                                <button value="Save" id="save" style={{width:"120px"}}>Save</button>
+                                <button value="Save" id="save" style={{width:"120px"}} onClick={() => this.saveTransaction()}>Save</button>
                             </td>
                         </tr>
+                        { this.props.saveErrors ?
+                            <tr>
+                                <td className="errors" style={{backgroundColor: "#FF7D82", textAlign: "center"}} colSpan='2'>
+                                    There are errors in the save data
+                                </td>
+                            </tr>
+                        : null }
                         <EnterTableFoot/>
                     </tbody>
                 </table>
@@ -256,7 +264,8 @@ class EnterTransaction extends Component {
 
 function mapStateToProps(state) {
     return {
-        matching_description_data: state.transactions.matching_description_data
+        matching_description_data: state.transactions.matching_description_data,
+        saveErrors: state.transactions.saveErrors
     };
 }
 
@@ -270,6 +279,12 @@ function mapDispatchToProps(dispatch) {
         },
         clearDescriptionOptions: () => {
             dispatch(clearDescriptionOptions());
+        },
+        saveTransactionItem: (data) => {
+            dispatch(saveTransactionItem(data));
+        },
+        transactionsDataSaveError: (data) => {
+            dispatch(transactionsDataSaveError(data))
         }
     };
 }

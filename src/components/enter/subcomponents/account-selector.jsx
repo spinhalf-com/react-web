@@ -26,7 +26,7 @@ class AccountSelector extends Component {
             <select
                 id={this.props.id}
                 ref={this.props.account}
-                name="account"
+                name={this.props.name}
                 className={"accountSelector"}
                 onChange={this.props.parentAction}
                 value={this.props.value}

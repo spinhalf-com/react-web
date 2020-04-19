@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
+
 import ListTableFoot from "../enter/subcomponents/list-table-foot";
 import FilterDiv from './subcomponents/filter-div';
 import ListHeader from "./subcomponents/list-header";
@@ -20,11 +22,28 @@ class TransactionList extends Component {
     }
 
     componentDidMount() {
-        this.props.getTransactionsData('transaction_search');
+        this.props.getTransactionsData();
     }
 
     reveal() {
         // console.log(this.props.transactions_array);
+    }
+
+    loadTransactions() {
+        if(!_.isEmpty(this.props.transactions_array)) {
+
+            return this.props.transactions_array.map((item) =>
+                <TransactionRow key={item.id}
+                                id={item.id}
+                                account={item.Transtype}
+                                date={Functions.formatDate(item.Date)}
+                                amount={item.Amount}
+                                code={item.Code}
+                                description={item.Description}
+                                reconciled={item.Reconciled}
+                />
+            )}
+        return null;
     }
 
     render() {
@@ -41,17 +60,7 @@ class TransactionList extends Component {
                     <ListHeader/>
                     <PaginationRow/>
                     {
-                        this.props.transactions_array.map((item) =>
-                            <TransactionRow key={item.id}
-                                id={item.id}
-                                account={item.Transtype}
-                                date={Functions.formatDate(item.Date)}
-                                amount={item.Amount}
-                                code={item.Code}
-                                description={item.Description}
-                                reconciled={item.Reconciled}
-                            />
-                        )
+                        this.loadTransactions()
                     }
                     <ListTableFoot/>
                     </tbody>

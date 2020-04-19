@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
+    transactionsData,
     transactionsQueryData
 } from './../../../store/actions/transactions';
-
 
 class FilterDiv extends Component {
 
@@ -11,8 +11,6 @@ class FilterDiv extends Component {
         if(this.props.filterDisplay) {
             let name = event.target.name;
             let value = event.target.value;
-
-            console.log(name, value)
 
             if(value === null || value === undefined || value === "") {
                 this.setState({[name]: undefined});
@@ -22,8 +20,6 @@ class FilterDiv extends Component {
         } else {
             this.clearState();
         }
-        console.log(this.state);
-        this.props.transactionsQueryData(this.state);
     }
 
     clearState() {
@@ -36,9 +32,18 @@ class FilterDiv extends Component {
         this.props.transactionsQueryData(null);
     }
 
+    async run() {
+        await this.props.transactionsQueryData(this.state);
+        this.props.transactionsList(this.props.queryString);
+    }
+
+    logger() {
+
+    }
+
     render() {
         return (
-            <div id="filterdiv" style={{display:"block"}}>
+            <div id="filterdiv" style={{display:"block"}} onMouseOver={() => this.logger()}>
                 <table>
                     <tbody>
                     <tr>
@@ -50,7 +55,7 @@ class FilterDiv extends Component {
                                 <input style={{width:"80px"}} onChange={(event) => this.builder(event)} type="text" name="amsel" className={"_chg"} placeholder="amount"/>
                                 <input style={{width:"50px"}} onChange={(event) => this.builder(event)} type="text" name="cdsel" className={"_chg"} placeholder="code"/>
                                 <input style={{width:"200px"}} onChange={(event) => this.builder(event)} type="text" name="desel" className={"_chg"} placeholder="description"/>
-                                <button onClick={(e) => this.builder(e)} >Go</button>
+                                <button onClick={() => this.run()} >Go</button>
                             </div>
                         </td>
                     </tr>
@@ -63,7 +68,7 @@ class FilterDiv extends Component {
 
 function mapStateToProps(state) {
     return {
-        transactions_array: state.transactions.transactions_array
+        queryString: state.transactions.queryString
     };
 }
 
@@ -71,6 +76,9 @@ function mapDispatchToProps(dispatch) {
     return {
         transactionsQueryData: (filterData) => {
             dispatch(transactionsQueryData(filterData));
+        },
+        transactionsList: (queryString) => {
+            dispatch(transactionsData.getTransactionsData(queryString));
         }
     };
 }

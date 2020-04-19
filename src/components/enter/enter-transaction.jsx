@@ -51,13 +51,12 @@ class EnterTransaction extends Component {
     setPostState(key, value) {
         let postData = this.state.postData;
         postData[key] = value;
-        console.log('pos',postData);
         this.setState({postData: postData});
         //console.log(this.state);
     }
 
     accountSetter(e) {
-        console.log(e.target)
+        // console.log(e.target)
         this.setPostState(e.target.name, e.target.value);
     }
 

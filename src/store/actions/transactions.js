@@ -16,7 +16,6 @@ function getTransactionsData(queryString = null) {
     return (dispatch) => {
         dispatch(request());
         let getUrl = config.API_URL + config.API_PREFIX + 'transactions' + queryString;
-        console.log(getUrl);
         axios({
             method: 'GET',
             url: getUrl,
@@ -24,6 +23,7 @@ function getTransactionsData(queryString = null) {
         }).then(
             (result) => {
                 dispatch(success(result.data.data));
+                dispatch(pagination(result.data.data));
             },
             (error) => {
                 console.log(error);
@@ -51,6 +51,13 @@ function getTransactionsData(queryString = null) {
             data
         };
     }
+    
+    function pagination(data) {
+        return {
+            type: transactionsConstants.TRANSACTIONS_PAGINATION_DATA,
+            data
+        }
+    }
 }
 
 export function setMatchingDescriptionData(data) {
@@ -68,7 +75,7 @@ export function clearMatchingDescriptionData(data) {
 
 export function transactionsQueryData(data) {
     return {
-        type: transactionsConstants.TRANSACTION_SEARCH_QUERY,
+        type: transactionsConstants.TRANSACTION_SEARCH_QUERY_OBJECT,
         data
     };
 }

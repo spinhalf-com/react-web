@@ -1072,6 +1072,7 @@ div.pagination span.disabled {
 .page {
     text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .pagenext {

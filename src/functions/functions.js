@@ -61,6 +61,20 @@ const Functions = {
             (j ? i.substr(0, j) + thouSep : "") +
             i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
             (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
+    },
+    parseLaravelPaginationResponse(responseData) {
+
+        let pageData = {
+            per_page: responseData.per_page,
+            total: responseData.total
+        };
+
+        pageData.first_page = responseData['first_page_url'] === null ? null : responseData['first_page_url'].split('page=')[1];
+        pageData.last_page = responseData['last_page_url'] === null ? null : responseData['last_page_url'].split('page=')[1];
+        pageData.next_page = responseData['next_page_url'] === null ? null : responseData['next_page_url'].split('page=')[1];
+        pageData.prev_page = responseData['prev_page_url'] === null ? null : responseData['prev_page_url'].split('page=')[1];
+        
+        return pageData;
     }
 };
 

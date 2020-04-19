@@ -32,8 +32,14 @@ class FilterDiv extends Component {
         this.props.transactionsQueryData(null);
     }
 
+    mergeQueryObjects(obj) {
+        let queryObject = this.props.query_object;
+        let merged =  {...obj, ...queryObject };
+        return this.props.updateQueryObjectState(merged);
+    }
+
     async run() {
-        await this.props.transactionsQueryData(this.state);
+        await this.props.updateQueryObjectState(this.state);
         this.props.transactionsList(this.props.queryString);
     }
 
@@ -68,7 +74,8 @@ class FilterDiv extends Component {
 
 function mapStateToProps(state) {
     return {
-        queryString: state.transactions.queryString
+        queryString: state.transactions.queryString,
+        query_object: state.transactions.queryObject
     };
 }
 
@@ -79,6 +86,9 @@ function mapDispatchToProps(dispatch) {
         },
         transactionsList: (queryString) => {
             dispatch(transactionsData.getTransactionsData(queryString));
+        },
+        updateQueryObjectState(obj) {
+            dispatch(transactionsQueryData(obj))
         }
     };
 }

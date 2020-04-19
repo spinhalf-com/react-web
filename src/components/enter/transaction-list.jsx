@@ -70,10 +70,10 @@ class TransactionList extends Component {
     }
 }
 
-
 function mapStateToProps(state) {
     return {
-        transactions_array: state.transactions.transactions_array
+        transactions_array: state.transactions.transactions_array,
+        query_object: state.transactions.queryObject
     };
 }
 
@@ -84,6 +84,5 @@ function mapDispatchToProps(dispatch) {
         }
     };
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionList);

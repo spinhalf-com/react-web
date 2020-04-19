@@ -4,7 +4,9 @@ import Functions from './../../functions/functions';
 const initialState = {
     transactions_array: [],
     queryString: null,
-    matching_description_data: null
+    matching_description_data: null,
+    queryObject: {},
+    pageData: {}
 };
 
 export default function location(state = initialState, action) {
@@ -23,6 +25,16 @@ export default function location(state = initialState, action) {
         case transactionsConstants.TRANSACTION_SEARCH_QUERY:
             return Object.assign({}, state, {
                 queryString: Functions.makeTransactionsQueryString(action.data)
+            });
+
+        case transactionsConstants.TRANSACTION_SEARCH_QUERY_OBJECT:
+            return Object.assign({}, state, {
+                queryObject: action.data
+            });
+
+        case transactionsConstants.TRANSACTIONS_PAGINATION_DATA:
+            return Object.assign({}, state, {
+                pageData: Functions.parseLaravelPaginationResponse(action.data)
             });
 
         case transactionsConstants.GET_MATCHING_DESCRIPTION_DATA:

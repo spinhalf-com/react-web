@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 // import _ from 'lodash';
 
-import { transactionsData, transactionsQueryData } from "../../../store/actions/transactions";
+import { transactionsData, transactionsQueryData, getQueryString } from "../../../store/actions/transactions";
 
 class PaginationRow extends Component {
     // constructor(props) {
@@ -12,28 +12,25 @@ class PaginationRow extends Component {
     // }
 
     componentDidMount() {
-        // console.log('pgd',this.props.pageData)
+        this.props.updateQueryObjectState({});
     }
 
-    mergeQueryObjects(obj) {
-        console.log('pageclick',this.props.pageData)
+    async mergeQueryObjects(obj) {
         let queryObject = this.props.query_object;
         let merged =  {...obj, ...queryObject };
-        return this.props.updateQueryObjectState(merged);
+        return await this.props.updateQueryObjectState(merged);
     }
 
     pageClick(direction) {
+
         if(direction === 'prev') {
             this.mergeQueryObjects({'page': this.props.pageData.prev_page})
         } else {
             this.mergeQueryObjects({'page': this.props.pageData.next_page})
         }
-        this.run();
-    }
-
-    async run() {
-        await this.props.updateQueryObjectState(this.state);
+        console.log('vv',this.props.queryString)
         this.props.transactionsList(this.props.queryString);
+
     }
 
     render() {
@@ -64,6 +61,9 @@ function mapDispatchToProps(dispatch) {
         },
         updateQueryObjectState(obj) {
             dispatch(transactionsQueryData(obj))
+        },
+        getQueryString() {
+            dispatch(getQueryString())
         }
     };
 }

@@ -40,11 +40,11 @@ class TransactionRow extends Component {
         return string.toUpperCase();
     }
 
-    openEditableCell(event, field) {
+    async openEditableCell(event, field) {
         let target = field+"Edit";
         let obj = {};
         obj[target] = true;
-        this.setState(obj);
+        await this.setState(obj);
     }
 
     saveEdits(event) {
@@ -63,16 +63,16 @@ class TransactionRow extends Component {
         return (
             <tr className={"datarow"} style={{fontSize:"1.0em"}} key={this.state.rowKey}>
                 <td id={this.state.accountKey} className={"alt"} field="account" onDoubleClick={event => this.openEditableCell(event, "account")}>
-                    {this.state.accountEdit && this.editable ? <EditInput onChange={() => this.props.editedCell} width={'30px'} value={this.props.account}/> : this.props.account}
+                    {this.state.accountEdit && this.editable ? <EditInput name="account" id={this.props.id} onChange={() => this.props.editedCell} width={'30px'} value={this.props.account}/> : this.props.account}
                 </td>
                 <td id={this.state.dateKey} className={"alt date"} field="date" onDoubleClick={event => this.openEditableCell(event, "date")}>
-                    {this.state.dateEdit && this.editable ? <EditInput onChange={() => this.props.editedCell} width={'150px'} value={this.props.date}/> : this.props.date}
+                    {this.state.dateEdit && this.editable ? <EditInput name="date" id={this.props.id} onChange={() => this.props.editedCell} width={'150px'} value={this.props.date}/> : this.props.date}
                 </td>
                 <td className={"alt"} field="amount" style={{textAlign:"right"}}  id={this.state.amountKey} onDoubleClick={event => this.openEditableCell(event, "amount")}>
-                    {this.state.amountEdit && this.editable ? <EditInput onChange={() => this.props.editedCell} width={'130px'} value={this.props.amount}/> : this.props.amount}
+                    {this.state.amountEdit && this.editable ? <EditInput name="amount" id={this.props.id} onChange={() => this.props.editedCell} width={'130px'} value={this.props.amount}/> : this.props.amount}
                 </td>
                 <td id={this.state.codeKey} className={"alt"} field="code" onDoubleClick={event => this.openEditableCell(event, "code")}>
-                    {this.state.codeEdit && this.editable ? <EditInput onChange={() => this.props.editedCell} width={'30px'} value={this.props.code}/> : this.props.code}
+                    {this.state.codeEdit && this.editable ? <EditInput name="code" id={this.props.id} onChange={() => this.props.editedCell} width={'30px'} value={this.props.code}/> : this.props.code}
                 </td>
                 <td
                     className={"alt deltrans"}
@@ -86,7 +86,7 @@ class TransactionRow extends Component {
                         className={"editable"}
                         field="description"
                     >
-                        {this.state.descriptionEdit && this.editable ? <EditInput saveEdits={() => this.editedCell} width={'330px'} value={this.props.description}/> : this.props.description}
+                        {this.state.descriptionEdit && this.editable ? <EditInput name="description" id={this.props.id} saveEdits={() => this.editedCell} width={'330px'} value={this.props.description}/> : this.props.description}
                     </div>
                     {this.editable && this.state.deleteOptionsVisible ? <DeleteButtons
                                 mouseOut={e => this.concealButtons(e)}

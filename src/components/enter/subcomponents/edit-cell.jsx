@@ -21,26 +21,29 @@ class EditCell extends Component {
         //console.log(this.state)
     }
 
-    editedCell(e) {
-        this.setState({ value: e.target.value });
+    async editedCell(e) {
+        await this.setState({ value: e.target.value });
         //console.log(this.state)
     }
 
-    updateRecord() {
+    updateRecord(event) {
         this.setState( {editing: false});
         let putData = {
-            id: this.state.id,
+            id: this.props.id,
         };
-        putData[this.state.type] = this.state.value;
+        let name = this.props.name;
+        let value = event.target.value;
+        putData[name] = value;
+        console.log(putData);
 
-        this.props.editTransactionItem(putData, this.props.account);
+        this.props.editTransactionItem(this.props.id, putData);
     }
 
 
     render() {
         return (
             <div onDoubleClick={() => this.makeEditable()}>
-                {this.state.editing ? <input onBlur={() => this.updateRecord()} onChange={(e) => this.editedCell(e)} value={this.state.value}/> : this.props.value}
+                {this.state.editing ? <input onBlur={(e) => this.updateRecord(e)} onChange={(e) => this.editedCell(e)} value={this.state.value}/> : this.props.value}
             </div>
         )
     }
@@ -49,8 +52,8 @@ class EditCell extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        editTransactionItem: (data, account) => {
-            dispatch(editTransactionItem(data, account));
+        editTransactionItem: (id, data) => {
+            dispatch(editTransactionItem(id, data));
         },
     };
 }

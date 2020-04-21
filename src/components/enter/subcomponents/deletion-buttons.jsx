@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+
 import DeleteActions from "./delete-actions";
+import { deleteTransactionItem } from "../../../store/actions/transactions";
 
 class DeleteButtons extends Component {
     constructor(props) {
@@ -23,8 +26,8 @@ class DeleteButtons extends Component {
         //console.log(this.state);
     }
 
-    confirmDelete() {
-        // send id to redux/axios etc
+    confirmDelete(id) {
+        this.props.deleteTransactionItem(id)
     }
 
     render() {
@@ -33,7 +36,7 @@ class DeleteButtons extends Component {
                 {
                     this.state.clickReveal ?
                         <DeleteActions
-                            confirmAction={() => this.confirmDelete()}
+                            confirmAction={(e) => this.confirmDelete(this.props.id)}
                             cancelAction={() => this.hideButtons()}
                             id={this.props.id}
                         />
@@ -56,4 +59,15 @@ class DeleteButtons extends Component {
         )
     }
 }
-export default DeleteButtons;
+
+
+function mapDispatchToProps(dispatch) {
+    return {
+        deleteTransactionItem: (id, data) => {
+            dispatch(deleteTransactionItem(id, data));
+        },
+    };
+}
+
+export default connect(null, mapDispatchToProps)(DeleteButtons);
+

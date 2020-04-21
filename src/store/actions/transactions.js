@@ -86,15 +86,34 @@ export function getQueryString() {
     };
 }
 
-export function editTransactionItem(data, account) {
+export function editTransactionItem(id, data) {
     return (dispatch) => {
-        let putUrl = config.API_URL + config.API_PREFIX + 'transaction/' + data.id;
+        let putUrl = config.API_URL + config.API_PREFIX + 'transaction/' + id;
 
         axios({
             method: 'PUT',
             url: putUrl,
             headers: headers,
             data: data
+        }).then(
+            (result) => {
+                dispatch(getTransactionsData())
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    };
+}
+
+export function deleteTransactionItem(id) {
+    return (dispatch) => {
+        let delUrl = config.API_URL + config.API_PREFIX + 'transaction/' + id;
+
+        axios({
+            method: 'DELETE',
+            url: delUrl,
+            headers: headers
         }).then(
             (result) => {
                 dispatch(getTransactionsData())

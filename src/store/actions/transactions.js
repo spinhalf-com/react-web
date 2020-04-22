@@ -168,7 +168,7 @@ export function saveTransactionItem(data) {
             data: data
         }).then(
             (result) => {
-                dispatch(getTransactionsData('transaction_search'))
+                dispatch(getTransactionsData())
                 dispatch(transactionsDataSaveError(false))
             },
             (error) => {

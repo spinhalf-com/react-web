@@ -16,11 +16,18 @@ class AmountInput extends Component {
 
     parseAmount(event) {
         let amount = event.target.value;
+        if(isNaN(amount)) {
+            alert("Not a number!");
+            this.amountInput.focus();
+        }
+
         if(amount > 0) {
             if(!window.confirm("Is this a credit amount?")) {
-                this.amountInput.focus();
+                amount = -amount;
             }
         }
+        document.getElementById('amount-input').value = amount;
+        this.props.parentAction(amount);
     }
 
     render() {
@@ -28,8 +35,8 @@ class AmountInput extends Component {
             <input
                 type="text"
                 onBlur={(event) => this.parseAmount(event)}
-                onChange={e => this.props.parentAction(e)}
                 name="amount"
+                id="amount-input"
                 className={"inputCell"}
                 ref={(input) => { this.amountInput = input; }}
             />

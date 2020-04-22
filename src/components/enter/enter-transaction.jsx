@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import Functions from './../../functions/functions';
-
-// import config from '../config/config';
-// import axios from 'axios';
 import AccountSelector from "./subcomponents/account-selector";
 import CodeSelector from "./subcomponents/code-selector";
 import TableHead from "./subcomponents/table-head";
 import EnterTableFoot from "./subcomponents/enter-table-foot";
 import AmountInput from './subcomponents/amount-input';
+import DateInput from './subcomponents/date-input';
 import {
     transactionsData,
     getDescriptionOptions,
@@ -28,7 +25,7 @@ class EnterTransaction extends Component {
             error: '',
             postData: {
                 account: '',
-                date: '',
+                date: new Date(),
                 amount: '',
                 code: '',
                 description: '',
@@ -41,17 +38,17 @@ class EnterTransaction extends Component {
         this.accountSetter = this.accountSetter.bind(this)
         this.codeSetter = this.codeSetter.bind(this)
         this.amountSetter = this.amountSetter.bind(this)
+        this.dateSetter = this.dateSetter.bind(this)
     }
 
     componentDidMount() {
-        this.autoDate();
         this.props.transactionsDataSaveError(false);
     }
 
-    setPostState(key, value) {
+    async setPostState(key, value) {
         let postData = this.state.postData;
         postData[key] = value;
-        this.setState({postData: postData});
+        await this.setState({postData: postData});
         //console.log(this.state);
     }
 
@@ -68,31 +65,19 @@ class EnterTransaction extends Component {
         this.setState({
             showTransferAccount: this.refs.is_transfer.checked
         });
-        // console.log(this.refs.is_transfer.checked);
     }
 
-    clearForm() {
-
-    }
 
     save() {
         console.log(this.state.postData)
     }
 
-    autoDate(event = null) {
-        let date = null;
-        if(!event || event.target.value === '') {
-            date = Functions.formatDate(new Date());
-        } else {
-            date = Functions.formatDate(event.target.value);
-        }
+    dateSetter(date) {
         this.setPostState('date', date);
     }
 
-    amountSetter(event) {
-        console.log('parent', event.target.value)
-        this.setPostState('amount', event.target.value);
-        console.log(this.state.postData);
+    amountSetter(amount) {
+        this.setPostState('amount', amount);
     }
     
     descriptionSearch(event) {
@@ -114,28 +99,74 @@ class EnterTransaction extends Component {
     }
 
     chooseDescription(item) {
-        console.log(item);
         this.setPostState('description', item);
         document.getElementById('description').value = item;
         this.props.clearDescriptionOptions();
     }
 
-    saveTransaction() {
+    prepareSaveTransaction() {
         let postData = this.state.postData;
 
+        postData.transfer = true;
+
         if(postData.taccount === null || postData.taccount === '') {
-            delete(postData.taccount)
+            delete(postData.taccount);
+            postData.transfer = false;
         }
-        this.props.saveTransactionItem(postData);
+
+        if(!this.state.showTransferAccount) {
+            delete(postData.taccount);
+            postData.transfer = false;
+        }
+
+        let errString = '';
+        for (const [key, value] of Object.entries(postData)) {
+            if(typeof key !== 'string') {
+                delete postData[key]
+            }
+            if(!value) {
+                if(key !== 'transfer' && key !== '[object Object]') {
+                    errString += key + " is missing! \n";
+                    console.log(postData)
+                }
+            }
+        }
+
+        if(errString.length) {
+            alert(errString);
+        } else {
+            this.executeSave(postData);
+            this.clearForm();
+        }
     }
 
-    descSet() {
+    clearForm() {
+        let postData = {
+            account: '',
+            date: new Date(),
+            amount: '',
+            code: '',
+            description: '',
+            taccount: ''
+        };
+        this.setPostState(postData);
+        this.refs.is_transfer.checked = false;
+        this.setState({showTransferAccount: false})
+        document.getElementById('account').value = '';
+        // document.getElementById('taccount').value = '';
+        document.getElementById('date-input').value = '';
+        document.getElementById('amount-input').value = '';
+        document.getElementById('code').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('transfer').value = false;
+    }
 
+    async executeSave(postData) {
+        await this.props.saveTransactionItem(postData);
     }
 
     logger(event) {
         // this.props.transactionsDataSaveError(!this.props.saveErrors);
-        console.log(this.state.postData);
     }
 
     render() {
@@ -153,6 +184,7 @@ class EnterTransaction extends Component {
                             </td>
                             <td className="alt">
                                 <AccountSelector
+                                    id="account"
                                     name={'account'}
                                     parentAction={(e) => this.accountSetter(e)}
                                 />
@@ -164,13 +196,8 @@ class EnterTransaction extends Component {
                                 Date
                             </td>
                             <td className="alt" id="dc">
-                                <input
-                                    type="text"
-                                    value={this.state.postData.date}
-                                    onFocus={(event) => this.autoDate(event)}
-                                    onChange={(event) => this.autoDate(event)}
-                                    name="date"
-                                    className={"inputCell"}
+                                <DateInput
+                                    parentAction={(date) =>  this.dateSetter(date)}
                                 />
 
                             </td>
@@ -182,7 +209,7 @@ class EnterTransaction extends Component {
                             </td>
                             <td className="alt">
                                <AmountInput
-                                   parentAction={(e) =>  this.amountSetter(e)}
+                                   parentAction={(amount) =>  this.amountSetter(amount)}
                                />
                             </td>
                         </tr>
@@ -201,12 +228,14 @@ class EnterTransaction extends Component {
                             <td className="alt">
                                <CodeSelector
                                    name="code"
+                                   id="code"
                                    parentAction={(e) => this.codeSetter(e)}
                                />
                                 <div id="instr">
                                     { this.state.showTransferAccount ? <AccountSelector
                                                                         parentAction={(e) => this.accountSetter(e)}
                                                                         name={'taccount'}
+                                                                        id="taccount"
                                                                     />
                                     : null }
                                 </div>
@@ -243,7 +272,7 @@ class EnterTransaction extends Component {
                                 <button value="Cancel" id="cancel" style={{width:"117px"}} onClick={() => this.cancel()}>Cancel</button>
                             </td>
                             <td className="alt">
-                                <button value="Save" id="save" style={{width:"120px"}} onClick={() => this.saveTransaction()}>Save</button>
+                                <button value="Save" id="save" style={{width:"120px"}} onClick={() => this.prepareSaveTransaction()}>Save</button>
                             </td>
                         </tr>
                         { this.props.saveErrors ?

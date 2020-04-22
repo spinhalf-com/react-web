@@ -22,7 +22,8 @@ const Functions = {
             : {}
     },
     formatDate(date) {
-        let dateObj = new Date(date);
+        let dateObj = !date ? new Date() : new Date(date);
+
         let year = dateObj.getFullYear();
         let month = parseInt(dateObj.getMonth()) + 1;
         let day = dateObj.getDate();
@@ -73,7 +74,7 @@ const Functions = {
         pageData.last_page = responseData['last_page_url'] === null ? null : responseData['last_page_url'].split('page=')[1];
         pageData.next_page = responseData['next_page_url'] === null ? null : responseData['next_page_url'].split('page=')[1];
         pageData.prev_page = responseData['prev_page_url'] === null ? null : responseData['prev_page_url'].split('page=')[1];
-        
+
         return pageData;
     }
 };

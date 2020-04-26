@@ -32,7 +32,7 @@ class EditCell extends Component {
             id: this.props.id,
         };
         let name = this.props.name;
-        let value = event.target.value;
+        let value = name === 'code' ? event.target.value.toUpperCase() : event.target.value;
         putData[name] = value;
         console.log(putData);
 

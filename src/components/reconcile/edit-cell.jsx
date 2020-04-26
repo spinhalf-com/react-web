@@ -38,8 +38,11 @@ class EditCell extends Component {
 
 
     render() {
+        let fontColour = this.state.value < 0 ? 'red': '#669';
         return (
-            <div onDoubleClick={() => this.makeEditable()}>
+            <div style={{color: fontColour}}
+                 onDoubleClick={() => this.makeEditable()}
+            >
                 {this.state.editing ? <input onBlur={() => this.updateRecord()} onChange={(e) => this.editedCell(e)} value={this.state.value}/> : this.props.value}
             </div>
         )

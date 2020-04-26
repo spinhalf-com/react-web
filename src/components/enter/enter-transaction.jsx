@@ -6,7 +6,7 @@ import AccountSelector from "./subcomponents/account-selector";
 import CodeSelector from "./subcomponents/code-selector";
 import TableHead from "./subcomponents/table-head";
 import EnterTableFoot from "./subcomponents/enter-table-foot";
-import AmountInput from './subcomponents/amount-input';
+import AmountInput from './subcomponents/amount-input.jsx';
 import DateInput from './subcomponents/date-input';
 import {
     transactionsData,
@@ -66,7 +66,6 @@ class EnterTransaction extends Component {
             showTransferAccount: this.refs.is_transfer.checked
         });
     }
-
 
     save() {
         console.log(this.state.postData)
@@ -153,7 +152,6 @@ class EnterTransaction extends Component {
         this.refs.is_transfer.checked = false;
         this.setState({showTransferAccount: false})
         document.getElementById('account').value = '';
-        // document.getElementById('taccount').value = '';
         document.getElementById('date-input').value = '';
         document.getElementById('amount-input').value = '';
         document.getElementById('code').value = '';

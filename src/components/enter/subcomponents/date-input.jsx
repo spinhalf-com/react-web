@@ -25,7 +25,7 @@ class DateInput extends Component {
         let splitDate = date.split('-');
 
         let newDate = date;
-        if(splitDate.length == 2) {
+        if(splitDate.length === 2) {
             newDate = new Date().getFullYear() + "-" + splitDate[1] + "-" + splitDate[0];
         }
         document.getElementById('date-input').value = newDate;

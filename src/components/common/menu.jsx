@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { accounts } from "../../store/actions/accounts";
+import { connect } from 'react-redux';
+import { accounts } from '../../store/actions/accounts';
+import { logout } from '../../store/actions/auth';
 
-class Menu extends Component
-{
+class Menu extends Component {
     constructor(props) {
         super(props);
 
@@ -29,7 +29,7 @@ class Menu extends Component
     render() {
         return (
             <div className='menu'>
-                <ul style={{align: 'center'}}>
+                <ul style={{ align: 'center' }}>
                     <li>
                         <font color='white' size='2em'>
                             Personal Finance Manager
@@ -37,58 +37,90 @@ class Menu extends Component
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </li>
                     <li>
-                        <a className='current' href={this.logoutPath}>Log Out</a>
+                        <a
+                            className='current'
+                            href='#'
+                            onClick={() => this.props.authLogout()}
+                        >
+                            Log Out
+                        </a>
                         <ul>
-                            <form id="logout-form" action="https://jfr.zapple.co/logout" method="POST"
-                                  style={{display: 'none'}}><input type="hidden" name="_token"
-                                                                   value="8EnnVMORtLXH9krA1OfLFdHOPVPYN4ZScrpXHQz9"/>
+                            <form
+                                id='logout-form'
+                                action='https://jfr.zapple.co/logout'
+                                method='POST'
+                                style={{ display: 'none' }}
+                            >
+                                <input
+                                    type='hidden'
+                                    name='_token'
+                                    value='8EnnVMORtLXH9krA1OfLFdHOPVPYN4ZScrpXHQz9'
+                                />
                             </form>
                         </ul>
                     </li>
                     <li>
-                        <a className='current' href={this.homePath}>Home</a>
+                        <a className='current' href={this.homePath}>
+                            Home
+                        </a>
                         <ul></ul>
                     </li>
                     <li>
-                        <a className='current' href={this.enterPath}>Enter</a>
+                        <a className='current' href={this.enterPath}>
+                            Enter
+                        </a>
                         <ul></ul>
                     </li>
                     <li>
-                        <a className='current' href={this.reconcilePath}>Reconcile</a>
+                        <a className='current' href={this.reconcilePath}>
+                            Reconcile
+                        </a>
                         <ul></ul>
                     </li>
                     <li>
-                        <a className='current' href={this.regtransPath}>Regular Transactions</a>
+                        <a className='current' href={this.regtransPath}>
+                            Regular Transactions
+                        </a>
                         <ul></ul>
                     </li>
                     <li>
-                        <a className='current' href={this.mileagePath}>Mileage</a>
+                        <a className='current' href={this.mileagePath}>
+                            Mileage
+                        </a>
                         <ul></ul>
                     </li>
                     <li>
-                        <a className='current' href={this.foodPath}>Food</a>
+                        <a className='current' href={this.foodPath}>
+                            Food
+                        </a>
                         <ul></ul>
                     </li>
                     <li>
-                        <a className='current' href={this.unitsPath}>Units</a>
+                        <a className='current' href={this.unitsPath}>
+                            Units
+                        </a>
                         <ul></ul>
                     </li>
                     <li>
-                        <a className='current' href={this.fitbitPath}>Fitbit</a>
+                        <a className='current' href={this.fitbitPath}>
+                            Fitbit
+                        </a>
                         <ul></ul>
                     </li>
                     <li>
-                        <a className='current' href={this.pedometerPath}>Pedometer</a>
+                        <a className='current' href={this.pedometerPath}>
+                            Pedometer
+                        </a>
                         <ul></ul>
                     </li>
                 </ul>
             </div>
-        )
+        );
     }
 }
 function mapStateToProps(state) {
     return {
-        default_arrays: state.default_arrays
+        default_arrays: state.default_arrays,
     };
 }
 
@@ -96,13 +128,13 @@ function mapDispatchToProps(dispatch) {
     return {
         getDefaultData: () => {
             dispatch(accounts.getDefaultArrays());
-        }
+        },
+        authLogout: () => {
+            dispatch(logout());
+        },
     };
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
 
 // export default Menu;

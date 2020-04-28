@@ -1,0 +1,5 @@
+export default {
+    SET_AUTH_LOADING: 'SET_AUTH_LOADING',
+    SET_CURRENT_USER: 'SET_CURRENT_USER',
+    AUTH_FAIL: 'AUTH_FAIL',
+};

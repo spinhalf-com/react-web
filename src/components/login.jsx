@@ -18,10 +18,10 @@ class LoginPage extends Component {
                 client_id: config.CLIENT_ID,
                 client_secret: config.CLIENT_SECRET,
                 scope: config.SCOPE,
-                grant_type: config.GRANT_TYPE
+                grant_type: config.GRANT_TYPE,
             },
             redirect: null,
-            stylePath: './css/login.css'
+            stylePath: './css/login.css',
         };
 
         this.handlePassChange = this.handlePassChange.bind(this);
@@ -54,7 +54,7 @@ class LoginPage extends Component {
         loginObj.password = this.state.password;
 
         this.setState({
-            loginCredentials: loginObj
+            loginCredentials: loginObj,
         });
         this.postData();
 
@@ -64,29 +64,33 @@ class LoginPage extends Component {
     postData() {
         let data = this.state.loginCredentials;
 
-        axios.post(this.state.loginUrl, data).then(response => {
-            this.handleSuccess(response);
-        }).catch(error => {
-            this.handleError(error)
-        });
+        axios
+            .post(this.state.loginUrl, data)
+            .then((response) => {
+                this.handleSuccess(response);
+            })
+            .catch((error) => {
+                this.handleError(error);
+            });
     }
 
     handleSuccess(response) {
-        this.setState({
-            oauthToken: response.data.access_token,
-            loading: false,
-            error: null,
-            redirect: '/enter'
-        });
         localStorage.setItem('oauthToken', response.data.access_token);
+        // this.setState({
+        //     oauthToken: response.data.access_token,
+        //     loading: false,
+        //     error: null,
+        //     redirect: '/enter',
+        // });
+        window.location.href = '/enter';
     }
 
     handleError(error) {
         this.setState({
             loading: false,
             error: true,
-            error_message: "Login failed.",
-            redirect: null
+            error_message: 'Login failed.',
+            redirect: null,
         });
     }
 
@@ -103,33 +107,53 @@ class LoginPage extends Component {
     }
 
     render() {
-
         if (this.state.redirect) {
-            return <Redirect to={this.state.redirect} />
+            return <Redirect to={this.state.redirect} />;
         }
 
         return (
             <div>
-                <div className="Login box">
-                    <div className="form-box">
+                <div className='Login box'>
+                    <div className='form-box'>
                         <h1>Cash Manager</h1>
                         <form onSubmit={this.handleSubmit}>
+                            <input
+                                placeholder='Enter email'
+                                className='email'
+                                type='text'
+                                data-test='username'
+                                value={this.state.username}
+                                onChange={this.handleUserChange}
+                            />
+                            <input
+                                placeholder='Enter password'
+                                className='password'
+                                type='password'
+                                data-test='password'
+                                value={this.state.password}
+                                onChange={this.handlePassChange}
+                            />
 
-                            <input placeholder="Enter email" className="email" type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
-                            <input placeholder="Enter password" className="password" type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
-
-                            <input className="btn" type="submit" value="Log In" data-test="submit" />
+                            <input
+                                className='btn'
+                                type='submit'
+                                value='Log In'
+                                data-test='submit'
+                            />
                         </form>
                     </div>
                 </div>
-                <div className={this.state.error ? "errorbox_show" : "errorbox_hide"}>
-                    {
-                        this.state.error &&
-                        <h3 data-test="error" onClick={this.dismissError}>
+                <div
+                    className={
+                        this.state.error ? 'errorbox_show' : 'errorbox_hide'
+                    }
+                >
+                    {this.state.error && (
+                        <h3 data-test='error' onClick={this.dismissError}>
                             <button onClick={this.dismissError}>✖</button>
                             {this.state.error_message}
                         </h3>
-                    }
+                    )}
                 </div>
             </div>
         );

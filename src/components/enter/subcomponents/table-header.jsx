@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FilterDiv from './filter-div';
-import { transactionsQueryData } from "../../../store/actions/transactions";
+import { transactionsQueryData, transactionsData } from "../../../store/actions/transactions";
 
 
 class TableHeader extends Component {
@@ -25,6 +25,10 @@ class TableHeader extends Component {
         this.props.transactionsQueryData({});
     }
 
+    refresh() {
+        this.props.transactionsRefresh();
+    }
+
     render() {
         return (
             <thead>
@@ -43,6 +47,7 @@ class TableHeader extends Component {
                 </th>
                 <th className={"rounded-q4  top-blue"} scope="col">
                     <button onClick={() => this.clearFilterState()} className={"filter"} style={{float:"left"}}>Clear Filters</button>
+                    <button onClick={() => this.refresh()} className={"filter"} style={{float:"left"}}>Refresh</button>
                 </th>
             </tr>
             </thead>
@@ -54,7 +59,11 @@ function mapDispatchToProps(dispatch) {
     return {
         transactionsQueryData: (queryData = null) => {
             dispatch(transactionsQueryData(queryData));
+        },
+        transactionsRefresh: () => {
+            dispatch(transactionsData.getTransactionsData())
         }
+
     };
 }
 export default connect(null, mapDispatchToProps)(TableHeader);

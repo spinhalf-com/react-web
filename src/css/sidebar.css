@@ -36,3 +36,26 @@
 .submenu {
     border-radius: 15px;
 }
+
+.selects {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 7px;
+    float: left;
+}
+
+.mselect {
+    max-width: 90px;
+    width: 90px;
+}
+
+.yselect {
+    max-width: 55px;
+    width: 55px;
+}
+
+.defaults-label {
+    float: left;
+    width: 85px;
+    max-width: 80px;
+}

@@ -39,7 +39,7 @@ class Menu extends Component {
                     <li>
                         <a
                             className='current'
-                            href='#'
+                            href='/#'
                             onClick={() => this.props.authLogout()}
                         >
                             Log Out

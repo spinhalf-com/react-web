@@ -21,12 +21,16 @@ class Sidebar extends Component
         this._isMounted = false;
     }
 
+    refreshCryptos() {
+        this.props.getCryptos();
+    }
+
     render() {
         return (
 
             <div className="sidebarmenu">
 
-                <a className='menuitem' href="/#"> Crypto Currencies </a>
+                <a className='menuitem' href="/#" onClick={() => this.refreshCryptos()}> Crypto Currencies </a>
 
                 <CryptoList/>
 
@@ -55,8 +59,6 @@ class Sidebar extends Component
                         </li>
                     </ul>
                 </div>
-
-
             </div>
         )
     }

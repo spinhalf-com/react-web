@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import config from '../config/config';
 
-class LoginPage extends Component {
+class Login extends Component {
     constructor() {
         super();
 
@@ -160,4 +160,4 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage;
+export default Login;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CryptoList from '../accounts/crypto_list';
 import AccountsList from '../accounts/accounts_unrec';
+import getCryptos, {cryptos} from '../../store/actions/cryptos';
 
 class Sidebar extends Component
 {
@@ -21,7 +23,8 @@ class Sidebar extends Component
         this._isMounted = false;
     }
 
-    refreshCryptos() {
+    refreshCryptos(e) {
+        e.preventDefault();
         this.props.getCryptos();
     }
 
@@ -30,7 +33,7 @@ class Sidebar extends Component
 
             <div className="sidebarmenu">
 
-                <a className='menuitem' href="/#" onClick={() => this.refreshCryptos()}> Crypto Currencies </a>
+                <a className='menuitem' href="/#" onClick={(e) => this.refreshCryptos(e)}> Crypto Currencies </a>
 
                 <CryptoList/>
 
@@ -64,4 +67,13 @@ class Sidebar extends Component
     }
 }
 
-export default Sidebar;
+function mapDispatchToProps(dispatch) {
+    return {
+        getCryptos: () => {
+            dispatch(cryptos.getCryptos());
+        }
+    };
+}
+
+export default connect(null, mapDispatchToProps)(Sidebar);
+
